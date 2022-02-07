@@ -1,0 +1,392 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.92.1">
+<meta name=description content>
+<link rel=icon href=/api-docs/images/favicon.png type=image/png>
+<title>Model and Operations Overview :: Documaster Noark5 API</title>
+<link href=/api-docs/css/nucleus.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1644237134 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1644237134></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
+</head>
+<body data-url=/api-docs/general/modeloverview/>
+<nav id=sidebar>
+<div id=header-wrapper>
+<div id=header>
+<a id=logo href=/api-docs/>
+<img src=/api-docs/images/Logo_Lockup.svg style=width:200px;border-width:0;border:0 alt=Logo width=200>
+</a>
+</div>
+<div class=searchbox>
+<label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span>
+</div>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1644237134></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1644237134></script>
+<script type=text/javascript>var baseurl="https://myakimov.github.io/api-docs/"</script>
+<script type=text/javascript src=/api-docs/js/search.js?1644237134></script>
+</div>
+<section id=homelinks>
+<ul>
+<li>
+<a class=padding href=/api-docs><i style=color:#dcdffe class="fas fa-home"></i> Documaster Noark5 API v1</a>
+</li>
+</ul>
+</section>
+<div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/api-docs/general/ title="Getting Started" class="dd-item
+parent">
+<a href=/api-docs/general/>
+<b>1. </b>Getting Started
+</a>
+<ul>
+<li data-nav-id=/api-docs/general/overview/ title=Overview class=dd-item>
+<a href=/api-docs/general/overview/>
+Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/general/onboarding/ title=Onboarding class=dd-item>
+<a href=/api-docs/general/onboarding/>
+Onboarding
+</a>
+</li>
+<li data-nav-id=/api-docs/general/clientsdk/ title="Client SDKs" class=dd-item>
+<a href=/api-docs/general/clientsdk/>
+Client SDKs
+</a>
+</li>
+<li data-nav-id=/api-docs/general/authentication/ title="Authentication and Authorization" class=dd-item>
+<a href=/api-docs/general/authentication/>
+Authentication and Authorization
+</a>
+</li>
+<li data-nav-id=/api-docs/general/modeloverview/ title="Model and Operations Overview" class="dd-item
+parent
+active">
+<a href=/api-docs/general/modeloverview/>
+Model and Operations Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/general/firstcontact/ title="First API Interaction" class=dd-item>
+<a href=/api-docs/general/firstcontact/>
+First API Interaction
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/operations/ title=Operations class=dd-item>
+<a href=/api-docs/operations/>
+<b>2. </b>Operations
+</a>
+<ul>
+<li data-nav-id=/api-docs/operations/overview/ title=Overview class=dd-item>
+<a href=/api-docs/operations/overview/>
+Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/ title="Core Operations" class=dd-item>
+<a href=/api-docs/operations/core/>
+Core Operations
+</a>
+<ul>
+<li data-nav-id=/api-docs/operations/core/transaction/ title=Transaction class=dd-item>
+<a href=/api-docs/operations/core/transaction/>
+Transaction
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/query/ title=Query class=dd-item>
+<a href=/api-docs/operations/core/query/>
+Query
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/upload/ title=Upload class=dd-item>
+<a href=/api-docs/operations/core/upload/>
+Upload
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/download/ title=Download class=dd-item>
+<a href=/api-docs/operations/core/download/>
+Download
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/operations/usage-guidelines/ title="Usage Guidelines" class=dd-item>
+<a href=/api-docs/operations/usage-guidelines/>
+Usage Guidelines
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/ title="Data Model" class=dd-item>
+<a href=/api-docs/model/>
+<b>3. </b>Data Model
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/overview/ title=Overview class=dd-item>
+<a href=/api-docs/model/overview/>
+Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/ title="Core Entities" class=dd-item>
+<a href=/api-docs/model/entities/>
+Core Entities
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/fonds/ title=Fonds class=dd-item>
+<a href=/api-docs/model/entities/fonds/>
+Fonds
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/fonds/fondscreator/ title="Fonds Creator" class=dd-item>
+<a href=/api-docs/model/entities/fonds/fondscreator/>
+Fonds Creator
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/classification/ title="Classification System" class=dd-item>
+<a href=/api-docs/model/entities/classification/>
+Classification System
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/classification/class/ title=Class class=dd-item>
+<a href=/api-docs/model/entities/classification/class/>
+Class
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/series/ title=Series class=dd-item>
+<a href=/api-docs/model/entities/series/>
+Series
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/ title=Folders class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/>
+Folders
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/casefile/ title="Case File" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/casefile/>
+Case File
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/casefile/caseparty/ title="Case Party" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/casefile/caseparty/>
+Case Party
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/folder/ title="Basic Folder" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/folder/>
+Basic Folder
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/meetingfolder/ title="Meeting Folder" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/meetingfolder/>
+Meeting Folder
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/meetingfolder/meetingparticipant/ title="Meeting Participant" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/meetingfolder/meetingparticipant/>
+Meeting Participant
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/ title=Records class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/>
+Records
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/registryentry/ title="Registry Entry" class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/registryentry/>
+Registry Entry
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/basicrecord/ title="Basic Record" class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/basicrecord/>
+Basic Record
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/meetingrecord/ title="Meeting Record" class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/meetingrecord/>
+Meeting Record
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/usage/ title=Examples class=dd-item>
+<a href=/api-docs/usage/>
+<b>4. </b>Examples
+</a>
+<ul>
+<li data-nav-id=/api-docs/usage/perentity/ title="Per Entity" class=dd-item>
+<a href=/api-docs/usage/perentity/>
+Per Entity
+</a>
+<ul>
+<li data-nav-id=/api-docs/usage/perentity/casefile/ title="Case File and Case Party" class=dd-item>
+<a href=/api-docs/usage/perentity/casefile/>
+Case File and Case Party
+</a>
+</li>
+<li data-nav-id=/api-docs/usage/perentity/registryentry/ title="Registry Entry" class=dd-item>
+<a href=/api-docs/usage/perentity/registryentry/>
+Registry Entry
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/usage/perusecase/ title="Per Usecase" class=dd-item>
+<a href=/api-docs/usage/perusecase/>
+Per Usecase
+</a>
+<ul>
+<li data-nav-id=/api-docs/usage/perusecase/registryentryanddocument/ title="Create Registry Entry and Document" class=dd-item>
+<a href=/api-docs/usage/perusecase/registryentryanddocument/>
+Create Registry Entry and Document
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id=footer>
+</section>
+</div>
+</nav>
+<section id=body>
+<div id=overlay></div>
+<div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/general/>Getting Started</a> > Model and Operations Overview
+</span>
+</div>
+<div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#documaster-model>Documaster Model</a></li>
+<li><a href=#operations>Operations</a>
+<ul>
+<li><a href=#transaction>Transaction</a></li>
+<li><a href=#query>Query</a></li>
+<li><a href=#upload-and-download-operations>Upload and Download Operations</a></li>
+<li><a href=#code-lists-business-specific-metadata-bsm-bulk-operations>Code Lists, Business Specific Metadata (BSM), Bulk Operations</a></li>
+<li><a href=#key-takeouts>Key Takeouts</a></li>
+</ul>
+</li>
+<li><a href=#relations>Relations</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id=head-tags>
+</div>
+<div id=body-inner>
+<h1>
+Model and Operations Overview
+</h1>
+<h2 id=documaster-model>Documaster Model</h2>
+<p>Documaster model closely follows the Noark5 stadnard. As in the Noark5 definition, at the very top of the entities objects structure are the Fonds (<code>Arkiv</code>).</p>
+<p>As depicted on the diagram below, a Fonds (<code>Arkiv</code>) should have at least one Fonds Creator (<code>Arkivskaper</code>) and can have zero or many (0..*) linked Series (<code>Arkivdel</code>). Relations between entities can be referenced by two different names depending on the entity which is using the link. As in the example below, Fonds (<code>Arkiv</code>) link to Series (<code>Arkivdel</code>), when referenced from the Fonds is accessed by the reference name <code>refArkivdel</code>. When the same link is refferred to from the Series (<code>Arkivde</code>) it is accesed by the reference name <code>refArkiv</code>. All reference names start with the <code>ref</code> prefix.</p>
+<p>Each relation also has cardinality depicted on the diagrams, which indicates whether the relation is one-to-one, one-to-many or many-to-many.</p>
+<p><img src=/api-docs/general/modeloverview/images/diagram-fonds-firstconact.png alt=child-parent-relation></p>
+<h2 id=operations>Operations</h2>
+<h3 id=transaction>Transaction</h3>
+<p>Keeping data in consistent state, requires fine grained control over core entities creation and modification. Documaster Noark5 API v1 uses a single operation <code>POST /noark5/v1/transaction</code> to execute a sequencial series of actions towards the Noark5 structure in order to modify it. Transaction is considered successfully completed only when all the actions part of it are executed without an error. An error in any of the actions would result in rollback of the whole transaction, which means the data will remain the the state before the transaction.</p>
+<h3 id=query>Query</h3>
+<p>Looking for entity objects in Documaster Archive is done using <code>POST /noark5/v1/query</code> operation. It allows retrieving one or more entitie object of the same type (or the same base type) using a comprehensive query language, that allows following relations between entities deep in the structure.</p>
+<h3 id=upload-and-download-operations>Upload and Download Operations</h3>
+<p>Documaster Archive provides two opeations for managing electronic docments:</p>
+<ul>
+<li>for uploading an electronic document - <code>POST /noark5/v1/upload</code></li>
+<li>for downloading an electronic document - <code>GET /noark5/v1/download</code></li>
+</ul>
+<div class="notices warning"><p>Document metadata cannot be added to Documaster Archive before the electronic version of the document is uploaded (excluding use cases where real documents are not electronic).</p>
+</div>
+<h3 id=code-lists-business-specific-metadata-bsm-bulk-operations>Code Lists, Business Specific Metadata (BSM), Bulk Operations</h3>
+<p>Any other model data, that is not part of the core set of entities, in Documaster Noark5 API is managed through a separate set of API operations.</p>
+<h3 id=key-takeouts>Key Takeouts</h3>
+<ul>
+<li>Core Noark5 entity objects are modified using <code>POST /noark5/v1/transaction</code> API (reffered in the documentation as <code>transacton</code>)</li>
+<li>Core Noark5 entity objects are queries using <code>POST /noark5/v1/query</code> API (reffered in the documentation as <code>query</code>)</li>
+</ul>
+<h2 id=relations>Relations</h2>
+<p>Relations between entities are used for two purposes:</p>
+<ul>
+<li>
+<p>link entities to each other (using <code>POST /noark/v1/transaction</code> operation, <code>transaction::link</code> action)</p>
+</li>
+<li>
+<p>query linked entities (using <code>POST /noark/v1/query</code> operation)</p>
+</li>
+</ul>
+<div class="notices note"><p>While the Documaster implementation is flexible in regards of how references are used, as a general rule, when two objects are linked using <code>POST /noark5/v1/transaction</code> operation, the child entity (the one lower in the Noark5 structure), should reference an entity object up the structure. Querying the structure can be done using any references suitable.</p>
+</div>
+<hr>
+<p>Now that all required details for the authentication, model and operations are covered, the next step would be making a couple of queries against the API.</p>
+<a href=/api-docs/general/firstcontact/ target=_parent class="btn btn-default">
+<i class="fas fa-angle-double-right"></i> First API Interaction
+</a>
+<footer class=footline>
+</footer>
+</div>
+</div>
+<div id=navigation>
+<a class="nav nav-prev" href=/api-docs/general/authentication/ title="Authentication and Authorization"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/api-docs/general/firstcontact/ title="First API Interaction" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+</div>
+</section>
+<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+</div>
+<script src=/api-docs/js/clipboard.min.js?1644237134></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1644237134></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1644237134></script>
+<script src=/api-docs/js/jquery.sticky.js?1644237134></script>
+<script src=/api-docs/js/featherlight.min.js?1644237134></script>
+<script src=/api-docs/js/highlight.pack.js?1644237134></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1644237134></script>
+<script src=/api-docs/js/learn.js?1644237134></script>
+<script src=/api-docs/js/hugo-learn.js?1644237134></script>
+<script src=/api-docs/mermaid/mermaid.js?1644237134></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body>
+</html>

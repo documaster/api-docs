@@ -1,0 +1,907 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.92.1">
+<meta name=description content>
+<link rel=icon href=/api-docs/images/favicon.png type=image/png>
+<title>Query :: Documaster Noark5 API</title>
+<link href=/api-docs/css/nucleus.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1644237134 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1644237134 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1644237134></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
+</head>
+<body data-url=/api-docs/operations/core/query/>
+<nav id=sidebar>
+<div id=header-wrapper>
+<div id=header>
+<a id=logo href=/api-docs/>
+<img src=/api-docs/images/Logo_Lockup.svg style=width:200px;border-width:0;border:0 alt=Logo width=200>
+</a>
+</div>
+<div class=searchbox>
+<label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span>
+</div>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1644237134></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1644237134></script>
+<script type=text/javascript>var baseurl="https://myakimov.github.io/api-docs/"</script>
+<script type=text/javascript src=/api-docs/js/search.js?1644237134></script>
+</div>
+<section id=homelinks>
+<ul>
+<li>
+<a class=padding href=/api-docs><i style=color:#dcdffe class="fas fa-home"></i> Documaster Noark5 API v1</a>
+</li>
+</ul>
+</section>
+<div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/api-docs/general/ title="Getting Started" class=dd-item>
+<a href=/api-docs/general/>
+<b>1. </b>Getting Started
+</a>
+<ul>
+<li data-nav-id=/api-docs/general/overview/ title=Overview class=dd-item>
+<a href=/api-docs/general/overview/>
+Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/general/onboarding/ title=Onboarding class=dd-item>
+<a href=/api-docs/general/onboarding/>
+Onboarding
+</a>
+</li>
+<li data-nav-id=/api-docs/general/clientsdk/ title="Client SDKs" class=dd-item>
+<a href=/api-docs/general/clientsdk/>
+Client SDKs
+</a>
+</li>
+<li data-nav-id=/api-docs/general/authentication/ title="Authentication and Authorization" class=dd-item>
+<a href=/api-docs/general/authentication/>
+Authentication and Authorization
+</a>
+</li>
+<li data-nav-id=/api-docs/general/modeloverview/ title="Model and Operations Overview" class=dd-item>
+<a href=/api-docs/general/modeloverview/>
+Model and Operations Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/general/firstcontact/ title="First API Interaction" class=dd-item>
+<a href=/api-docs/general/firstcontact/>
+First API Interaction
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/operations/ title=Operations class="dd-item
+parent">
+<a href=/api-docs/operations/>
+<b>2. </b>Operations
+</a>
+<ul>
+<li data-nav-id=/api-docs/operations/overview/ title=Overview class=dd-item>
+<a href=/api-docs/operations/overview/>
+Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/ title="Core Operations" class="dd-item
+parent">
+<a href=/api-docs/operations/core/>
+Core Operations
+</a>
+<ul>
+<li data-nav-id=/api-docs/operations/core/transaction/ title=Transaction class=dd-item>
+<a href=/api-docs/operations/core/transaction/>
+Transaction
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/query/ title=Query class="dd-item
+parent
+active">
+<a href=/api-docs/operations/core/query/>
+Query
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/upload/ title=Upload class=dd-item>
+<a href=/api-docs/operations/core/upload/>
+Upload
+</a>
+</li>
+<li data-nav-id=/api-docs/operations/core/download/ title=Download class=dd-item>
+<a href=/api-docs/operations/core/download/>
+Download
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/operations/usage-guidelines/ title="Usage Guidelines" class=dd-item>
+<a href=/api-docs/operations/usage-guidelines/>
+Usage Guidelines
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/ title="Data Model" class=dd-item>
+<a href=/api-docs/model/>
+<b>3. </b>Data Model
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/overview/ title=Overview class=dd-item>
+<a href=/api-docs/model/overview/>
+Overview
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/ title="Core Entities" class=dd-item>
+<a href=/api-docs/model/entities/>
+Core Entities
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/fonds/ title=Fonds class=dd-item>
+<a href=/api-docs/model/entities/fonds/>
+Fonds
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/fonds/fondscreator/ title="Fonds Creator" class=dd-item>
+<a href=/api-docs/model/entities/fonds/fondscreator/>
+Fonds Creator
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/classification/ title="Classification System" class=dd-item>
+<a href=/api-docs/model/entities/classification/>
+Classification System
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/classification/class/ title=Class class=dd-item>
+<a href=/api-docs/model/entities/classification/class/>
+Class
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/series/ title=Series class=dd-item>
+<a href=/api-docs/model/entities/series/>
+Series
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/ title=Folders class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/>
+Folders
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/casefile/ title="Case File" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/casefile/>
+Case File
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/casefile/caseparty/ title="Case Party" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/casefile/caseparty/>
+Case Party
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/folder/ title="Basic Folder" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/folder/>
+Basic Folder
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/meetingfolder/ title="Meeting Folder" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/meetingfolder/>
+Meeting Folder
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractfolder/meetingfolder/meetingparticipant/ title="Meeting Participant" class=dd-item>
+<a href=/api-docs/model/entities/abstractfolder/meetingfolder/meetingparticipant/>
+Meeting Participant
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/ title=Records class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/>
+Records
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/registryentry/ title="Registry Entry" class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/registryentry/>
+Registry Entry
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/basicrecord/ title="Basic Record" class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/basicrecord/>
+Basic Record
+</a>
+</li>
+<li data-nav-id=/api-docs/model/entities/abstractrecord/meetingrecord/ title="Meeting Record" class=dd-item>
+<a href=/api-docs/model/entities/abstractrecord/meetingrecord/>
+Meeting Record
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/usage/ title=Examples class=dd-item>
+<a href=/api-docs/usage/>
+<b>4. </b>Examples
+</a>
+<ul>
+<li data-nav-id=/api-docs/usage/perentity/ title="Per Entity" class=dd-item>
+<a href=/api-docs/usage/perentity/>
+Per Entity
+</a>
+<ul>
+<li data-nav-id=/api-docs/usage/perentity/casefile/ title="Case File and Case Party" class=dd-item>
+<a href=/api-docs/usage/perentity/casefile/>
+Case File and Case Party
+</a>
+</li>
+<li data-nav-id=/api-docs/usage/perentity/registryentry/ title="Registry Entry" class=dd-item>
+<a href=/api-docs/usage/perentity/registryentry/>
+Registry Entry
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/usage/perusecase/ title="Per Usecase" class=dd-item>
+<a href=/api-docs/usage/perusecase/>
+Per Usecase
+</a>
+<ul>
+<li data-nav-id=/api-docs/usage/perusecase/registryentryanddocument/ title="Create Registry Entry and Document" class=dd-item>
+<a href=/api-docs/usage/perusecase/registryentryanddocument/>
+Create Registry Entry and Document
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id=footer>
+</section>
+</div>
+</nav>
+<section id=body>
+<div id=overlay></div>
+<div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/operations/>Operations</a> > <a href=/api-docs/operations/core/>Core Operations</a> > Query
+</span>
+</div>
+<div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#description>Description</a>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href=#request>Request</a>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href=#response>Response</a>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href=#query-language>Query Language</a>
+<ul>
+<li><a href=#simple-expressions>Simple Expressions</a></li>
+<li><a href=#range-expressions>Range Expressions</a></li>
+<li><a href=#logical-operators-and-grouping>Logical Operators and Grouping</a></li>
+<li><a href=#reference-chaining>Reference Chaining</a></li>
+<li><a href=#query-joins>Query Joins</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id=head-tags>
+</div>
+<div id=body-inner>
+<h1>
+Query
+</h1>
+<h2 id=description>Description</h2>
+<h4 id=post-noark5v1query>POST /noark5/v1/query</h4>
+<p>The <code>POST /noark5/v1/query</code> or as referred to in the documentation as <code>query</code>, is the operation for retrieving entitiy details from the Documaster Archive model. The operation allows querying for a <strong>single type of entity</strong> (or entities from a common type). Flexible <strong>query language</strong> allows retrieval of entities by complex relations traversal throught the archive structure.</p>
+<h2 id=request>Request</h2>
+<h5 id=http-request-mapping>HTTP Request Mapping</h5>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Location</th>
+<th style=text-align:center>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>access token aquired as part of the authentication call, prefixed with <code>Bearer</code></td>
+</tr>
+<tr>
+<td><code>Content-Type</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>content type header, should always be provided as <strong>application/json</strong></td>
+</tr>
+<tr>
+<td><code>X-Documaster-Error-Response-Type</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>custom header indicating that any error should be reported in JSON format, rather than the standard text format, should always be provided as <strong>application/json</strong></td>
+</tr>
+<tr>
+<td><code>$.type</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>array</td>
+<td>type of the core entity to be retrieved by the query (<code>Arkiv</code>, <code>Arkivdel</code>, <code>Saksmappe</code>, <code>Journalpost</code>, etc.). The query can refere to abstract types like <code>AbstraktMappe</code>, <code>AbstraktRegistrering</code> or <code>NasjonalIdentifikator</code>.</td>
+</tr>
+<tr>
+<td><code>$.limit</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>number</td>
+<td>number of entity objects to be returned as a result of the query. Using limit that is too high may result in slow queries, so consider using a sensible value in accordance with the use case the query is used in. Maximum allowed value for the <code>$.limit</code> parameter is <strong>500</strong>.</td>
+</tr>
+<tr>
+<td><code>$.offset</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>number</td>
+<td>offset of the first result of the query, used when an initial query results exceed the defined limit (indicated in the response by the <code>$.hasMore</code> element set to <strong>true</strong>) and a consequent calls wants to return the remaining entity objects</td>
+</tr>
+<tr>
+<td><code>$.query</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>string</td>
+<td>API specific query language expression using parameters defined in <code>$.parameters</code>, details in the <a href=#query-language>Query Language</a> section</td>
+</tr>
+<tr>
+<td><code>$.joins</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>object</td>
+<td>object in which each element name is an alias definition and the value is the reference field of the entity object to which the alias points. Take a look at the <a href=#query-joins>Query Joins</a> section.</td>
+</tr>
+<tr>
+<td><code>$.joins.{alias}</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>string</td>
+<td>join alias for the reference field in the value. The alias should be prefixed with <strong>#</strong>. Aliases can be included in other aliases, as soon as all of them are defined in the same query.</td>
+</tr>
+<tr>
+<td><code>$.parameters</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>object</td>
+<td>object with elements for each parameter used in <code>$.query</code>, should always be provided in case specific query is used</td>
+</tr>
+<tr>
+<td><code>$.parameters.{paramName}</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>string</td>
+<td>name of the parameter as used in the <code>$.query</code> element, the name of the element must be prefixed with <strong>@</strong> indicating it is a parameter. The value of the parameter can be one of the following : <code>date</code>, <code>string</code>, <code>number</code>, <code>boolean</code> ,<code>null</code>. <em>Note that <code>null</code> values can be used to check for fields which are not set, including reference fields.</em></td>
+</tr>
+<tr>
+<td><code>$.sortOrder[]</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>array</td>
+<td>list of sorting parameters to be applied on the returned entity objects, each of the elemetn <code>$.sortOrder[].field</code> and <code>$.sortOrder[].order</code> are required for the elements of the array</td>
+</tr>
+<tr>
+<td><code>$.sortOrder[].field</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>string</td>
+<td>entity field used to sort over. Note that reference fields (prefixed with <code>ref</code>) cannot be used to sort over</td>
+</tr>
+<tr>
+<td><code>$.sortOrder[].order</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>string</td>
+<td>sorting order, supported values are <strong>asc</strong> and <strong>desc</strong></td>
+</tr>
+<tr>
+<td><code>$.publicUse</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>boolean</td>
+<td>true/false value indicating whether screened entities should be returned or not. Default is <strong>true</strong> indicating no screened entities will be returned.</td>
+</tr>
+</tbody>
+</table>
+<p>Example of a simple query using parameters can be found in the <a href=/api-docs/general/firstcontact/>Getting Starter/First API Interaction</a> section. Sample queries for every core entity type can be found in the <a href=/api-docs/usage>Examples</a> section.
+A more complex query utilizing parameters, joins and sorting follows. The sample query below queries for any type of Folders, through basic type <code>AbstraktMappe</code> type, that has 2 distinct secondary classes, referenced through <code>refSekundaerKlasse</code> field. One of the classes is with id <strong>1111</strong>, while the other one has an class identity <strong>APIC2</strong>. The results are sorder by the folder identity element <code>mappeIdent</code>. Note that some of the response entities fields in the response are omitted from the sample for clarity.</p>
+<div class="notices note"><p>Although the example below uses joins, it is done mainly for illustrating possible operation uses. Most practical use cases do not require use of joins or complex deep reference chaining to filter results.</p>
+</div>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=query class="tab-nav-button btn active" onclick="switchTab('query','HTTP')">HTTP</button>
+<button data-tab-item=Java data-tab-group=query class="tab-nav-button btn" onclick="switchTab('query','Java')">Java</button>
+<button data-tab-item=C# data-tab-group=query class="tab-nav-button btn" onclick="switchTab('query','C#')">C#</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=query class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/query <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+  &#34;type&#34;: &#34;AbstraktMappe&#34;,
+  &#34;limit&#34;: 10,
+  &#34;query&#34;: &#34;#secClass1.id = @class1Id &amp;&amp; #secClass2.klasseIdent = @class2Ident&#34;,
+  &#34;parameters&#34; : {
+    &#34;@class1Id&#34; : &#34;1111&#34;,
+    &#34;@class2Ident&#34; : &#34;APIC2&#34;
+  },
+  &#34;joins&#34;: {
+    &#34;#secClass1&#34; : &#34;refSekundaerKlasse&#34;,
+    &#34;#secClass2&#34; : &#34;refSekundaerKlasse&#34;
+  },
+  &#34;sortOrder&#34; : [
+    {
+      &#34;field&#34; : &#34;mappeIdent&#34;,
+      &#34;order&#34; : &#34;desc&#34;
+    }
+  ]
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Content-Type: application/json
+
+HTTP/1.1 200 OK
+Connection: close
+Date: Mon, 06 Dec 2021 09:57:13 GMT
+Content-Type: application/json
+
+{
+  &#34;hasMore&#34;: false,
+  &#34;results&#34;: [
+    {
+      &#34;type&#34;: &#34;Saksmappe&#34;,
+      &#34;id&#34;: &#34;1122&#34;,
+      &#34;version&#34;: &#34;10&#34;,
+      &#34;fields&#34;: {
+        &#34;opprettetAv&#34;: &#34;External Integrator ACME&#34;,
+        &#34;mappeIdent&#34;: &#34;2021/7&#34;,
+        &#34;tittel&#34;: &#34;API Created Case File - 2&#34;,
+        &#34;beskrivelse&#34;: &#34;Second API created Case File&#34;,
+        &#34;dokumentmedium&#34;: &#34;E&#34;,
+        &#34;saksaar&#34;: 2021,
+        &#34;sakssekvensnummer&#34;: 7,
+        &#34;administrativEnhet&#34;: &#34;AD1&#34;,
+        &#34;saksansvarlig&#34;: &#34;External Integrator ACME&#34;,
+        &#34;saksstatus&#34;: &#34;B&#34;
+      },
+      &#34;links&#34;: {
+        &#34;refPrimaerKlasse&#34;: 681,
+        &#34;refArkivdel&#34;: 688
+      }
+    },
+    {
+      &#34;type&#34;: &#34;Saksmappe&#34;,
+      &#34;id&#34;: &#34;981&#34;,
+      &#34;version&#34;: &#34;14&#34;,
+      &#34;fields&#34;: {
+        &#34;opprettetAv&#34;: &#34;External Integrator ACME&#34;,
+        &#34;mappeIdent&#34;: &#34;2021/6&#34;,
+        &#34;tittel&#34;: &#34;API Created Case File&#34;,
+        &#34;beskrivelse&#34;: &#34;First API created Case File&#34;,
+        &#34;dokumentmedium&#34;: &#34;E&#34;,
+        &#34;saksaar&#34;: 2021,
+        &#34;sakssekvensnummer&#34;: 6,
+        &#34;administrativEnhet&#34;: &#34;AD1&#34;,
+        &#34;saksansvarlig&#34;: &#34;External Integrator ACME&#34;,
+        &#34;saksstatus&#34;: &#34;B&#34;
+      },
+      &#34;links&#34;: {
+        &#34;refPrimaerKlasse&#34;: 681,
+        &#34;refArkivdel&#34;: 688
+      }
+    }
+  ]
+}
+
+
+</code></pre></div>
+</div>
+<div data-tab-item=Java data-tab-group=query class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java></code></pre></div>
+</div>
+<div data-tab-item=C# data-tab-group=query class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id=response>Response</h2>
+<p>Response of the operation is an array(<code>$.results</code>), with the entity objects matching the specified <code>$.query</code> in the request. The matched entity objects are returned with their complete representation and no filtering on the entity fields is supported currently.
+Successful execution of the query would result in an <strong>HTTP 200 OK</strong> response as shown in the example above.</p>
+<h5 id=http-response-fields>HTTP Response Fields</h5>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Location</th>
+<th style=text-align:center>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Content-Type</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>content type header, always returned as <strong>application/json</strong></td>
+</tr>
+<tr>
+<td><code>$.hasMore</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>boolean</td>
+<td>indicates whether there are more results which are not returned as part of this response. This field should be used as an indicator that subsequent queries should be made with the required <code>$.offset</code> parameter set to the value of previous query <code>$.offset</code> value + previous query <code>$.limit</code> value.</td>
+</tr>
+<tr>
+<td><code>$.results[]</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>array</td>
+<td>list of entities which match the query parameters. The array can be empty in case no entity matches the criteris. In case it is not empty, the objects below should contain the <code>$.results[].id</code>, <code>$.results[].type</code>, <code>$.results[].version</code> and <code>$.results[].fields</code> elements.</td>
+</tr>
+<tr>
+<td><code>$.results[].type</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>type of the entity being returned. The value matches the request <code>$.type</code> element if concrete types are used for the query. If a basic type is used, one of <code>AbstraktMappe</code>, <code>AbstraktRegistrering</code> or <code>NasjonalIdentifikator</code>), the response contains the real type of the entity. No basic types are returned in the response.</td>
+</tr>
+<tr>
+<td><code>$.results[].id</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>unique numeric identifier of the entity object in the Documaster Archive</td>
+</tr>
+<tr>
+<td><code>$.results[].version</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>version of the entity object, used for optimistic locking</td>
+</tr>
+<tr>
+<td><code>$.results[].fields.{fieldName}</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>any</td>
+<td>all the fields of the entity objects, excluding reference fields (prefixed with <code>ref</code>)</td>
+</tr>
+<tr>
+<td><code>$.results[].links.{referenceField}</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>string</td>
+<td>important reference fields and their values identifying other entities in the structure. Note that not all reference fields are returned, check the documentation of the respective entity for reference fields that would be returned.</td>
+</tr>
+</tbody>
+</table>
+<p>As part of the resposne, business specific metadata is also returned for those entities that has it under <code>$.results[].fields.virksomhetsspesifikkeMetadata</code>. The table below provides the details about BSM values returned. The full path of the elemetns for BSM is shortened for clarity.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Location</th>
+<th style=text-align:center>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$..&lt;bsm>.{bsmGroupID}</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>object</td>
+<td>element under <code>$.results[].fields.virksomhetsspesifikkeMetadata.{bsmGroupID}</code>, business specific metadata definition for the bsm groupID configured for the entity. BSM data is returned only for the following set of entities : Basic Folder(<code>Mappe</code>), Meeting Folder(<code>Moetemappe</code>), Case File (<code>Saksmappe</code>), Case Party (<code>Sakspart</code>), Basic Record (<code>Registrering</code>), Meeting Record (<code>Moeteregistrering</code>), Registry Entry (<code>Journalpost</code>), Correspondence Party (<code>Korrespondansepart</code>), Document (<code>Dokument</code>), and Class (<code>Klasse</code>)</td>
+</tr>
+<tr>
+<td><code>$..&lt;bsm>.{bsmGroupID}.{bsmFieldID}</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>object</td>
+<td>element under <code>$.results[].fields.virksomhetsspesifikkeMetadata.{bsmGroupID}.{bsmFieldID}</code>, business specific metadata field part of the BSM group identified by {bsmGroupID}</td>
+</tr>
+<tr>
+<td><code>$..&lt;bsm>.{bsmGroupID}.{bsmFieldID}.type</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>object</td>
+<td>element under <code>$.results[].fields.virksomhetsspesifikkeMetadata.{bsmGroupID}.{bsmFieldID}.type</code>, type of the BSM field, supported values are <code>string</code>, <code>long</code>, <code>double</code>, <code>timestamp</code>, and <code>encrypted</code></td>
+</tr>
+<tr>
+<td><code>$..&lt;bsm>.{bsmGroupID}.{bsmFieldID}.value</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>object</td>
+<td>element under <code>$.results[].fields.virksomhetsspesifikkeMetadata.{bsmGroupID}.{bsmFieldID}.value</code>, value of the BSM field assigned to the entity object</td>
+</tr>
+</tbody>
+</table>
+<h2 id=query-language>Query Language</h2>
+<p><code>query</code> operation utilizes a flexible languge for filtering returned entities based on either queried entities fields or field of linked entities. The linked entity objects can be directly referenced by the queried objects or through another reference field. Query string is an optional one in the request payload in <code>$.query</code> element, but it rarely makes sense to use the operation without a query set.</p>
+<p>Queries are comprised of expressions. The expressions can be simple, like <em>equal</em> (<code>=</code>), <em>not equal</em> (<code>!=</code>) or <em>like</em> (<code>%=</code>). The expressions can be range like <em>between inclusive</em> (<code>[@param1:@param2]</code>), <em>between exclusive</em> (<code>{@param1:@param2}</code>) and combinations of both (defined by the type of bracket used). Expressions can be grouped (<code>(</code>, <code>)</code>) and also logical oparators can be used between them, like <em>logical and</em> (<code>&&</code>) and <em>logical or</em> (<code>||</code>). Details of the expressions and their usage is provided below.</p>
+<p>Literal values are not part of the <code>$.query</code> string, they are assigned a parameter in <code>$.parameters</code> object and the parameter is used in the queries. Each paraemeter name is prefixed with <strong>@</strong> (at symbol). The parameters are referenced with the &ldquo;@&rdquo; prefix in both the <code>$.parameters</code> object and in <code>$.query</code> string.</p>
+<h3 id=simple-expressions>Simple Expressions</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field = @param</code></td>
+<td>number, string, reference (<code>ref</code>)</td>
+<td>matches objects having fields <strong>equal</strong> to the value of the parameter. Notice the following:<br> <i class="fas fa-minus"></i> string values are compared in a <strong>case sensitive way</strong> <br><i class="fas fa-minus"></i> reference fields (<code>ref</code>) can be compared only with a parameter which is set to <code>null</code> to check if the reference is set at all</td>
+</tr>
+<tr>
+<td><code>field != @param</code></td>
+<td>number, string, reference (<code>ref</code>)</td>
+<td>matches objects having fields <strong>different</strong> from the value of the parameter.</td>
+</tr>
+<tr>
+<td><code>field %= @param</code></td>
+<td>number, string</td>
+<td>matches objects having fields <strong>like</strong> the value of the parameter. The value of the parameter should contains <strong>%</strong> symbol at the relevant place where any symbols should be matched</td>
+</tr>
+</tbody>
+</table>
+<div class="notices note"><p>Using the value of <strong>*****</strong> in a paramter value denotes any value.</p>
+</div>
+<h4 id=examples>Examples</h4>
+<table>
+<thead>
+<tr>
+<th>Entity Type <br><code>$.type</code></th>
+<th>Query <br><code>$.query</code></th>
+<th>Parameters <br> <code>$.parameters</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fonds (<code>Arkiv</code></td>
+<td>&ldquo;id = @fondsID&rdquo;</td>
+<td>&ldquo;@fondsID&rdquo; : 123</td>
+<td>filters the Fonds (<code>Arkiv</code>) the consumer has access to, to only one Fonds (<code>Arkiv</code>) with ID = 123</td>
+</tr>
+<tr>
+<td>CaseFile (<code>Saksmappe</code>)</td>
+<td>&ldquo;tittel %= @title && saksaar = @year&rdquo;</td>
+<td>&ldquo;@title&rdquo; : &ldquo;%API%&rdquo;,<br>"@year" : 2021</td>
+<td>fitlers the CaseFiles (<code>Saksmappe</code>) having title that contains string &lsquo;API&rsquo; (anywhere in the title, indicated by the two % signs on both sides) and year (<code>saksaar</code>) equal to 2021</td>
+</tr>
+<tr>
+<td>Registry Entry (<code>Journalpost</code>)</td>
+<td>&ldquo;refPrimaerKlasse.id = @primaryClass &&<br> (refEksternId=@null || refEksternId.eksterntSystem != @externalSystemID)&rdquo;</td>
+<td>&ldquo;@primaryClass&rdquo; : 567,<br>"@null" : null, <br>"@externalSystemID" : &ldquo;ES123&rdquo;</td>
+<td>filters all Registry Entries (<code>Journalpost</code>) having primary class of 576 and don&rsquo;t have an external ID set at all, or if set, it does not match the value of &ldquo;ES123&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<h3 id=range-expressions>Range Expressions</h3>
+<p>Range expressions allow filtering based on a range of values. Using <code>[</code> or <code>]</code> brackets indicates that the limit value is also included in the result set, while <code>{</code> and <code>}</code> indicate the limit values should be excluded. Both type of brackets can be combined in a single query.</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field = [@param1:@param2]</code></td>
+<td>date, number</td>
+<td>matches objects where a field is in the <strong>inclusive</strong> range (containing also the range values) between the two parameter values</td>
+</tr>
+<tr>
+<td><code>field = {@param1:@param2}</code></td>
+<td>date, number</td>
+<td>matches objects where a field is in the <strong>exclusive</strong> range (excluding the range values) between the two parameter values</td>
+</tr>
+</tbody>
+</table>
+<h4 id=examples-1>Examples</h4>
+<table>
+<thead>
+<tr>
+<th>Entity Type <br><code>$.type</code></th>
+<th>Query <br><code>$.query</code></th>
+<th>Parameters <br> <code>$.parameters</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CaseFile (<code>Saksmappe</code>)</td>
+<td>&ldquo;saksaar = [@yearFrom:@yearTo}&rdquo;</td>
+<td>&ldquo;@yearFrom&rdquo; : 2000,<br>"@yearTo" : 2021</td>
+<td>fitlers the CaseFiles (<code>Saksmappe</code>) having year (<code>saksaar</code>) between 2000 and 2020, note that 2021 is excluded because of the <code>}</code> bracket used</td>
+</tr>
+<tr>
+<td>Registry Entry (<code>Journalpost</code>)</td>
+<td>&ldquo;registreringsDato = [@startDate:@endDate]&rdquo;</td>
+<td>&ldquo;@startDate&rdquo; : &ldquo;2021-10-01&rdquo;,<br>"@endDate" : &ldquo;2021-12-01&rdquo;</td>
+<td>filters all Registry Entries (<code>Journalpost</code>) having date of registration (<code>registreringsDato</code>) between 01.10.2021 and 01.12.2021 including those two dates. Note that the dates can contain also hour component, it is a standard ISO 8601 date format.</td>
+</tr>
+</tbody>
+</table>
+<h3 id=logical-operators-and-grouping>Logical Operators and Grouping</h3>
+<p>The query language provides two logical operators that can be used between expressions: logical and - <strong><code>&&</code></strong> and logical or - <strong><code>||</code></strong>. Examples of their usage is already present in the examples above. Additionally in order to change evaluation order, the query language suppors grouping of the expressions using <strong><code>(</code></strong> and <strong><code>)</code></strong>.</p>
+<h3 id=reference-chaining>Reference Chaining</h3>
+<p>As shown in the examples below, reference fields (prefixed with <code>ref</code>) can be used to access linked entity objects and use their fields to filter returned entity objects set. Using the dot notation (<strong>.</strong>) to access reference entity object fields is a simple way to access referenced objects up or down the archive structure. Reference chaining denotes a <strong>single path</strong> to a linked entity object, which means that if single reference is used more than once in the same query to filter for two distinct referenced objects, the query will not return the expected results.</p>
+<p>To give a better idea what is meant by <strong>single path</strong> imagine the case where there is a single RegistryEntry (<code>Journalpost</code>) having two external IDs (<code>EksternID</code>) associated with it. First External ID (<code>EksternID</code>) has a external system name (<code>eksterntSystem</code>) set to &ldquo;IS1&rdquo; and the second one has the same external system name set to &ldquo;IS2&rdquo;. Executing a query like this :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Journalpost&#34;</span>,
+  <span style=color:#f92672>&#34;limit&#34;</span>: <span style=color:#ae81ff>100</span>,
+  <span style=color:#f92672>&#34;query&#34;</span>: <span style=color:#e6db74>&#34;refEksternId.eksterntSystem = @externalSystemID1 &amp;&amp; refEksternId.eksterntSystem = @externalSystemID2&#34;</span>,
+  <span style=color:#f92672>&#34;parameters&#34;</span> : {
+    <span style=color:#f92672>&#34;@externalSystemID1&#34;</span>: <span style=color:#e6db74>&#34;IS1&#34;</span>,
+    <span style=color:#f92672>&#34;@externalSystemID2&#34;</span>: <span style=color:#e6db74>&#34;IS2&#34;</span>
+  }
+}
+</code></pre></div><p>returns an empty set, although there is a Registry Entry (<code>Journalpost</code>) having both external IDs associated with it. The reason is the single path that the reference defines, it is referencing either one of the two external IDs (<code>EksternId</code>), but not both. Having the logical and <code>&&</code> operator used causes the response to be empty. Changing the logical operator to <code>||</code> will also not work, because in this case the query would return registry entries that have either one of the two externalIDs (with external system set to the required values), while we want to retrieve those tha have both external IDs. Same is valid for any reference field that can reference multiple related entities, like secondary classes reference from a case file or registry entry.</p>
+<p>Executing the query that would return the required results is achived using the query joins.</p>
+<h3 id=query-joins>Query Joins</h3>
+<p>Joins are a way of defining aliases to reference fields, which practically allows using the aliases as separate paths through the archive structure. Joins are defined in the <code>$.joins</code> element of the query request, where each element in the <code>$.joins</code> object is an alias to a reference field. Aliases are prefixed with <strong><code>#</code></strong> (hash symbol). Taking the query above and making it work with joins is done like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Journalpost&#34;</span>,
+  <span style=color:#f92672>&#34;limit&#34;</span>: <span style=color:#ae81ff>100</span>,
+  <span style=color:#f92672>&#34;query&#34;</span>: <span style=color:#e6db74>&#34;#refExternId1.eksterntSystem = @externalSystemID1 &amp;&amp; #refExternId2.eksterntSystem = @externalSystemID2&#34;</span>,
+  <span style=color:#f92672>&#34;joins&#34;</span>: {
+      <span style=color:#f92672>&#34;#refExternId1&#34;</span> : <span style=color:#e6db74>&#34;refEksternId&#34;</span>,
+      <span style=color:#f92672>&#34;#refExternId2&#34;</span> : <span style=color:#e6db74>&#34;refEksternId&#34;</span>
+  },
+  <span style=color:#f92672>&#34;parameters&#34;</span> : {
+    <span style=color:#f92672>&#34;@externalSystemID1&#34;</span>: <span style=color:#e6db74>&#34;IS1&#34;</span>,
+    <span style=color:#f92672>&#34;@externalSystemID2&#34;</span>: <span style=color:#e6db74>&#34;IS2&#34;</span>
+  }
+}
+</code></pre></div><p>As seen in the sample above, there are two join aliases <code>#refExternID1</code> and <code>#refExternID2</code> which refer to the same <code>refEksternId</code> field of the Registry Entry (<code>Journalpost</code>). This time though, both aliases define two separate paths in the structure and havin the query using those aliases, rather than directly the reference field gives the expected results, retrieving only the Registry Entries (<code>Journalpost</code>) having both externalIDs from systems with names <code>IS1</code> and <code>IS2</code>.</p>
+<footer class=footline>
+</footer>
+</div>
+</div>
+<div id=navigation>
+<a class="nav nav-prev" href=/api-docs/operations/core/transaction/ title=Transaction> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/api-docs/operations/core/upload/ title=Upload style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+</div>
+</section>
+<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+</div>
+<script src=/api-docs/js/clipboard.min.js?1644237134></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1644237134></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1644237134></script>
+<script src=/api-docs/js/jquery.sticky.js?1644237134></script>
+<script src=/api-docs/js/featherlight.min.js?1644237134></script>
+<script src=/api-docs/js/highlight.pack.js?1644237134></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1644237134></script>
+<script src=/api-docs/js/learn.js?1644237134></script>
+<script src=/api-docs/js/hugo-learn.js?1644237134></script>
+<script src=/api-docs/mermaid/mermaid.js?1644237134></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body>
+</html>
