@@ -2,23 +2,23 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Transaction :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1644238273 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1644238273 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1644238273></script>
+<link href=/api-docs/css/nucleus.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1645449523 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1645449523 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1645449523></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/operations/core/transaction/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1644238273></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1644238273></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1645449523></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1645449523></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1644238273></script>
+<script type=text/javascript src=/api-docs/js/search.js?1645449523></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -428,6 +428,100 @@ Transaction
 </tbody>
 </table>
 <p><img src=/api-docs/operations/core/images/diagrams-transaction-operation.png alt=child-parent-relation></p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=transaction class="tab-nav-button btn active" onclick="switchTab('transaction','HTTP')">HTTP</button>
+<button data-tab-item=Java data-tab-group=transaction class="tab-nav-button btn" onclick="switchTab('transaction','Java')">Java</button>
+<button data-tab-item=C# data-tab-group=transaction class="tab-nav-button btn" onclick="switchTab('transaction','C#')">C#</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=transaction class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Journalpost&#34;,
+            &#34;id&#34;: &#34;journalpost-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;tittel&#34;: &#34;API Created Registry Entry&#34;,
+                &#34;beskrivelse&#34;: &#34;Registry Entry Description&#34;,
+                &#34;journalposttype&#34;: &#34;U&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Journalpost&#34;,
+            &#34;id&#34;: &#34;journalpost-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refMappe&#34;,
+            &#34;linkToId&#34;: &#34;9498&#34;
+        },
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Korrespondansepart&#34;,
+            &#34;id&#34;: &#34;korrespondansepart-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;korrespondanseparttype&#34;: &#34;EA&#34;,
+                &#34;korrespondansepartNavn&#34;: &#34;Correspondence Party Name&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Korrespondansepart&#34;,
+            &#34;id&#34;: &#34;korrespondansepart-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refRegistrering&#34;,
+            &#34;linkToId&#34;: &#34;journalpost-temp-id-1&#34;
+        }
+    ]
+}
+</code></pre></div>
+</div>
+<div data-tab-item=Java data-tab-group=transaction class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>
+<span style=color:#75715e>// new Noark5Client should have been initialized and the integration should hold a valid access token
+</span><span style=color:#75715e></span>
+Journalpost newRegistryEntry <span style=color:#f92672>=</span>
+        <span style=color:#66d9ef>new</span> Journalpost<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;API Created Registry Entry&#34;</span><span style=color:#f92672>,</span> Journalposttype<span style=color:#f92672>.</span><span style=color:#a6e22e>INNGAAENDE_DOKUMENT</span><span style=color:#f92672>);</span>
+
+Korrespondansepart newCorrespondenceParty <span style=color:#f92672>=</span>
+        <span style=color:#66d9ef>new</span> Korrespondansepart<span style=color:#f92672>(</span>Korrespondanseparttype<span style=color:#f92672>.</span><span style=color:#a6e22e>AVSENDER</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Correspondence Party Name&#34;</span><span style=color:#f92672>);</span>
+
+Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> NoarkEntity<span style=color:#f92672>&gt;</span> savedObjects <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>transaction</span><span style=color:#f92672>()</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>save</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>)</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>link</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>.</span><span style=color:#a6e22e>linkMappe</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;691&#34;</span><span style=color:#f92672>))</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>save</span><span style=color:#f92672>(</span>newCorrespondenceParty<span style=color:#f92672>)</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>link</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>.</span><span style=color:#a6e22e>linkKorrespondansepart</span><span style=color:#f92672>(</span>newCorrespondenceParty<span style=color:#f92672>))</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>commit</span><span style=color:#f92672>()</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>getSaved</span><span style=color:#f92672>();</span>
+
+</code></pre></div>
+</div>
+<div data-tab-item=C# data-tab-group=transaction class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#75715e>// new NoarkClient should have been initialized and the integration should hold a valid access token
+</span><span style=color:#75715e></span>
+Journalpost newRegistryEntry = 
+                <span style=color:#66d9ef>new</span> Journalpost(<span style=color:#e6db74>&#34;API Created Registry Entry&#34;</span>, Journalposttype.INNGAAENDE_DOKUMENT);
+
+Korrespondansepart newCorrespondenceParty =
+        <span style=color:#66d9ef>new</span> Korrespondansepart(Korrespondanseparttype.AVSENDER, <span style=color:#e6db74>&#34;Correspondence Party Name&#34;</span>);
+
+Dictionary&lt;<span style=color:#66d9ef>string</span>, INoarkEntity&gt; savedObjects = client.Transaction()
+        .Save(newRegistryEntry)
+        .Link(newRegistryEntry.LinkMappe(<span style=color:#e6db74>&#34;691&#34;</span>))
+        .Save(newCorrespondenceParty)
+        .Link(newRegistryEntry.LinkKorrespondansepart(newCorrespondenceParty))
+        .Commit()
+        .Saved;
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id=key-points>Key Points</h4>
 <ul>
 <li>Actions order is important since they are executed sequentially</li>
@@ -539,10 +633,50 @@ Content-Type: application/json
 </code></pre></div>
 </div>
 <div data-tab-item=Java data-tab-group=transaction class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java></code></pre></div>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// Transaction objects are created upfront
+</span><span style=color:#75715e></span>
+Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> NoarkEntity<span style=color:#f92672>&gt;</span> savedObjects <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>transaction</span><span style=color:#f92672>()</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>save</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>)</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>link</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>.</span><span style=color:#a6e22e>linkMappe</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;691&#34;</span><span style=color:#f92672>))</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>save</span><span style=color:#f92672>(</span>newCorrespondenceParty<span style=color:#f92672>)</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>link</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>.</span><span style=color:#a6e22e>linkKorrespondansepart</span><span style=color:#f92672>(</span>newCorrespondenceParty<span style=color:#f92672>))</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>commit</span><span style=color:#f92672>()</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>getSaved</span><span style=color:#f92672>();</span>
+
+<span style=color:#75715e>// Printing received IDs of the newly created entities
+</span><span style=color:#75715e></span><span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>NoarkEntity entity <span style=color:#f92672>:</span> savedObjects<span style=color:#f92672>.</span><span style=color:#a6e22e>values</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>entity <span style=color:#66d9ef>instanceof</span> Journalpost<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Created new Journalpost witt ID : &#34;</span> <span style=color:#f92672>+</span> entity<span style=color:#f92672>.</span><span style=color:#a6e22e>getId</span><span style=color:#f92672>());</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>entity <span style=color:#66d9ef>instanceof</span> Korrespondansepart<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Created new Korrespondansepart witt ID : &#34;</span> <span style=color:#f92672>+</span> entity<span style=color:#f92672>.</span><span style=color:#a6e22e>getId</span><span style=color:#f92672>());</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div>
 </div>
 <div data-tab-item=C# data-tab-group=transaction class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp></code></pre></div>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#75715e>// Transaction objects are created upfront
+</span><span style=color:#75715e></span>
+Dictionary&lt;<span style=color:#66d9ef>string</span>, INoarkEntity&gt; savedObjects = client.Transaction()
+        .Save(newRegistryEntry)
+        .Link(newRegistryEntry.LinkMappe(<span style=color:#e6db74>&#34;691&#34;</span>))
+        .Save(newCorrespondenceParty)
+        .Link(newRegistryEntry.LinkKorrespondansepart(newCorrespondenceParty))
+        .Commit()
+        .Saved;
+
+<span style=color:#75715e>// Printing received IDs of the newly created entities
+</span><span style=color:#75715e></span><span style=color:#66d9ef>foreach</span> (INoarkEntity entity <span style=color:#66d9ef>in</span> savedObjects.Values) {
+    <span style=color:#66d9ef>if</span> (entity <span style=color:#66d9ef>is</span> Journalpost) {
+        Console.WriteLine(<span style=color:#e6db74>&#34;Created new Journalpost witt ID : &#34;</span> + entity.Id);
+    }
+    
+    <span style=color:#66d9ef>if</span> (entity <span style=color:#66d9ef>is</span> Korrespondansepart) {
+        Console.WriteLine(<span style=color:#e6db74>&#34;Created new Korrespondansepart witt ID : &#34;</span> + entity.Id);
+    }
+}
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -646,10 +780,70 @@ Content-Type: application/json
 </code></pre></div>
 </div>
 <div data-tab-item=Java data-tab-group=transaction class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java></code></pre></div>
+<p>      <strong>Create</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Journalpost newRegistryEntry <span style=color:#f92672>=</span>
+        <span style=color:#66d9ef>new</span> Journalpost<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;API Created Registry Entry&#34;</span><span style=color:#f92672>,</span> Journalposttype<span style=color:#f92672>.</span><span style=color:#a6e22e>INNGAAENDE_DOKUMENT</span><span style=color:#f92672>);</span>
+
+<span style=color:#75715e>// .......  other entities creation ............
+</span><span style=color:#75715e></span>
+Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> NoarkEntity<span style=color:#f92672>&gt;</span> savedObjects <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>transaction</span><span style=color:#f92672>()</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>save</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>)</span>
+        
+        <span style=color:#75715e>// .... required link action to link the entity to the structure ....
+</span><span style=color:#75715e></span>        <span style=color:#f92672>.</span><span style=color:#a6e22e>link</span><span style=color:#f92672>(</span>newRegistryEntry<span style=color:#f92672>.</span><span style=color:#a6e22e>linkMappe</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;691&#34;</span><span style=color:#f92672>))</span>
+        
+        <span style=color:#75715e>// .... other actions ....
+</span><span style=color:#75715e></span>        
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>commit</span><span style=color:#f92672>()</span>
+        <span style=color:#f92672>.</span><span style=color:#a6e22e>getSaved</span><span style=color:#f92672>();</span>
+
+</code></pre></div><p>      <strong>Update</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// Updating an entity requires it to be first retrieved.
+</span><span style=color:#75715e>// In the sample below the existingRegistryEntry is an entity retrieved using a query.
+</span><span style=color:#75715e>// The enities can also be retrieved from the list of saved objects from previous transaction.
+</span><span style=color:#75715e></span>
+existingRegistryEntry<span style=color:#f92672>.</span><span style=color:#a6e22e>setTittel</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Changing title!&#34;</span><span style=color:#f92672>);</span>
+updatedObjects <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>transaction</span><span style=color:#f92672>()</span>
+            <span style=color:#75715e>// .... just save action is required since no change in the references ...
+</span><span style=color:#75715e></span>            <span style=color:#f92672>.</span><span style=color:#a6e22e>save</span><span style=color:#f92672>(</span>existingRegistryEntry<span style=color:#f92672>)</span>
+
+            <span style=color:#75715e>// .... can be combined with other actions ....
+</span><span style=color:#75715e></span>            <span style=color:#f92672>.</span><span style=color:#a6e22e>commit</span><span style=color:#f92672>()</span>
+            <span style=color:#f92672>.</span><span style=color:#a6e22e>getSaved</span><span style=color:#f92672>();</span>
+
+</code></pre></div>
 </div>
 <div data-tab-item=C# data-tab-group=transaction class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp></code></pre></div>
+<p>      <strong>Create</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp>Journalpost newRegistryEntry = 
+        <span style=color:#66d9ef>new</span> Journalpost(<span style=color:#e6db74>&#34;API Created Registry Entry&#34;</span>, Journalposttype.INNGAAENDE_DOKUMENT);
+
+<span style=color:#75715e>// .......  other entities creation ............
+</span><span style=color:#75715e></span>
+Dictionary&lt;<span style=color:#66d9ef>string</span>, INoarkEntity&gt; savedObjects = client.Transaction()
+        .Save(newRegistryEntry)
+        
+        <span style=color:#75715e>// .... required link action to link the entity to the structure ....
+</span><span style=color:#75715e></span>        .Link(newRegistryEntry.LinkMappe(<span style=color:#e6db74>&#34;691&#34;</span>))
+        
+        .<span style=color:#75715e>// .... other actions ....
+</span><span style=color:#75715e></span>        
+        .Commit()
+        .Saved;
+</code></pre></div><p>      <strong>Update</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#75715e>// Updating an entity requires it to be first retrieved.
+</span><span style=color:#75715e>// In the sample below the existingRegistryEntry is an entity retrieved using a query.
+</span><span style=color:#75715e>// The enities can also be retrieved from the list of saved objects from previous transaction.
+</span><span style=color:#75715e></span>
+existingRegistryEntry.setTittel(<span style=color:#e6db74>&#34;Changing title!&#34;</span>);
+updatedObjects = client.Transaction()
+            <span style=color:#75715e>// .... just save action is required since no change in the references ...
+</span><span style=color:#75715e></span>            .Save(existingRegistryEntry)
+
+            <span style=color:#75715e>// .... can be combined with other actions ....
+</span><span style=color:#75715e></span>            .Commit()
+            .Saved;
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -984,17 +1178,17 @@ Content-Type: application/json
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1644238273></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1644238273></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1644238273></script>
-<script src=/api-docs/js/jquery.sticky.js?1644238273></script>
-<script src=/api-docs/js/featherlight.min.js?1644238273></script>
-<script src=/api-docs/js/highlight.pack.js?1644238273></script>
+<script src=/api-docs/js/clipboard.min.js?1645449523></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1645449523></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1645449523></script>
+<script src=/api-docs/js/jquery.sticky.js?1645449523></script>
+<script src=/api-docs/js/featherlight.min.js?1645449523></script>
+<script src=/api-docs/js/highlight.pack.js?1645449523></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1644238273></script>
-<script src=/api-docs/js/learn.js?1644238273></script>
-<script src=/api-docs/js/hugo-learn.js?1644238273></script>
-<script src=/api-docs/mermaid/mermaid.js?1644238273></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1645449523></script>
+<script src=/api-docs/js/learn.js?1645449523></script>
+<script src=/api-docs/js/hugo-learn.js?1645449523></script>
+<script src=/api-docs/mermaid/mermaid.js?1645449523></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
