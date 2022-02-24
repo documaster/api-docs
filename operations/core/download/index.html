@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Download :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1645450992 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1645450992 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1645450992></script>
+<link href=/api-docs/css/nucleus.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1645697333 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1645697333 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1645697333></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/operations/core/download/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1645450992></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1645450992></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1645697333></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1645697333></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1645450992></script>
+<script type=text/javascript src=/api-docs/js/search.js?1645697333></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -296,7 +296,21 @@ Create Registry Entry and Document
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#description>Description</a>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href=#request>Request</a>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href=#response>Response</a></li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -307,6 +321,76 @@ Create Registry Entry and Document
 <h1>
 Download
 </h1>
+<h2 id=description>Description</h2>
+<h4 id=get-noark5v1downloadiddocumentid>GET /noark5/v1/download?id={documentID}</h4>
+<p>The <code>GET /noark5/v1/download</code> or as referred to in the documentation <code>download</code> operation is the way to retrieve already uploaded electronic documents from Documaster Archive.</p>
+<h2 id=request>Request</h2>
+<p>The request for the operation is the electronic document payload. Uploading the document requires it&rsquo;s name to be provided in the <code>Content-Disposition</code> header as shown below.</p>
+<h5 id=http-request>HTTP Request</h5>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Location</th>
+<th style=text-align:center>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>access token aquired as part of the authentication call, prefixed with <code>Bearer</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>
+<button class="pill others" style=width:100px>Query</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>bytes</td>
+<td>identifier of the electronic document in Documaster Archive, returned as a resulf ot the <code>upload</code> operation</td>
+</tr>
+</tbody>
+</table>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=transaction class="tab-nav-button btn active" onclick="switchTab('transaction','HTTP')">HTTP</button>
+<button data-tab-item=Java data-tab-group=transaction class="tab-nav-button btn" onclick="switchTab('transaction','Java')">Java</button>
+<button data-tab-item=C# data-tab-group=transaction class="tab-nav-button btn" onclick="switchTab('transaction','C#')">C#</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=transaction class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>GET</span> https://v2-34-0.local.documaster.tech:8084/rms/api/public/noark5/v1/download?id=9958 <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+Authorization<span style=color:#f92672>:</span> <span style=color:#ae81ff>Bearer {{accessTokenIntegrator}}</span>
+</code></pre></div>
+</div>
+<div data-tab-item=Java data-tab-group=transaction class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// new Noark5Client should have been initialized and the integration should hold a valid access token
+</span><span style=color:#75715e>// file content would be available in the precreated fileOutputStream (of type OutputStream)
+</span><span style=color:#75715e>// the API supports also providing a file path where the document can be saved
+</span><span style=color:#75715e></span>
+client<span style=color:#f92672>.</span><span style=color:#a6e22e>download</span><span style=color:#f92672>(</span>dokumentfil<span style=color:#f92672>,</span> fileOuputStream<span style=color:#f92672>);</span>
+</code></pre></div>
+</div>
+<div data-tab-item=C# data-tab-group=transaction class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#75715e>// new NoarkClient should have been initialized and the integration should hold a valid access token
+</span><span style=color:#75715e>// file content would be available in the fileOutpuStream (of type Stream) after successful execution
+</span><span style=color:#75715e>// the API supports also providing a file path where the document can be saved
+</span><span style=color:#75715e></span>
+client.Download(dokumentfil, fileOuputStream);
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id=response>Response</h2>
+<p>Response of the operation is the byte stream of the file content.</p>
 <footer class=footline>
 </footer>
 </div>
@@ -319,17 +403,17 @@ Download
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1645450992></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1645450992></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1645450992></script>
-<script src=/api-docs/js/jquery.sticky.js?1645450992></script>
-<script src=/api-docs/js/featherlight.min.js?1645450992></script>
-<script src=/api-docs/js/highlight.pack.js?1645450992></script>
+<script src=/api-docs/js/clipboard.min.js?1645697333></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1645697333></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1645697333></script>
+<script src=/api-docs/js/jquery.sticky.js?1645697333></script>
+<script src=/api-docs/js/featherlight.min.js?1645697333></script>
+<script src=/api-docs/js/highlight.pack.js?1645697333></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1645450992></script>
-<script src=/api-docs/js/learn.js?1645450992></script>
-<script src=/api-docs/js/hugo-learn.js?1645450992></script>
-<script src=/api-docs/mermaid/mermaid.js?1645450992></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1645697333></script>
+<script src=/api-docs/js/learn.js?1645697333></script>
+<script src=/api-docs/js/hugo-learn.js?1645697333></script>
+<script src=/api-docs/mermaid/mermaid.js?1645697333></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
