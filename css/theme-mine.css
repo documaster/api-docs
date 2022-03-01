@@ -175,6 +175,30 @@ button.pill.body {
     border-radius: 20px;
 }
 
+button.pill.query {
+    pointer-events: none;
+    background-color: #dff5ea;
+    border: none;
+    color: #941d55;
+    padding: 3px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+button.pill.path {
+    pointer-events: none;
+    background-color: #639270;
+    border: none;
+    color: #dcdffe;
+    padding: 3px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
+}
+
 button.pill.others {
     pointer-events: none;
     background-color: #dcdffe;
