@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Client SDKs :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1650373597 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1650373597 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1650373597></script>
+<link href=/api-docs/css/nucleus.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1650462449 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1650462449 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1650462449></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/general/clientsdk/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1650373597></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1650373597></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1650462449></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1650462449></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1650373597></script>
+<script type=text/javascript src=/api-docs/js/search.js?1650462449></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -329,7 +329,17 @@ Create Registry Entry and Document
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#supported-clients>Supported Clients</a></li>
+<li><a href=#setting-up>Setting up</a>
+<ul>
+<li><a href=#java>Java</a></li>
+<li><a href=#cnet>C#/.NET</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -340,6 +350,63 @@ Create Registry Entry and Document
 <h1>
 Client SDKs
 </h1>
+<h2 id=supported-clients>Supported Clients</h2>
+<p>Documaster supports clients for both <a href=https://mvnrepository.com/artifact/com.documaster.rms/documaster-ws-client-n5>Java</a> and <a href=https://www.nuget.org/profiles/documaster>C#/.NET</a>.</p>
+<div class="notices note"><p>C#/.NET client library is accessible through NuGet, while the Java client library is available in Maven Central.</p>
+</div>
+<h2 id=setting-up>Setting up</h2>
+<p>Since both the clients are available in public repositories, setting up a integration component that uses those libraries is straightforward.</p>
+<h3 id=java>Java</h3>
+<p>Setting up a Java project using the Documaster Java Client requires adding a dependency to your project as described below. Authentication against the APIs can be done using the IDP client library. It can be used to acquire an access token, in case such is not available through another authentication means.</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=Maven data-tab-group=java-client class="tab-nav-button btn active" onclick="switchTab('java-client','Maven')">Maven</button>
+<button data-tab-item=Gradle data-tab-group=java-client class="tab-nav-button btn" onclick="switchTab('java-client','Gradle')">Gradle</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=Maven data-tab-group=java-client class="tab-item active">
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;dependency&gt;</span>
+  <span style=color:#f92672>&lt;groupId&gt;</span>com.documaster.rms<span style=color:#f92672>&lt;/groupId&gt;</span>
+  <span style=color:#f92672>&lt;artifactId&gt;</span>documaster-ws-client-n5<span style=color:#f92672>&lt;/artifactId&gt;</span>
+  <span style=color:#f92672>&lt;version&gt;</span>{n5-client-version}<span style=color:#f92672>&lt;/version&gt;</span>
+<span style=color:#f92672>&lt;/dependency&gt;</span>
+
+<span style=color:#75715e>&lt;!-- Optionally add the IDP client library --&gt;</span>
+<span style=color:#75715e>&lt;!-- Required in case access token is not provided externally by another system --&gt;</span>
+<span style=color:#f92672>&lt;dependency&gt;</span>
+    <span style=color:#f92672>&lt;groupId&gt;</span>com.documaster.idp<span style=color:#f92672>&lt;/groupId&gt;</span>
+    <span style=color:#f92672>&lt;artifactId&gt;</span>documaster-ws-client-idp<span style=color:#f92672>&lt;/artifactId&gt;</span>
+    <span style=color:#f92672>&lt;version&gt;</span>{idp-client-version}<span style=color:#f92672>&lt;/version&gt;</span>
+<span style=color:#f92672>&lt;/dependency&gt;</span>
+
+</code></pre></div>
+</div>
+<div data-tab-item=Gradle data-tab-group=java-client class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#960050;background-color:#1e0010>implementation</span> <span style=color:#960050;background-color:#1e0010>&#39;com.documaster.rms:documaster-ws-client-n</span><span style=color:#ae81ff>5</span><span style=color:#960050;background-color:#1e0010>:</span><span style=color:#ae81ff>1.5</span><span style=color:#960050;background-color:#1e0010>.</span><span style=color:#ae81ff>1</span><span style=color:#960050;background-color:#1e0010>&#39;</span>
+<span style=color:#960050;background-color:#1e0010>implementation</span> <span style=color:#960050;background-color:#1e0010>&#39;com.documaster.idp:documaster-ws-client-idp:</span><span style=color:#ae81ff>1.1</span><span style=color:#960050;background-color:#1e0010>.</span><span style=color:#ae81ff>0</span><span style=color:#960050;background-color:#1e0010>&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id=cnet>C#/.NET</h3>
+<p>Using the Documaster client library for .NET/C# is as easy as adding the required NuGet packages.</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=".NET Core" data-tab-group=csharp-client class="tab-nav-button btn active" onclick="switchTab('csharp-client','.NET Core')">.NET Core</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=".NET Core" data-tab-group=csharp-client class="tab-item active">
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>dotnet add package Documaster.WebApi.Client.IDP
+dotnet add package Documaster.WebApi.Client.Noark5
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr>
+<p><i class="far fa-dot-circle"></i> For details on authentication against the API and setting up the requried objects, please refer to Authentication and Authoization Page</p>
+<a href=/api-docs/general/authentication/ target=_parent class="btn btn-default">
+<i class="fas fa-angle-double-right"></i> Authentication and Authorization
+</a>
 <footer class=footline>
 </footer>
 </div>
@@ -352,17 +419,17 @@ Client SDKs
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1650373597></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1650373597></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1650373597></script>
-<script src=/api-docs/js/jquery.sticky.js?1650373597></script>
-<script src=/api-docs/js/featherlight.min.js?1650373597></script>
-<script src=/api-docs/js/highlight.pack.js?1650373597></script>
+<script src=/api-docs/js/clipboard.min.js?1650462449></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1650462449></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1650462449></script>
+<script src=/api-docs/js/jquery.sticky.js?1650462449></script>
+<script src=/api-docs/js/featherlight.min.js?1650462449></script>
+<script src=/api-docs/js/highlight.pack.js?1650462449></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1650373597></script>
-<script src=/api-docs/js/learn.js?1650373597></script>
-<script src=/api-docs/js/hugo-learn.js?1650373597></script>
-<script src=/api-docs/mermaid/mermaid.js?1650373597></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1650462449></script>
+<script src=/api-docs/js/learn.js?1650462449></script>
+<script src=/api-docs/js/hugo-learn.js?1650462449></script>
+<script src=/api-docs/mermaid/mermaid.js?1650462449></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
