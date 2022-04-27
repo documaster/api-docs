@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Authentication and Authorization :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1650462449 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1650462449 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1650462449></script>
+<link href=/api-docs/css/nucleus.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1651053764 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1651053764 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1651053764></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/general/authentication/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1650462449></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1650462449></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1651053764></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1651053764></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1650462449></script>
+<script type=text/javascript src=/api-docs/js/search.js?1651053764></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -476,31 +476,31 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 </code></pre></div>
 </div>
 <div data-tab-item=C# data-tab-group=authorization class=tab-item>
-<p>      <strong>Query by CaseYear and CaseSequenceNumber</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>    <span style=color:#75715e>// client is an instance of NoarkClient
-</span><span style=color:#75715e></span>    QueryResponse<span style=color:#f92672>&lt;</span>Saksmappe<span style=color:#f92672>&gt;</span> queryResults <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>query</span><span style=color:#f92672>(</span>Saksmappe<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;saksaar = @caseYear &amp;&amp; sakssekvensnummer = @caseSequenceNumber&#34;</span><span style=color:#f92672>,</span> 1<span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>addQueryParam</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@caseYear&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;2021&#34;</span><span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>addQueryParam</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@caseSequenceNumber&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;6&#34;</span><span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>execute</span><span style=color:#f92672>();</span>
+<p>      <strong>Initialize Documaster RMS Client</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp>    <span style=color:#75715e>// Acquire access token from Documaster IDP
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// Parameters to the PasswordGrantTypeParams constructor are the
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// client_id, client_secret, username and password as provided by Documaster to access the API.
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// The scope parameter is always set to OpenIDConnectScope.OPENID
+</span><span style=color:#75715e></span>    
+    <span style=color:#75715e>// Initializing clients
+</span><span style=color:#75715e></span>    Oauth2HttpClient idpClient = <span style=color:#66d9ef>new</span> Oauth2HttpClient(<span style=color:#e6db74>&#34;https://v2-34-0.local.documaster.tech/idp/oauth2&#34;</span>, <span style=color:#66d9ef>true</span>);
+    NoarkClient client = <span style=color:#66d9ef>new</span> NoarkClient(<span style=color:#e6db74>&#34;https://v2-34-0.local.documaster.tech:8083&#34;</span>, <span style=color:#66d9ef>true</span>);
 
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span>queryResults<span style=color:#f92672>.</span><span style=color:#a6e22e>getResults</span><span style=color:#f92672>().</span><span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
-        Optional<span style=color:#f92672>&lt;</span>Saksmappe<span style=color:#f92672>&gt;</span> first <span style=color:#f92672>=</span> queryResults<span style=color:#f92672>.</span><span style=color:#a6e22e>getResults</span><span style=color:#f92672>().</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>().</span><span style=color:#a6e22e>findFirst</span><span style=color:#f92672>();</span>
+    <span style=color:#75715e>// Acquiring access token
+</span><span style=color:#75715e></span>    PasswordGrantTypeParams passwordGrantTypeParams = <span style=color:#66d9ef>new</span> PasswordGrantTypeParams(
+            ClientId,
+            ClientSecret,
+            Username,
+            Password,
+            OpenIDConnectScope.OPENID);
 
-        <span style=color:#75715e>// ID of the first case file, assuming only one is returned
-</span><span style=color:#75715e></span>        String caseFileID <span style=color:#f92672>=</span> first<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>().</span><span style=color:#a6e22e>getId</span><span style=color:#f92672>();</span>
-    <span style=color:#f92672>}</span>
-</code></pre></div><p>      <strong>Query Request by ExternalID</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>    <span style=color:#75715e>// client is an instance of NoarkClient
-</span><span style=color:#75715e></span>    QueryResponse<span style=color:#f92672>&lt;</span>Saksmappe<span style=color:#f92672>&gt;</span> queryResults <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>query</span><span style=color:#f92672>(</span>Saksmappe<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;refEksternId.eksternID = @externalID&#34;</span><span style=color:#f92672>,</span> 1<span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>addQueryParam</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@externalID&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;ISID:0000004572&#34;</span><span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>execute</span><span style=color:#f92672>();</span>
+    AccessTokenResponse atr =
+        idpClient.GetTokenWithPasswordGrantType(passwordGrantTypeParams);
 
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span>queryResults<span style=color:#f92672>.</span><span style=color:#a6e22e>getResults</span><span style=color:#f92672>().</span><span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
-        Optional<span style=color:#f92672>&lt;</span>Saksmappe<span style=color:#f92672>&gt;</span> first <span style=color:#f92672>=</span> queryResults<span style=color:#f92672>.</span><span style=color:#a6e22e>getResults</span><span style=color:#f92672>().</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>().</span><span style=color:#a6e22e>findFirst</span><span style=color:#f92672>();</span>
+    <span style=color:#66d9ef>string</span> accessToken = atr.AccessToken;
+    <span style=color:#66d9ef>string</span> refreshToken = atr.RefreshToken;
 
-        <span style=color:#75715e>// ID of the first case file, assuming only one is returned
-</span><span style=color:#75715e></span>        String caseFileID <span style=color:#f92672>=</span> first<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>().</span><span style=color:#a6e22e>getId</span><span style=color:#f92672>();</span>
-    <span style=color:#f92672>}</span>
+    client.AuthToken = accessToken;
 </code></pre></div>
 </div>
 </div>
@@ -588,18 +588,15 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 </div>
 <div data-tab-item=C# data-tab-group=authorization class=tab-item>
 <p>      <strong>Query by CaseYear and CaseSequenceNumber</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>    <span style=color:#75715e>// client is an instance of NoarkClient
-</span><span style=color:#75715e></span>    QueryResponse<span style=color:#f92672>&lt;</span>Saksmappe<span style=color:#f92672>&gt;</span> queryResults <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>query</span><span style=color:#f92672>(</span>Saksmappe<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;saksaar = @caseYear &amp;&amp; sakssekvensnummer = @caseSequenceNumber&#34;</span><span style=color:#f92672>,</span> 1<span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>addQueryParam</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@caseYear&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;2021&#34;</span><span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>addQueryParam</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@caseSequenceNumber&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;6&#34;</span><span style=color:#f92672>)</span>
-            <span style=color:#f92672>.</span><span style=color:#a6e22e>execute</span><span style=color:#f92672>();</span>
-
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span>queryResults<span style=color:#f92672>.</span><span style=color:#a6e22e>getResults</span><span style=color:#f92672>().</span><span style=color:#a6e22e>isEmpty</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
-        Optional<span style=color:#f92672>&lt;</span>Saksmappe<span style=color:#f92672>&gt;</span> first <span style=color:#f92672>=</span> queryResults<span style=color:#f92672>.</span><span style=color:#a6e22e>getResults</span><span style=color:#f92672>().</span><span style=color:#a6e22e>stream</span><span style=color:#f92672>().</span><span style=color:#a6e22e>findFirst</span><span style=color:#f92672>();</span>
-
-        <span style=color:#75715e>// ID of the first case file, assuming only one is returned
-</span><span style=color:#75715e></span>        String caseFileID <span style=color:#f92672>=</span> first<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>().</span><span style=color:#a6e22e>getId</span><span style=color:#f92672>();</span>
-    <span style=color:#f92672>}</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp>    <span style=color:#75715e>// Acquire new access token using the refresh token
+</span><span style=color:#75715e></span>    AccessTokenResponse rtr = idpClient.RefreshToken(
+        <span style=color:#66d9ef>new</span> RefreshTokenGrantTypeParams(
+            refreshToken, 
+            ClientId, 
+            ClientSecret));
+    
+    <span style=color:#75715e>// Set access token to be used by the NoarkClient instance    
+</span><span style=color:#75715e></span>    client.AuthToken = rtr.AccessToken;
 </code></pre></div>
 </div>
 </div>
@@ -621,17 +618,17 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1650462449></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1650462449></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1650462449></script>
-<script src=/api-docs/js/jquery.sticky.js?1650462449></script>
-<script src=/api-docs/js/featherlight.min.js?1650462449></script>
-<script src=/api-docs/js/highlight.pack.js?1650462449></script>
+<script src=/api-docs/js/clipboard.min.js?1651053764></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1651053764></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1651053764></script>
+<script src=/api-docs/js/jquery.sticky.js?1651053764></script>
+<script src=/api-docs/js/featherlight.min.js?1651053764></script>
+<script src=/api-docs/js/highlight.pack.js?1651053764></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1650462449></script>
-<script src=/api-docs/js/learn.js?1650462449></script>
-<script src=/api-docs/js/hugo-learn.js?1650462449></script>
-<script src=/api-docs/mermaid/mermaid.js?1650462449></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1651053764></script>
+<script src=/api-docs/js/learn.js?1651053764></script>
+<script src=/api-docs/js/hugo-learn.js?1651053764></script>
+<script src=/api-docs/mermaid/mermaid.js?1651053764></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
