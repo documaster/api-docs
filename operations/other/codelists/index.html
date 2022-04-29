@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Code Lists Operations :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1651150392 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1651150392 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1651150392></script>
+<link href=/api-docs/css/nucleus.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1651220571 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1651220571 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1651220571></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/operations/other/codelists/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1651150392></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1651150392></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1651220571></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1651220571></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1651150392></script>
+<script type=text/javascript src=/api-docs/js/search.js?1651220571></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -334,6 +334,7 @@ Create Registry Entry and Document
 <ul>
 <li><a href=#get-noark5v1code-liststypefield>GET /noark5/v1/code-lists?{type,field}</a></li>
 <li><a href=#put-noark5v1code-listsfieldcode>PUT /noark5/v1/code-lists/{field}/{code}</a></li>
+<li><a href=#delete-noark5v1code-listsfieldcode>DELETE /noark5/v1/code-lists/{field}/{code}</a></li>
 </ul>
 </li>
 </ul>
@@ -779,6 +780,85 @@ Content-Type: application/json
 </div>
 </div>
 </div>
+<h3 id=delete-noark5v1code-listsfieldcode>DELETE /noark5/v1/code-lists/{field}/{code}</h3>
+<p>The operation is used to add or update code list values. Single code list value can be updated in a call.</p>
+<h5 id=http-request-2>HTTP Request</h5>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Location</th>
+<th style=text-align:center>Mandatory</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>access token aquired as part of the authentication call, prefixed with <code>Bearer</code></td>
+</tr>
+<tr>
+<td><code>X-Documaster-Error-Response-Type</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>custom header indicating that any error should be reported in JSON format, rather than the standard text format, should always be provided as <strong>application/json</strong></td>
+</tr>
+<tr>
+<td><code>field</code></td>
+<td>
+<button class="pill path" style=width:100px>Path</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>core entity field for which the code list is being deleted</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>
+<button class="pill path" style=width:100px>Path</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>code of deleted code list value</td>
+</tr>
+</tbody>
+</table>
+<h5 id=http-response-2>HTTP Response</h5>
+<p>The operation returns HTTP <code>204 No Content</code> in case of success or any of the standard error codes defined.</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=code-lists class="tab-nav-button btn active" onclick="switchTab('code-lists','HTTP')">HTTP</button>
+<button data-tab-item=Java data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','Java')">Java</button>
+<button data-tab-item=C# data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','C#')">C#</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=code-lists class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>DELETE</span> https://v2-34-0.local.documaster.tech:8084/rms/api/public/noark5/v1/code-lists/dokumentmedium/PA <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+X-Documaster-Error-Response-Type: application/json
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>204</span> <span style=color:#a6e22e>No Content</span>
+</code></pre></div>
+</div>
+<div data-tab-item=Java data-tab-group=code-lists class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java></code></pre></div>
+</div>
+<div data-tab-item=C# data-tab-group=code-lists class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp></code></pre></div>
+</div>
+</div>
+</div>
 <footer class=footline>
 </footer>
 </div>
@@ -791,17 +871,17 @@ Content-Type: application/json
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1651150392></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1651150392></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1651150392></script>
-<script src=/api-docs/js/jquery.sticky.js?1651150392></script>
-<script src=/api-docs/js/featherlight.min.js?1651150392></script>
-<script src=/api-docs/js/highlight.pack.js?1651150392></script>
+<script src=/api-docs/js/clipboard.min.js?1651220571></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1651220571></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1651220571></script>
+<script src=/api-docs/js/jquery.sticky.js?1651220571></script>
+<script src=/api-docs/js/featherlight.min.js?1651220571></script>
+<script src=/api-docs/js/highlight.pack.js?1651220571></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1651150392></script>
-<script src=/api-docs/js/learn.js?1651150392></script>
-<script src=/api-docs/js/hugo-learn.js?1651150392></script>
-<script src=/api-docs/mermaid/mermaid.js?1651150392></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1651220571></script>
+<script src=/api-docs/js/learn.js?1651220571></script>
+<script src=/api-docs/js/hugo-learn.js?1651220571></script>
+<script src=/api-docs/mermaid/mermaid.js?1651220571></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
