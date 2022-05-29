@@ -214,9 +214,9 @@ button.pill.others {
 button.pill.yes {
     pointer-events: none;
     background-color: #ffffff;
-    color: red;
+    color: green;
     border-width: 1px !important;
-    border-color: red;
+    border-color: green;
     padding: 2px 3px;
     text-align: center;
     text-decoration: none;
@@ -229,7 +229,7 @@ button.pill.no {
     background-color: #ffffff;
     color: lightslategray;
     border-width: 1px !important;
-    border-color: darkorange;
+    border-color: lightcoral;
     border-style: dashed;
     padding: 2px 3px;
     text-align: center;
@@ -241,9 +241,9 @@ button.pill.no {
 button.pill.cond {
     pointer-events: none;
     background-color: #ffffff;
-    color: green;
+    color: darkblue;
     border-width: 1px !important;
-    border-color: green;
+    border-color: orange;
     padding: 2px 3px;
     text-align: center;
     text-decoration: none;

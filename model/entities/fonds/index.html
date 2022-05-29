@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Fonds :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1651220571 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1651220571></script>
+<link href=/api-docs/css/nucleus.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1653868307 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1653868307></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/fonds/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1651220571></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1651220571></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1653868307></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1653868307></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1651220571></script>
+<script type=text/javascript src=/api-docs/js/search.js?1653868307></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -332,7 +332,13 @@ Create Registry Entry and Document
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#arkiv>Arkiv</a></li>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#data-fields>Data Fields</a>
+<ul>
+<li><a href=#arkiv-specific-data-fields><code>Arkiv</code> Specific Data Fields</a></li>
+</ul>
+</li>
+<li><a href=#reference-fields>Reference Fields</a></li>
 </ul>
 </nav>
 </div>
@@ -345,7 +351,253 @@ Create Registry Entry and Document
 <h1>
 Fonds
 </h1>
-<h2 id=arkiv>Arkiv</h2>
+<h2 id=overview>Overview</h2>
+<p>Fonds (<code>Arkiv</code>) is the root of the archival structure and as such is required to be present for each integration to Documaster to operate.</p>
+<ul>
+<li>The entity is referred to as <code>Arkiv</code> in the API fields for <code>type</code>.</li>
+<li>Being a core Noark5 model entity, Fonds (<code>Arkiv</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+<li>Fonds (<code>Arkiv</code>) cannot be created without a transaction::link action to a Fonds Creator (<code>Arkivskaper</code>) entity in the same transaction.</li>
+</ul>
+<p><img src=/api-docs/model/entities/fonds/diagram-fonds-model.png alt=entities-fields></p>
+<h2 id=data-fields>Data Fields</h2>
+<h3 id=common-data-fields>Common Data Fields</h3>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
+</tr>
+</tbody>
+</table>
+<h3 id=arkiv-specific-data-fields><code>Arkiv</code> Specific Data Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avsluttetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M602</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time when the archive unit was finalized (finalizedDate)</td>
+</tr>
+<tr>
+<td><code>avsluttetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user who finalized the archive unit (finalizedBy)</td>
+</tr>
+<tr>
+<td><code>avsluttetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unique identifier of the user who finalized the archive unit (finalizedByIdent)</td>
+</tr>
+<tr>
+<td><code>tittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M020</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>title of the archive (title)</td>
+</tr>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M021</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>description of the archive (description)</td>
+</tr>
+<tr>
+<td><code>arkivstatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>dokumentmedium</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M300</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication of whether the archive unit contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <code>dokumentmedium</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv</td>
+</tr>
+</tbody>
+</table>
+<h2 id=reference-fields>Reference Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Refenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Reference Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refArkivskaper</code></td>
+<td style=text-align:center><code>Arkivskaper</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to Fonds Creator (<code>Arkivskaper</code>), single Fonds Creator (<code>Arkivskaper</code>) should be linked to the Fonds (<code>Arkiv</code>) during creation. Fonds Creator (<code>Arkivskaper</code>) entity reference cannot be modified once created.</td>
+</tr>
+<tr>
+<td><code>refArkivdel</code></td>
+<td style=text-align:center><code>Arkivdel</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to one or more Series (<code>Arkivdel</code>), series can be linked or unlinked through this reference</td>
+</tr>
+</tbody>
+</table>
 <footer class=footline>
 </footer>
 </div>
@@ -358,17 +610,17 @@ Fonds
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1651220571></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1651220571></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1651220571></script>
-<script src=/api-docs/js/jquery.sticky.js?1651220571></script>
-<script src=/api-docs/js/featherlight.min.js?1651220571></script>
-<script src=/api-docs/js/highlight.pack.js?1651220571></script>
+<script src=/api-docs/js/clipboard.min.js?1653868307></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1653868307></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653868307></script>
+<script src=/api-docs/js/jquery.sticky.js?1653868307></script>
+<script src=/api-docs/js/featherlight.min.js?1653868307></script>
+<script src=/api-docs/js/highlight.pack.js?1653868307></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1651220571></script>
-<script src=/api-docs/js/learn.js?1651220571></script>
-<script src=/api-docs/js/hugo-learn.js?1651220571></script>
-<script src=/api-docs/mermaid/mermaid.js?1651220571></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653868307></script>
+<script src=/api-docs/js/learn.js?1653868307></script>
+<script src=/api-docs/js/hugo-learn.js?1653868307></script>
+<script src=/api-docs/mermaid/mermaid.js?1653868307></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

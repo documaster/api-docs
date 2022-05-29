@@ -5,23 +5,23 @@
 <meta name=generator content="Hugo 0.89.4">
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
-<title>documentation :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1651220571 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1651220571 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1651220571></script>
+<title>Common Data Fields :: Documaster Noark5 API</title>
+<link href=/api-docs/css/nucleus.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1653868307 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1653868307 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1653868307></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
-<body data-url=/api-docs/tags/documentation/>
+<body data-url=/api-docs/common-data-fields/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1651220571></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1651220571></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1653868307></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1653868307></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1651220571></script>
+<script type=text/javascript src=/api-docs/js/search.js?1653868307></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -321,11 +321,20 @@ Create Registry Entry and Document
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/tags/>Tags</a> > documentation
+<a href=/api-docs/>Documaster Noark5 API</a> > Common Data Fields
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#common-data-fields>Common Data Fields</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -334,12 +343,106 @@ Create Registry Entry and Document
 </div>
 <div id=body-inner>
 <h1>
-tag ::
-documentation
+Common Data Fields
 </h1>
-<ul>
-<li><a href=/api-docs/model/overview/>Overview</a></li>
-</ul>
+<h3 id=common-data-fields>Common Data Fields</h3>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
+</tr>
+</tbody>
+</table>
 <footer class=footline>
 </footer>
 </div>
@@ -351,17 +454,17 @@ documentation
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1651220571></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1651220571></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1651220571></script>
-<script src=/api-docs/js/jquery.sticky.js?1651220571></script>
-<script src=/api-docs/js/featherlight.min.js?1651220571></script>
-<script src=/api-docs/js/highlight.pack.js?1651220571></script>
+<script src=/api-docs/js/clipboard.min.js?1653868307></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1653868307></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653868307></script>
+<script src=/api-docs/js/jquery.sticky.js?1653868307></script>
+<script src=/api-docs/js/featherlight.min.js?1653868307></script>
+<script src=/api-docs/js/highlight.pack.js?1653868307></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1651220571></script>
-<script src=/api-docs/js/learn.js?1651220571></script>
-<script src=/api-docs/js/hugo-learn.js?1651220571></script>
-<script src=/api-docs/mermaid/mermaid.js?1651220571></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653868307></script>
+<script src=/api-docs/js/learn.js?1653868307></script>
+<script src=/api-docs/js/hugo-learn.js?1653868307></script>
+<script src=/api-docs/mermaid/mermaid.js?1653868307></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
