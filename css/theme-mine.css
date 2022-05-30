@@ -215,13 +215,13 @@ button.pill.yes {
     pointer-events: none;
     background-color: #ffffff;
     color: green;
-    border-width: 1px !important;
+    border-width: 2px !important;
     border-color: green;
     padding: 2px 3px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-radius: 20px;
+    border-radius: 20px; 
 }
 
 button.pill.no {
