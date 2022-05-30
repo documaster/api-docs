@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Series :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1653909454 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1653909454 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1653909454></script>
+<link href=/api-docs/css/nucleus.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1653911292 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1653911292 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1653911292></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/series/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1653909454></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1653909454></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1653911292></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1653911292></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1653909454></script>
+<script type=text/javascript src=/api-docs/js/search.js?1653911292></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -330,7 +330,13 @@ Create Registry Entry and Document
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#arkivdel>Arkivdel</a></li>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#data-fields>Data Fields</a>
+<ul>
+<li><a href=#arkivdel-specific-data-fields><code>Arkivdel</code> Specific Data Fields</a></li>
+</ul>
+</li>
+<li><a href=#reference-fields>Reference Fields</a></li>
 </ul>
 </nav>
 </div>
@@ -343,7 +349,290 @@ Create Registry Entry and Document
 <h1>
 Series
 </h1>
-<h2 id=arkivdel>Arkivdel</h2>
+<h2 id=overview>Overview</h2>
+<p>Series (<code>Arkivdel</code>) is an entity representing a section of the archive under the Fonds (<code>Arkiv</code>).</p>
+<ul>
+<li>Entity name in the API : <strong><code>Arkivdel</code></strong>.</li>
+<li>Being a core Noark5 model entity, Series (<code>Arkivdel</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+<li>Series (<code>Arkivdel</code>) can contain multiple Folders (or Records)</li>
+<li>Series (<code>Arkivdel</code>) can have <strong>a single primary</strong> classification system (<code>Klassifikasjonssystem</code>) and <strong>many secondary</strong> classification systems.</li>
+</ul>
+<p><img src=/api-docs/model/entities/diagram-series-model.png alt=entities-fields></p>
+<h2 id=data-fields>Data Fields</h2>
+<h3 id=common-data-fields>Common Data Fields</h3>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
+</tr>
+</tbody>
+</table>
+<h3 id=arkivdel-specific-data-fields><code>Arkivdel</code> Specific Data Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M020</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>title of the series (title)</td>
+</tr>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M021</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>description of the series (description)</td>
+</tr>
+<tr>
+<td><code>arkivdelstatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M051</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the series (seriesStatus) <br><strong>Code List :</strong> <code>arkivdelstatus</code><br><strong>Default :</strong> <code>A</code> - Aktiv periode</td>
+</tr>
+<tr>
+<td><code>dokumentmedium</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M300</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication of whether the series contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <code>dokumentmedium</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv</td>
+</tr>
+<tr>
+<td><code>arkivperiodeStartDato</code></td>
+<td style=text-align:center>date</td>
+<td style=text-align:center>M107</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>start date of the series (seriesStartDate)</td>
+</tr>
+<tr>
+<td><code>arkivperiodeSluttDato</code></td>
+<td style=text-align:center>date</td>
+<td style=text-align:center>M108</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>end date of the series (seriesEndDate)</td>
+</tr>
+<tr>
+<td><code>skjerming</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M500</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication that the documents belonging to the series are not publicly available in accordance with the Public Access to Information Act (offentlighetsloven) or for any other reason (accessRestriction)<br><strong>Code List :</strong> <code>skjerming</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id=reference-fields>Reference Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Refenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Reference Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refArkiv</code></td>
+<td style=text-align:center><code>Arkiv</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to Fonds (<code>Arkiv</code>) under which the Series (<code>Arkivdel</code>) resides</td>
+</tr>
+<tr>
+<td><code>refPrimaerKlassifikasjonssystem</code></td>
+<td style=text-align:center><code>Klassifikasjonssystem</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a Classificaton System (<code>Klassifikasjonssystem</code>) which is the primary classification system of the Series (<code>Arkivdel</code>)</td>
+</tr>
+<tr>
+<td><code>refSekundaerKlassifikasjonssystem</code></td>
+<td style=text-align:center><code>Klassifikasjonssystem</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to one or more Classificaton Systems (<code>Klassifikasjonssystem</code>) which are linked as secondary classification system of the Series (<code>Arkivdel</code>)</td>
+</tr>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to one or more Folders (<code>AbstraktMappe</code>) under the Series</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to one or more Records (<code>AbstraktRegistrering</code>) under the Series</td>
+</tr>
+</tbody>
+</table>
 <footer class=footline>
 </footer>
 </div>
@@ -356,17 +645,17 @@ Series
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1653909454></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1653909454></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653909454></script>
-<script src=/api-docs/js/jquery.sticky.js?1653909454></script>
-<script src=/api-docs/js/featherlight.min.js?1653909454></script>
-<script src=/api-docs/js/highlight.pack.js?1653909454></script>
+<script src=/api-docs/js/clipboard.min.js?1653911292></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1653911292></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653911292></script>
+<script src=/api-docs/js/jquery.sticky.js?1653911292></script>
+<script src=/api-docs/js/featherlight.min.js?1653911292></script>
+<script src=/api-docs/js/highlight.pack.js?1653911292></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653909454></script>
-<script src=/api-docs/js/learn.js?1653909454></script>
-<script src=/api-docs/js/hugo-learn.js?1653909454></script>
-<script src=/api-docs/mermaid/mermaid.js?1653909454></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653911292></script>
+<script src=/api-docs/js/learn.js?1653911292></script>
+<script src=/api-docs/js/hugo-learn.js?1653911292></script>
+<script src=/api-docs/mermaid/mermaid.js?1653911292></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
