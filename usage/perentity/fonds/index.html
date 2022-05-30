@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.89.4">
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
-<title>Overview :: Documaster Noark5 API</title>
+<title>Fonds and Fonds Creator :: Documaster Noark5 API</title>
 <link href=/api-docs/css/nucleus.css?1653916760 rel=stylesheet>
 <link href=/api-docs/css/fontawesome-all.min.css?1653916760 rel=stylesheet>
 <link href=/api-docs/css/hybrid.css?1653916760 rel=stylesheet>
@@ -21,7 +21,7 @@
 <script src=/api-docs/js/jquery-3.3.1.min.js?1653916760></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
-<body data-url=/api-docs/operations/overview/>
+<body data-url=/api-docs/usage/perentity/fonds/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -85,13 +85,12 @@ First API Interaction
 </li>
 </ul>
 </li>
-<li data-nav-id=/api-docs/operations/ title=Operations class="dd-item
-parent">
+<li data-nav-id=/api-docs/operations/ title=Operations class=dd-item>
 <a href=/api-docs/operations/>
 <b>2. </b>Operations
 </a>
 <ul>
-<li data-nav-id=/api-docs/operations/overview/ title=Overview class="dd-item active">
+<li data-nav-id=/api-docs/operations/overview/ title=Overview class=dd-item>
 <a href=/api-docs/operations/overview/>
 Overview
 </a>
@@ -269,17 +268,19 @@ Code Lists
 </li>
 </ul>
 </li>
-<li data-nav-id=/api-docs/usage/ title=Examples class=dd-item>
+<li data-nav-id=/api-docs/usage/ title=Examples class="dd-item
+parent">
 <a href=/api-docs/usage/>
 <b>4. </b>Examples
 </a>
 <ul>
-<li data-nav-id=/api-docs/usage/perentity/ title="Per Entity" class=dd-item>
+<li data-nav-id=/api-docs/usage/perentity/ title="Per Entity" class="dd-item
+parent">
 <a href=/api-docs/usage/perentity/>
 Per Entity
 </a>
 <ul>
-<li data-nav-id=/api-docs/usage/perentity/fonds/ title="Fonds and Fonds Creator" class=dd-item>
+<li data-nav-id=/api-docs/usage/perentity/fonds/ title="Fonds and Fonds Creator" class="dd-item active">
 <a href=/api-docs/usage/perentity/fonds/>
 Fonds and Fonds Creator
 </a>
@@ -328,24 +329,16 @@ Create Registry Entry and Document
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/operations/>Operations</a> > Overview
+<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/usage/>Examples</a> > <a href=/api-docs/usage/perentity/>Per Entity</a> > Fonds and Fonds Creator
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#security>Security</a></li>
-<li><a href=#http-status-codes>HTTP Status Codes</a>
+<li>
 <ul>
-<li><a href=#integration-error-http-status-codes>Integration Error HTTP Status Codes</a></li>
-<li><a href=#operational-error-http-status-codes>Operational Error HTTP Status Codes</a></li>
-</ul>
-</li>
-<li><a href=#errors>Errors</a>
-<ul>
-<li><a href=#error-format>Error Format</a></li>
+<li><a href=#creating-fonds>Creating Fonds</a></li>
 </ul>
 </li>
 </ul>
@@ -358,155 +351,109 @@ Create Registry Entry and Document
 </div>
 <div id=body-inner>
 <h1>
-Overview
+Fonds and Fonds Creator
 </h1>
-<h2 id=overview>Overview</h2>
-<p>Documaster Noark5 API is an HTTP/JSON based API, secured with OAuth2/OIC. As such all requests and responses, apart from those for uploading and downloading files are in JSON format (having <code>Content-Type: application/json</code>).</p>
-<p>Documaster Noark 5 API exposes operations for managing all the archive core entities, together with operations for managing business specific metadata (BSM), code lists, etc. Core entities are managed through the <a href=/api-docs/operations/core/>Core Operations</a>, while any other entities are managed using <a href=/api-docs/operations/core/>Other Operations</a>.</p>
-<h2 id=security>Security</h2>
-<p>All operations are secured using OAuth2/OIC, which means an access token should be provided in the <code>Authorizaton</code> HTTP header prefixed with <strong>Bearer</strong>. For more details please refere to <a href=/api-docs/general/authentication/>Authentication and Authorization</a> section.</p>
-<h2 id=http-status-codes>HTTP Status Codes</h2>
-<p>All operations return an HTTP status code in the 2XX range when successfully executed. Below are the supported <strong>successful status codes</strong>.</p>
-<table>
-<thead>
-<tr>
-<th>Status Code</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>200 OK</code></td>
-<td>The request was successful.</td>
-</tr>
-<tr>
-<td><code>201 Created</code></td>
-<td>The request was fulfilled and resulted in a new resource being created.</td>
-</tr>
-<tr>
-<td><code>202 Accepted</code></td>
-<td>The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.</td>
-</tr>
-<tr>
-<td><code>204 No Content</code></td>
-<td>The request was successful, but there is no content to send in the response payload body.</td>
-</tr>
-</tbody>
-</table>
-<p>Number of HTTP status codes are supported to indicate an error either on the server side or the client side. HTTP status codes for errors are separated in groups depending on when they can occur.</p>
-<h3 id=integration-error-http-status-codes>Integration Error HTTP Status Codes</h3>
-<p>Integration error codes are HTTP status codes that are most likely to be seen during the integration phace with the API. Those are codes indicating that the request being made is invalid and should be corrected. Observing those error codes in production integration can be considered an indicator of incorrect usage of the API.</p>
-<table>
-<thead>
-<tr>
-<th>Status Code</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>400 Bad Request</code></td>
-<td>The syntax of the request was invalid.</td>
-</tr>
-<tr>
-<td><code>415 Unsupported Media Type</code></td>
-<td>The payload format requested by the client is not supported by the server.</td>
-</tr>
-</tbody>
-</table>
-<h3 id=operational-error-http-status-codes>Operational Error HTTP Status Codes</h3>
-<table>
-<thead>
-<tr>
-<th>Status Code</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>401 Unauthorized</code></td>
-<td>The request was denied due to an invalid or missing access token.</td>
-</tr>
-<tr>
-<td><code>403 Forbidden</code></td>
-<td>The request was denied due to the access token having insufficient privileges.</td>
-</tr>
-<tr>
-<td><code>404 Not Found</code></td>
-<td>The requested resource does not exist or is not accessible.</td>
-</tr>
-<tr>
-<td><code>409 Conflict</code></td>
-<td>Data was updated by another client after the last read by this client. The client may retry the request.</td>
-</tr>
-<tr>
-<td><code>500 Internal Server Error</code></td>
-<td>An internal server error has occurred.</td>
-</tr>
-<tr>
-<td><code>503 Service Unavailable</code></td>
-<td>The service is temporarily unavailable.</td>
-</tr>
-</tbody>
-</table>
-<h2 id=errors>Errors</h2>
-<p>All operations return errors in JSON format. Mandatory request header <code>X-Documaster-Error-Response-Type</code> set to <code>application/json</code> explicitly instructs the API to return only JSON formed responses.</p>
-<div class="notices warning"><p>The header <code>X-Documaster-Error-Response-Type</code> is <strong>mandatory</strong> and needs to be supplied with each and every call made to the API.</p>
+<h3 id=creating-fonds>Creating Fonds</h3>
+<p>Fonds (<code>Arkiv</code>) is created with the <code>POST /transaction</code> operation. In the same transaction at least one Fonds Creator (<code>Arkivskaper</code>) entity should be created and associated to the Fonds (<code>Arkiv</code>).</p>
+<ul>
+<li><code>transaction::save</code> - new Fonds (<code>Arkiv</code>)</li>
+<li><code>transaction::save</code> - new Fonds Creator (<code>Arkivskaper</code>)</li>
+<li><code>transaction::link</code> - link new Fonds Creator (<code>Arkivskaper</code>) to new Fonds (<code>Arkiv</code>) with id 688</li>
+</ul>
+<p>As a result of the transaction new Fonds (<code>Arkiv</code>) and Fonds Creator (<code>Arkivskaper</code>) are created with ids respectively <strong>11888</strong> and <strong>11889</strong>.</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=fonds-examples class="tab-nav-button btn active" onclick="switchTab('fonds-examples','HTTP')">HTTP</button>
 </div>
-<h3 id=error-format>Error Format</h3>
-<p>Sample error JSON response message looks like the sample below.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-    <span style=color:#f92672>&#34;errorId&#34;</span>: <span style=color:#e6db74>&#34;3aa5618a-13fb-4c96-9446-26ad6e98e5b5&#34;</span>,
-    <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;A field with name 1eksterntSystem was not found in EksternId or its hierarchy.&#34;</span>,
-    <span style=color:#f92672>&#34;status&#34;</span>: <span style=color:#ae81ff>400</span>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=fonds-examples class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8084/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>... </span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Arkiv&#34;,
+            &#34;id&#34;: &#34;arkiv-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;tittel&#34;: &#34;Integration Fonds&#34;,
+                &#34;beskrivelse&#34;: &#34;API Create Fonds&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Arkivskaper&#34;,
+            &#34;id&#34;: &#34;arkivskaper-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;arkivskaperIdent&#34;: &#34;EXI&#34;,
+                &#34;arkivskaperNavn&#34;: &#34;External Integrator&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Arkiv&#34;,
+            &#34;id&#34;: &#34;arkiv-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refArkivskaper&#34;,
+            &#34;linkToId&#34;: &#34;arkivskaper-temp-id-1&#34;
+        }
+    ]
 }
-</code></pre></div><table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Location</th>
-<th style=text-align:center>Mandatory</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>$.errorId</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>string</td>
-<td>unique identifier of the particular error, can be provided to the integration team to facilitate error investigation.</td>
-</tr>
-<tr>
-<td><code>$.description</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>string</td>
-<td>human readable description of the error occured</td>
-</tr>
-<tr>
-<td><code>$.status</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>number</td>
-<td>numeric code same as the HTTP status code returned</td>
-</tr>
-</tbody>
-</table>
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+    <span style=color:#f92672>&#34;saved&#34;</span>: {
+        <span style=color:#f92672>&#34;arkiv-temp-id-1&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Arkiv&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;11888&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;4&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;6fd14491-31ef-4e6a-b774-6bdc74187ded&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2022-05-30T15:04:40.083+0200&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;tittel&#34;</span>: <span style=color:#e6db74>&#34;Integration Fonds&#34;</span>,
+                <span style=color:#f92672>&#34;beskrivelse&#34;</span>: <span style=color:#e6db74>&#34;API Create Fonds&#34;</span>,
+                <span style=color:#f92672>&#34;arkivstatus&#34;</span>: <span style=color:#e6db74>&#34;O&#34;</span>,
+                <span style=color:#f92672>&#34;dokumentmedium&#34;</span>: <span style=color:#e6db74>&#34;E&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {}
+        },
+        <span style=color:#f92672>&#34;arkivskaper-temp-id-1&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Arkivskaper&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;11889&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;2&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;9a5f4140-c008-4c00-90e0-1656813d76bc&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2022-05-30T15:04:40.086+0200&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;arkivskaperIdent&#34;</span>: <span style=color:#e6db74>&#34;EXI&#34;</span>,
+                <span style=color:#f92672>&#34;arkivskaperNavn&#34;</span>: <span style=color:#e6db74>&#34;External Integrator&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refArkiv&#34;</span>: <span style=color:#ae81ff>11888</span>
+            }
+        }
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/api-docs/operations/ title=Operations> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/api-docs/operations/core/ title="Core Operations" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/api-docs/usage/perentity/ title="Per Entity"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/api-docs/usage/perentity/casefile/ title="Case File and Case Party" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
