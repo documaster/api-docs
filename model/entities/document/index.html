@@ -5,23 +5,23 @@
 <meta name=generator content="Hugo 0.89.4">
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
-<title>Case Party :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1653911292 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1653911292 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1653911292></script>
+<title>Document :: Documaster Noark5 API</title>
+<link href=/api-docs/css/nucleus.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1653915365 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1653915365 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1653915365></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
-<body data-url=/api-docs/model/entities/abstractfolder/casefile/caseparty/>
+<body data-url=/api-docs/model/entities/document/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1653911292></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1653911292></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1653915365></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1653915365></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1653911292></script>
+<script type=text/javascript src=/api-docs/js/search.js?1653915365></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -177,49 +177,26 @@ Core Entities
 <a href=/api-docs/model/entities/fonds/>
 Fonds
 </a>
-<ul>
-<li data-nav-id=/api-docs/model/entities/fonds/fondscreator/ title="Fonds Creator" class=dd-item>
-<a href=/api-docs/model/entities/fonds/fondscreator/>
-Fonds Creator
-</a>
 </li>
-</ul>
-</li>
-<li data-nav-id=/api-docs/model/entities/classification/ title="Classification System" class=dd-item>
+<li data-nav-id=/api-docs/model/entities/classification/ title="Classification System and Class" class=dd-item>
 <a href=/api-docs/model/entities/classification/>
-Classification System
+Classification System and Class
 </a>
-<ul>
-<li data-nav-id=/api-docs/model/entities/classification/class/ title=Class class=dd-item>
-<a href=/api-docs/model/entities/classification/class/>
-Class
-</a>
-</li>
-</ul>
 </li>
 <li data-nav-id=/api-docs/model/entities/series/ title=Series class=dd-item>
 <a href=/api-docs/model/entities/series/>
 Series
 </a>
 </li>
-<li data-nav-id=/api-docs/model/entities/abstractfolder/ title=Folders class="dd-item
-parent">
+<li data-nav-id=/api-docs/model/entities/abstractfolder/ title=Folders class=dd-item>
 <a href=/api-docs/model/entities/abstractfolder/>
 Folders
 </a>
 <ul>
-<li data-nav-id=/api-docs/model/entities/abstractfolder/casefile/ title="Case File" class="dd-item
-parent">
+<li data-nav-id=/api-docs/model/entities/abstractfolder/casefile/ title="Case File" class=dd-item>
 <a href=/api-docs/model/entities/abstractfolder/casefile/>
 Case File
 </a>
-<ul>
-<li data-nav-id=/api-docs/model/entities/abstractfolder/casefile/caseparty/ title="Case Party" class="dd-item active">
-<a href=/api-docs/model/entities/abstractfolder/casefile/caseparty/>
-Case Party
-</a>
-</li>
-</ul>
 </li>
 <li data-nav-id=/api-docs/model/entities/abstractfolder/folder/ title="Basic Folder" class=dd-item>
 <a href=/api-docs/model/entities/abstractfolder/folder/>
@@ -230,13 +207,6 @@ Basic Folder
 <a href=/api-docs/model/entities/abstractfolder/meetingfolder/>
 Meeting Folder
 </a>
-<ul>
-<li data-nav-id=/api-docs/model/entities/abstractfolder/meetingfolder/meetingparticipant/ title="Meeting Participant" class=dd-item>
-<a href=/api-docs/model/entities/abstractfolder/meetingfolder/meetingparticipant/>
-Meeting Participant
-</a>
-</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -261,6 +231,37 @@ Meeting Record
 </a>
 </li>
 </ul>
+</li>
+<li data-nav-id=/api-docs/model/entities/document/ title=Document class="dd-item
+parent
+active">
+<a href=/api-docs/model/entities/document/>
+Document
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/entities/document/documentversion/ title="Document Version" class=dd-item>
+<a href=/api-docs/model/entities/document/documentversion/>
+Document Version
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-nav-id=/api-docs/model/secondary-entities/ title="Secondary Entities" class=dd-item>
+<a href=/api-docs/model/secondary-entities/>
+Secondary Entities
+</a>
+<ul>
+<li data-nav-id=/api-docs/model/secondary-entities/common-entities/ title="Common Entities" class=dd-item>
+<a href=/api-docs/model/secondary-entities/common-entities/>
+Common Entities
+</a>
+</li>
+<li data-nav-id=/api-docs/model/secondary-entities/national-identifiers/ title="National Identifiers" class=dd-item>
+<a href=/api-docs/model/secondary-entities/national-identifiers/>
+National Identifiers
+</a>
 </li>
 </ul>
 </li>
@@ -325,16 +326,12 @@ Create Registry Entry and Document
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/model/>Data Model</a> > <a href=/api-docs/model/entities/>Core Entities</a> > <a href=/api-docs/model/entities/abstractfolder/>Folders</a> > <a href=/api-docs/model/entities/abstractfolder/casefile/>Case File</a> > Case Party
+<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/model/>Data Model</a> > <a href=/api-docs/model/entities/>Core Entities</a> > Document
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#sakspart>Sakspart</a></li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 </div>
 </div>
@@ -343,32 +340,31 @@ Create Registry Entry and Document
 </div>
 <div id=body-inner>
 <h1>
-Case Party
+Document
 </h1>
-<h2 id=sakspart>Sakspart</h2>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/api-docs/model/entities/abstractfolder/casefile/ title="Case File"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/api-docs/model/entities/abstractfolder/folder/ title="Basic Folder" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/api-docs/model/entities/abstractrecord/meetingrecord/ title="Meeting Record"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/api-docs/model/entities/document/documentversion/ title="Document Version" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1653911292></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1653911292></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653911292></script>
-<script src=/api-docs/js/jquery.sticky.js?1653911292></script>
-<script src=/api-docs/js/featherlight.min.js?1653911292></script>
-<script src=/api-docs/js/highlight.pack.js?1653911292></script>
+<script src=/api-docs/js/clipboard.min.js?1653915365></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1653915365></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653915365></script>
+<script src=/api-docs/js/jquery.sticky.js?1653915365></script>
+<script src=/api-docs/js/featherlight.min.js?1653915365></script>
+<script src=/api-docs/js/highlight.pack.js?1653915365></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653911292></script>
-<script src=/api-docs/js/learn.js?1653911292></script>
-<script src=/api-docs/js/hugo-learn.js?1653911292></script>
-<script src=/api-docs/mermaid/mermaid.js?1653911292></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653915365></script>
+<script src=/api-docs/js/learn.js?1653915365></script>
+<script src=/api-docs/js/hugo-learn.js?1653915365></script>
+<script src=/api-docs/mermaid/mermaid.js?1653915365></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.89.4">
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
-<title>Overview :: Documaster Noark5 API</title>
+<title>Secondary Entities :: Documaster Noark5 API</title>
 <link href=/api-docs/css/nucleus.css?1653915365 rel=stylesheet>
 <link href=/api-docs/css/fontawesome-all.min.css?1653915365 rel=stylesheet>
 <link href=/api-docs/css/hybrid.css?1653915365 rel=stylesheet>
@@ -21,7 +21,7 @@
 <script src=/api-docs/js/jquery-3.3.1.min.js?1653915365></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
-<body data-url=/api-docs/model/overview/>
+<body data-url=/api-docs/model/secondary-entities/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -162,7 +162,7 @@ parent">
 <b>3. </b>Data Model
 </a>
 <ul>
-<li data-nav-id=/api-docs/model/overview/ title=Overview class="dd-item active">
+<li data-nav-id=/api-docs/model/overview/ title=Overview class=dd-item>
 <a href=/api-docs/model/overview/>
 Overview
 </a>
@@ -245,7 +245,9 @@ Document Version
 </li>
 </ul>
 </li>
-<li data-nav-id=/api-docs/model/secondary-entities/ title="Secondary Entities" class=dd-item>
+<li data-nav-id=/api-docs/model/secondary-entities/ title="Secondary Entities" class="dd-item
+parent
+active">
 <a href=/api-docs/model/secondary-entities/>
 Secondary Entities
 </a>
@@ -323,17 +325,12 @@ Create Registry Entry and Document
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/model/>Data Model</a> > Overview
+<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/model/>Data Model</a> > Secondary Entities
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#entity-felds>Entity Felds</a></li>
-<li><a href=#entities-model---complete-view>Entities Model - Complete View</a></li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 </div>
 </div>
@@ -342,131 +339,15 @@ Create Registry Entry and Document
 </div>
 <div id=body-inner>
 <h1>
-Overview
+Secondary Entities
 </h1>
-<h2 id=entity-felds>Entity Felds</h2>
-<p>Documaster Noark5 API entities have two types of fields :</p>
-<ul>
-<li><strong>Data Fields</strong> - fields which contain properties of the entity.
-<ul>
-<li>Data fields support the following types : <code>string</code>, <code>date</code>, <code>timestamp</code>, <code>number</code> and <code>boolean</code>.</li>
-</ul>
-</li>
-<li><strong>Reference Fields</strong> - fields which represent links to other entities in the model, like foreign keys in a relational database model (prefixed with <code>ref</code>). A reference field can represent a one to one or one to many relations.</li>
-</ul>
-<div class="notices note"><p>Each entity has a specific set of data and reference fields which are listed on the entity&rsquo;s page in this documentation.</p>
-</div>
-<p><img src=/api-docs/model/images/diagram-entities-fields.png alt=entities-fields></p>
-<p>On the diagram above, Fonds (<code>Arkiv</code>) entity references the Fonds Creator (<code>Arkivskaper</code>) through its reference field <code>refArkivskaper</code> and the list of Series (<code>Arkivdel</code>) through the reference field <code>refArkivdel</code>.</p>
-<h4 id=common-data-fields>Common Data Fields</h4>
-<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
-<table>
-<thead>
-<tr>
-<th>Field Name</th>
-<th style=text-align:center>Type</th>
-<th style=text-align:center>Noark Metadata No.</th>
-<th style=text-align:center>Required on Create</th>
-<th style=text-align:center>Value Always Available</th>
-<th style=text-align:center>Modifiable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>id</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center></td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center></td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>uuid</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M001</td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill cond" style=width:100px>cond</button></td>
-<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
-</tr>
-<tr>
-<td><code>opprettetDato</code></td>
-<td style=text-align:center>timestamp</td>
-<td style=text-align:center>M600</td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill cond" style=width:100px>cond</button></td>
-<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
-</tr>
-<tr>
-<td><code>opprettetAv</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M601</td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill cond" style=width:100px>cond</button></td>
-<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
-</tr>
-<tr>
-<td><code>opprettetAvBrukerIdent</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M601</td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill cond" style=width:100px>cond</button></td>
-<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
-</tr>
-</tbody>
-</table>
-<p>Modifiable field set to <strong>no</strong> indicates that the field cannot be set or updated. Modifiable set to <strong>cond</strong> indicates that special permissions are required to update the field, but this is not common practice.</p>
-<h2 id=entities-model---complete-view>Entities Model - Complete View</h2>
-<p>Below is a complete diagram of all the entities and the major relations between the core set of entities. In darker colours are the entities which are used most in archival structures. In lighter colours are those which are satelite entities or such that are of lower importance.</p>
-<p><img src=/api-docs/model/images/diagrams-model-entities-overview.png alt=entities-overview></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/api-docs/model/ title="Data Model"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/api-docs/model/entities/ title="Core Entities" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/api-docs/model/entities/document/documentversion/ title="Document Version"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/api-docs/model/secondary-entities/common-entities/ title="Common Entities" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
