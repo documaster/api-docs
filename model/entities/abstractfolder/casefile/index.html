@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Case File :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1653917800 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1653917800 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1653917800></script>
+<link href=/api-docs/css/nucleus.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1653997854 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1653997854 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1653997854></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractfolder/casefile/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1653917800></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1653917800></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1653997854></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1653997854></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1653917800></script>
+<script type=text/javascript src=/api-docs/js/search.js?1653997854></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -339,7 +339,19 @@ Create Registry Entry and Document
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#saksmappe-and-sakspart>Saksmappe and Sakspart</a></li>
+<li><a href=#case-file>Case File</a>
+<ul>
+<li><a href=#data-fields>Data Fields</a></li>
+<li><a href=#reference-fields>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#case-party>Case Party</a>
+<ul>
+<li><a href=#data-fields-1>Data Fields</a></li>
+<li><a href=#reference-fields-1>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#working-with-case-file-and-case-party>Working with Case File and Case Party</a></li>
 </ul>
 </nav>
 </div>
@@ -352,7 +364,898 @@ Create Registry Entry and Document
 <h1>
 Case File
 </h1>
-<h2 id=saksmappe-and-sakspart>Saksmappe and Sakspart</h2>
+<h2 id=case-file>Case File</h2>
+<p>Fonds (<code>Arkiv</code>) is the root of the archival structure and as such is required to be present for each integration to Documaster to operate.</p>
+<ul>
+<li>Entity name in the API : <strong><code>Saksmappe</code></strong>.</li>
+<li>Being a core Noark5 model entity, Case File (<code>Saksmappe</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+<li>Case File (<code>Saksmappe</code>) should be associated to a Series (<code>Arkivdel</code>)</li>
+<li>Case File (<code>Saksmappe</code>) can be created without Case Party (<code>Sakspart</code>), multiple Case Party (<code>Sakspart</code>) entities instances can be linked to a case file</li>
+<li>Only two types of records - Registry Entry (<code>Journalpost</code>) and Basic Folder (<code>Mappe</code>) can be created under a Case File (<code>Saksmappe</code>)</li>
+</ul>
+<div class="notices note"><p>Very common approach is to add to the Case File (<code>Saksmappe</code>) an External ID (<code>EksternId</code>) which contains the quality/business system case identifier.
+This allows integrating parties to find case files in Documaster using their own case file IDs.</p>
+</div>
+<p><img src=/api-docs/model/entities/abstractfolder/casefile/diagram-casefile-model.png alt=entities-fields></p>
+<h3 id=data-fields>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
+</tr>
+</tbody>
+</table>
+<h4 id=saksmappe-specific-data-fields><code>Saksmappe</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avsluttetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M602</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time when the archive unit was finalized (finalizedDate)</td>
+</tr>
+<tr>
+<td><code>avsluttetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user who finalized the archive unit (finalizedBy)</td>
+</tr>
+<tr>
+<td><code>avsluttetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unique identifier of the user who finalized the archive unit (finalizedByIdent)</td>
+</tr>
+<tr>
+<td><code>prefiks</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>optional identifier of the system from which the case file originated, the value cannot be changed once set</td>
+</tr>
+<tr>
+<td><code>mappeIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M003</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>description of the archive (description)</td>
+</tr>
+<tr>
+<td><code>mappetype</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td><strong>Code List :</strong> <code>mappetype</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv</td>
+</tr>
+<tr>
+<td><code>tittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M020</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>title of the archive (title)</td>
+</tr>
+<tr>
+<td><code>offentligTittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M025</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>title of the archive (title)</td>
+</tr>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M021</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>description of the archive (description)</td>
+</tr>
+<tr>
+<td><code>dokumentmedium</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M300</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication of whether the archive unit contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <code>dokumentmedium</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+<tr>
+<td><code>111111</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M050</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields>Reference Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Reference Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refArkivskaper</code></td>
+<td style=text-align:center><code>Arkivskaper</code></td>
+<td style=text-align:center>1 . . *</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to Fonds Creator (<code>Arkivskaper</code>), at least one Fonds Creator (<code>Arkivskaper</code>) should be linked to the Fonds (<code>Arkiv</code>) during creation.</td>
+</tr>
+<tr>
+<td><code>refArkivdel</code></td>
+<td style=text-align:center><code>Arkivdel</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to one or more Series (<code>Arkivdel</code>), series can be linked or unlinked through this reference</td>
+</tr>
+</tbody>
+</table>
+<h2 id=case-party>Case Party</h2>
+<p>Fonds Creator (<code>Arkivskaper</code>) is an entity representing the identity of the creator of the fonds.</p>
+<ul>
+<li>Entity name in the API : <strong><code>Sakspart</code></strong>.</li>
+<li>Being a core Noark5 model entity, Fonds Creator (<code>Arkivskaper</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+<li>Fonds (<code>Arkiv</code>) can have multiple Fonds Creators (<code>Arkivskaper</code>), but they are <em>owned</em> by the Fonds (<code>Arkiv</code>) entity and cannot be linked to other Fonds.</li>
+</ul>
+<h3 id=data-fields-1>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
+</tr>
+</tbody>
+</table>
+<h4 id=sakspart-specific-data-fields><code>Sakspart</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arkivskaperIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M006</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>unique ID for the fonds creator (fondsCreatorID)</td>
+</tr>
+<tr>
+<td><code>arkivskaperNavn</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M023</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of the fonds creator (fondsCreatorName)</td>
+</tr>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M021</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>description of the fonds creator (description)</td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-1>Reference Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Reference Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refArkiv</code></td>
+<td style=text-align:center><code>Arkiv</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to Fonds (<code>Arkiv</code>), a Fonds Creator is <em>owned</em> by a single Fonds</td>
+</tr>
+</tbody>
+</table>
+<h2 id=working-with-case-file-and-case-party>Working with Case File and Case Party</h2>
+<h3 id=creating-case-file>Creating Case File</h3>
+<p>Case Files (<code>Saksmappe</code>) are created using <code>transaction</code> API, where in a single transaction the newly created case file must be linked to a single Series (<code>Arkivdel</code>), through reference <code>Saksmappe::refArkivdel</code>, and to one primary Class (<code>Klasse</code>), through reference <code>Saksmappe::refPrimaerKlasse</code>, part of the Classification System (<code>Klassifikasjonssystem</code>) linked to the series. Case File (<code>Saksmappe</code>) can be linked to more than one Class (<code>Klasse</code>) as secondary class, using the reference <code>SaksMappe::refSekundaerKlasse</code>. Additionally the example below is adding an External ID (<code>EksternId</code>), which is an identifier of the case file in an external system. ExternalID (<code>EksternId</code>) is not required to create a case file, but very useful if external identifiers are available, since the value can be used to search on it.</p>
+<ul>
+<li><code>transaction::save</code> - new Case File (<code>Saksmappe</code>)</li>
+<li><code>transaction::link</code> - link new case file to existing Series (<code>Arkivdel</code>) with id 688</li>
+<li><code>transaction::link</code> - link new case file to existing Class (<code>Klasse</code>) with id 681 as <em>primary</em>, through <code>refPrimaerKlasse</code></li>
+<li><code>transaction::link</code> - link new case file to existing Class (<code>Klasse</code>) with id 681 as <em>secondary</em>, through <code>refSekundaerKlasse</code></li>
+<li><code>transaction::link</code> - link new case file to existing Class (<code>Klasse</code>) with id 681 as <em>secondary</em>, through <code>refSekundaerKlasse</code></li>
+<li><code>transaction::save</code> - new ExternalID (<code>EksternId</code>) with external ID value of ISID:0000004573</li>
+<li><code>transaction::link</code> - link new externalID to newly created case file through <code>refMappe</code> reference field</li>
+</ul>
+<p>As a result of the transaction new Case File (<code>Saksmappe</code>) is created with id <strong>1131</strong>.</p>
+<p><img src=/api-docs/usage/perEntity/images/create-casefile.png alt="creating registry entry"></p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=registryEntry class="tab-nav-button btn active" onclick="switchTab('registryEntry','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=registryEntry class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Saksmappe&#34;,
+            &#34;id&#34;: &#34;saksmappe-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;tittel&#34;: &#34;API Created Case File - 3&#34;,
+                &#34;beskrivelse&#34;: &#34;Third API created Case File&#34;,
+                &#34;administrativEnhet&#34;: &#34;AD1&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Saksmappe&#34;,
+            &#34;id&#34;: &#34;saksmappe-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refArkivdel&#34;,
+            &#34;linkToId&#34;: &#34;688&#34;
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Saksmappe&#34;,
+            &#34;id&#34;: &#34;saksmappe-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refPrimaerKlasse&#34;,
+            &#34;linkToId&#34;: &#34;681&#34;
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Saksmappe&#34;,
+            &#34;id&#34;: &#34;saksmappe-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refSekundaerKlasse&#34;,
+            &#34;linkToId&#34;: &#34;1111&#34;
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Saksmappe&#34;,
+            &#34;id&#34;: &#34;saksmappe-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refSekundaerKlasse&#34;,
+            &#34;linkToId&#34;: &#34;1113&#34;
+        },
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;EksternId&#34;,
+            &#34;id&#34;: &#34;eksternId-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;eksterntSystem&#34;: &#34;Integrating System&#34;,
+                &#34;eksternID&#34;: &#34;ISID:0000004573&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;EksternId&#34;,
+            &#34;id&#34;: &#34;eksternId-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refMappe&#34;,
+            &#34;linkToId&#34;: &#34;saksmappe-temp-id-1&#34;
+        }
+    ]
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+    <span style=color:#f92672>&#34;saved&#34;</span>: {
+        <span style=color:#f92672>&#34;saksmappe-temp-id-1&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Saksmappe&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;1131&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;10&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;e8716b6e-3455-4148-870f-6435aa46cf5a&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2021-12-07T12:05:56.134+0100&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;mappeIdent&#34;</span>: <span style=color:#e6db74>&#34;2021/9&#34;</span>,
+                <span style=color:#f92672>&#34;tittel&#34;</span>: <span style=color:#e6db74>&#34;API Created Case File - 3&#34;</span>,
+                <span style=color:#f92672>&#34;beskrivelse&#34;</span>: <span style=color:#e6db74>&#34;Third API created Case File&#34;</span>,
+                <span style=color:#f92672>&#34;dokumentmedium&#34;</span>: <span style=color:#e6db74>&#34;E&#34;</span>,
+                <span style=color:#f92672>&#34;saksaar&#34;</span>: <span style=color:#ae81ff>2021</span>,
+                <span style=color:#f92672>&#34;sakssekvensnummer&#34;</span>: <span style=color:#ae81ff>9</span>,
+                <span style=color:#f92672>&#34;saksdato&#34;</span>: <span style=color:#e6db74>&#34;2021-12-07T12:05:56.149+0100&#34;</span>,
+                <span style=color:#f92672>&#34;administrativEnhet&#34;</span>: <span style=color:#e6db74>&#34;AD1&#34;</span>,
+                <span style=color:#f92672>&#34;saksansvarlig&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;saksansvarligBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;saksstatus&#34;</span>: <span style=color:#e6db74>&#34;B&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refPrimaerKlasse&#34;</span>: <span style=color:#ae81ff>681</span>,
+                <span style=color:#f92672>&#34;refArkivdel&#34;</span>: <span style=color:#ae81ff>688</span>
+            }
+        },
+        <span style=color:#f92672>&#34;eksternId-temp-id-1&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;EksternId&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;1132&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;2&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;835e8ef5-7127-41dc-8a0c-09edcc0ea6c4&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2021-12-07T12:05:56.149+0100&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;eksterntSystem&#34;</span>: <span style=color:#e6db74>&#34;Integrating System&#34;</span>,
+                <span style=color:#f92672>&#34;eksternID&#34;</span>: <span style=color:#e6db74>&#34;ISID:0000004573&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refMappe&#34;</span>: <span style=color:#ae81ff>1131</span>
+            }
+        }
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id=creating-case-party-and-adding-it-to-a-case-file>Creating Case Party and adding it to a Case File</h3>
+<p>Case Files (<code>Saksmappe</code>) can have multiple Case Party (<code>Sakspart</code>) entity objects linked to them. Case Party (<code>Sakspart</code>) represents a person related to the case file in a particular role.</p>
+<ul>
+<li><code>transaction::save</code> - new Case Party (<code>Sakspart</code>)</li>
+<li><code>transaction::link</code> - link new case party to existing Case File (<code>Saksmappe</code>) with id 1131 through <code>refMappe</code> reference field</li>
+</ul>
+<p>As a result of the transaction new Case Party (<code>Saks[art</code>) is created with id <strong>1136</strong> and associated with the Case File (<code>Saksmappe</code>).</p>
+<p><img src=/api-docs/usage/perEntity/images/create-caseparty.png alt="creating registry entry"></p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=registryEntry class="tab-nav-button btn active" onclick="switchTab('registryEntry','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=registryEntry class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Sakspart&#34;,
+            &#34;id&#34;: &#34;sakspart-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;sakspartNavn&#34;: &#34;Kari Nordmann&#34;,
+                &#34;sakspartRolle&#34;: &#34;Handler&#34;,
+                &#34;epostadresse&#34;: &#34;kari.nordmann@dummy.no&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Sakspart&#34;,
+            &#34;id&#34;: &#34;sakspart-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refMappe&#34;,
+            &#34;linkToId&#34;: &#34;1131&#34;
+        }
+    ]
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+    <span style=color:#f92672>&#34;saved&#34;</span>: {
+        <span style=color:#f92672>&#34;sakspart-temp-id-1&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Sakspart&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;1136&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;2&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;37baa8e6-b993-4137-9a2a-791a5991f1d1&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2021-12-09T14:04:15.316+0100&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;sakspartNavn&#34;</span>: <span style=color:#e6db74>&#34;Kari Nordmann&#34;</span>,
+                <span style=color:#f92672>&#34;sakspartRolle&#34;</span>: <span style=color:#e6db74>&#34;Handler&#34;</span>,
+                <span style=color:#f92672>&#34;epostadresse&#34;</span>: <span style=color:#e6db74>&#34;kari.nordmann@dummy.no&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refMappe&#34;</span>: <span style=color:#ae81ff>1131</span>
+            }
+        }
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id=query-a-case-file-by-externalid>Query a Case File by ExternalID</h3>
+<p>Retrieving a Case File (<code>Saksmappe</code>) that has a specific ExternalID (<code>EksternId</code>) is done using the <code>refEksternId</code> reference field of CaseFile (<code>Saksmappe</code>).</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=registryEntry class="tab-nav-button btn active" onclick="switchTab('registryEntry','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=registryEntry class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/query <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+  &#34;type&#34;: &#34;Saksmappe&#34;,
+  &#34;limit&#34;: 1,
+  &#34;query&#34;: &#34;refEksternId.eksternID = @externalID&#34;,
+  &#34;parameters&#34; : {
+    &#34;@externalID&#34; : &#34;ISID:0000004573&#34;
+  }
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+    <span style=color:#f92672>&#34;hasMore&#34;</span>: <span style=color:#66d9ef>false</span>,
+    <span style=color:#f92672>&#34;results&#34;</span>: [
+        {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Saksmappe&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;1131&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;10&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;e8716b6e-3455-4148-870f-6435aa46cf5a&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2021-12-07T12:05:56.134+0100&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;mappeIdent&#34;</span>: <span style=color:#e6db74>&#34;2021/9&#34;</span>,
+                <span style=color:#f92672>&#34;tittel&#34;</span>: <span style=color:#e6db74>&#34;API Created Case File - 3&#34;</span>,
+                <span style=color:#f92672>&#34;beskrivelse&#34;</span>: <span style=color:#e6db74>&#34;Third API created Case File&#34;</span>,
+                <span style=color:#f92672>&#34;dokumentmedium&#34;</span>: <span style=color:#e6db74>&#34;E&#34;</span>,
+                <span style=color:#f92672>&#34;saksaar&#34;</span>: <span style=color:#ae81ff>2021</span>,
+                <span style=color:#f92672>&#34;sakssekvensnummer&#34;</span>: <span style=color:#ae81ff>9</span>,
+                <span style=color:#f92672>&#34;saksdato&#34;</span>: <span style=color:#e6db74>&#34;2021-12-07&#34;</span>,
+                <span style=color:#f92672>&#34;administrativEnhet&#34;</span>: <span style=color:#e6db74>&#34;AD1&#34;</span>,
+                <span style=color:#f92672>&#34;saksansvarlig&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;saksansvarligBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;saksstatus&#34;</span>: <span style=color:#e6db74>&#34;B&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refPrimaerKlasse&#34;</span>: <span style=color:#ae81ff>681</span>,
+                <span style=color:#f92672>&#34;refArkivdel&#34;</span>: <span style=color:#ae81ff>688</span>
+            }
+        }
+    ]
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id=query-a-case-file-by-2-secondary-classes>Query a Case File by 2 Secondary Classes</h3>
+<p>The query below is querying for a Case File (<code>Saksmappe</code>) linked to two distinct secondary classes (<code>Klasse</code>). The query uses joins to perform the filtering. Response is omitted since it is the same as the example from the <a href=#query-a-case-file-by-externalid>previous example</a>.</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=registryEntry class="tab-nav-button btn active" onclick="switchTab('registryEntry','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=registryEntry class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/query <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+  &#34;type&#34;: &#34;Saksmappe&#34;,
+  &#34;limit&#34;: 2,
+  &#34;query&#34;: &#34;#secClass1.id = @class1 &amp;&amp; #secClass2.id = @class2&#34;,
+  &#34;parameters&#34; : {
+    &#34;@class1&#34; : &#34;1111&#34;,
+    &#34;@class2&#34; : &#34;1113&#34;
+  },
+  &#34;joins&#34;: {
+    &#34;#secClass1&#34; : &#34;refSekundaerKlasse&#34;,
+    &#34;#secClass2&#34; : &#34;refSekundaerKlasse&#34;
+  },
+  &#34;sortOrder&#34; : [
+    {
+      &#34;field&#34; : &#34;mappeIdent&#34;,
+      &#34;order&#34; : &#34;desc&#34;
+    }
+  ]
+}
+</code></pre></div>
+</div>
+</div>
+</div>
 <footer class=footline>
 </footer>
 </div>
@@ -365,17 +1268,17 @@ Case File
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1653917800></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1653917800></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653917800></script>
-<script src=/api-docs/js/jquery.sticky.js?1653917800></script>
-<script src=/api-docs/js/featherlight.min.js?1653917800></script>
-<script src=/api-docs/js/highlight.pack.js?1653917800></script>
+<script src=/api-docs/js/clipboard.min.js?1653997854></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1653997854></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653997854></script>
+<script src=/api-docs/js/jquery.sticky.js?1653997854></script>
+<script src=/api-docs/js/featherlight.min.js?1653997854></script>
+<script src=/api-docs/js/highlight.pack.js?1653997854></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653917800></script>
-<script src=/api-docs/js/learn.js?1653917800></script>
-<script src=/api-docs/js/hugo-learn.js?1653917800></script>
-<script src=/api-docs/mermaid/mermaid.js?1653917800></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653997854></script>
+<script src=/api-docs/js/learn.js?1653997854></script>
+<script src=/api-docs/js/hugo-learn.js?1653997854></script>
+<script src=/api-docs/mermaid/mermaid.js?1653997854></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
