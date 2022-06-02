@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Case File :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1653997854 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1653997854 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1653997854></script>
+<link href=/api-docs/css/nucleus.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1654172165 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1654172165 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1654172165></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractfolder/casefile/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1653997854></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1653997854></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1654172165></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1654172165></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1653997854></script>
+<script type=text/javascript src=/api-docs/js/search.js?1654172165></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -403,7 +403,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
-<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>version</code></td>
@@ -436,7 +441,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>opprettetDato</code></td>
@@ -448,7 +458,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>opprettetAv</code></td>
@@ -460,7 +475,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>opprettetAvBrukerIdent</code></td>
@@ -472,7 +492,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 </tbody>
 </table>
@@ -500,7 +525,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>date and time when the archive unit was finalized (finalizedDate)</td>
+<td>date and time when the archive unit was finalized (finalizedDate)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>avsluttetAv</code></td>
@@ -512,7 +542,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>name of the user who finalized the archive unit (finalizedBy)</td>
+<td>name of the user who finalized the archive unit (finalizedBy)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>avsluttetAvBrukerIdent</code></td>
@@ -524,7 +559,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>unique identifier of the user who finalized the archive unit (finalizedByIdent)</td>
+<td>unique identifier of the user who finalized the archive unit (finalizedByIdent)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>prefiks</code></td>
@@ -536,7 +576,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
-<td>optional identifier of the system from which the case file originated, the value cannot be changed once set</td>
+<td>optional identifier of the system from which the case file originated, the value cannot be changed once set<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>mappeIdent</code></td>
@@ -548,7 +593,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>description of the archive (description)</td>
+<td>unambiguous identification of the case file within the fonds to which the case file belongs (fileId)<br><strong>Default :</strong> <code>year/sequenceNumber</code> in archive, example <code>2022/109</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>mappetype</code></td>
@@ -560,7 +610,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td><strong>Code List :</strong> <code>mappetype</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv</td>
+<td><strong>Code List :</strong> <code>mappetype</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
 <td><code>tittel</code></td>
@@ -572,7 +627,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>title of the archive (title)</td>
+<td>title of the archive (title)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>offentligTittel</code></td>
@@ -584,7 +644,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>title of the archive (title)</td>
+<td>public title of the case file, words that should be screened have been removed from the content of the title (replaced with ******) (publicTitle) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>beskrivelse</code></td>
@@ -596,7 +661,7 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>description of the archive (description)</td>
+<td>description of the case file (description)</td>
 </tr>
 <tr>
 <td><code>dokumentmedium</code></td>
@@ -608,115 +673,165 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>indication of whether the archive unit contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <code>dokumentmedium</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv</td>
+<td>indication of whether the archive unit contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <code>dokumentmedium</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
-<td><code>111111</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
+<td><code>saksaar</code></td>
+<td style=text-align:center>number</td>
+<td style=text-align:center>M011</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>year the case file was created<br><strong>Default :</strong> <code>current year</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>sakssekvensnummer</code></td>
+<td style=text-align:center>number</td>
+<td style=text-align:center>M012</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>order in which the case file was created within the year (caseSequenseNumber) <br> <strong>Default :</strong> <code>sequence number</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>saksdato</code></td>
+<td style=text-align:center>date</td>
+<td style=text-align:center>M100</td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+<td>date the case is created (caseDate) <br><strong>Default :</strong> <code>current date</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td><code>111111</code></td>
+<td><code>administrativEnhet</code></td>
 <td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
+<td style=text-align:center>M305</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of department, office or other administrative unit responsible for the case handling. (administrativeUnit) <br><strong>Code List :</strong> <code>administrativEnhet</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>saksansvarlig</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M306</td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+<td>name of the person who responsible for the case.Both this field and <code>saksansvarligBrukerIdent</code> are free text fields, which can be freely modified. (caseResponsible) <br><strong>Default :</strong> <code>currently logged in user</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td><code>111111</code></td>
+<td><code>saksansvarligBrukerIdent</code></td>
 <td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
+<td style=text-align:center>M306</td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+<td>identifier of the person who responsible for the case. Both this field and <code>saksansvarlig</code> are free text fields, which can be freely modified. (caseResponsibleId) <br><strong>Default :</strong> <code>currently logged in user ID</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td><code>111111</code></td>
+<td><code>saksstatus</code></td>
 <td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
+<td style=text-align:center>M052</td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+<td>status of the case file, ie how far the case handling has come. (caseFileStatus) <br><strong>Code List :</strong> <code>saksstatus</code><br><strong>Default :</strong> <code>B</code> - Under behandling<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
-<td><code>111111</code></td>
+<td><code>skjerming</code></td>
 <td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
+<td style=text-align:center>M500</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+<td>indication that the documents belonging to the case file are not publicly available in accordance with the Public Access to Information Act (offentlighetsloven) or for any other reason (accessRestriction)<br><strong>Code List :</strong> <code>skjerming</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
-<td><code>111111</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
+<td><code>virksomhetsspesifikkeMetadata</code></td>
+<td style=text-align:center>object</td>
+<td style=text-align:center>M711</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
-</tr>
-<tr>
-<td><code>111111</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
-</tr>
-<tr>
-<td><code>111111</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
-</tr>
-<tr>
-<td><code>111111</code></td>
-<td style=text-align:center>string</td>
-<td style=text-align:center>M050</td>
-<td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the fonds (fondsStatus) <br><strong>Code List :</strong> <code>arkivstatus</code><br><strong>Default :</strong> <code>O</code> - Opprettet</td>
+<td>overarching metadata element that can contain custom metadata. When metadata for an entity is updated, the whole of it is ovewritten. Examples for handling business specific metadata can be found in the usage section of the page. (businessSpecificMetadata) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Not Queryable</span>
+</span></td>
 </tr>
 </tbody>
 </table>
@@ -728,44 +843,169 @@ This allows integrating parties to find case files in Documaster using their own
 <th style=text-align:center>Referenced Entity Type</th>
 <th style=text-align:center>Cardinality</th>
 <th style=text-align:center>Link Required on Create</th>
-<th style=text-align:center>Reference Always Available</th>
 <th style=text-align:center>Modifiable</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>refArkivskaper</code></td>
-<td style=text-align:center><code>Arkivskaper</code></td>
+<td><code>refArkivdel</code></td>
+<td style=text-align:center><code>Arkivdel</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to the Series (<code>Arkivdel</code>) to which the Case File (<code>Saksmappe</code>) belongs<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned</span>
+</span></td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Records (<code>AbstraktRegistrering</code>) which can be either Basic Record (<code>BasisRegistrering</code>) or Registry Entry (<code>Journalpost</code>)</td>
+</tr>
+<tr>
+<td><code>refSakspart</code></td>
+<td style=text-align:center><code>Sakspart</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Case Party (<code>Sakspart</code>) entities</td>
+</tr>
+<tr>
+<td><code>refPrimaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
 <td style=text-align:center>1 . . *</td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to Fonds Creator (<code>Arkivskaper</code>), at least one Fonds Creator (<code>Arkivskaper</code>) should be linked to the Fonds (<code>Arkiv</code>) during creation.</td>
+<td>reference to the <strong>primary</strong> Class (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned</span>
+</span></td>
 </tr>
 <tr>
-<td><code>refArkivdel</code></td>
-<td style=text-align:center><code>Arkivdel</code></td>
+<td><code>refSekundaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
 <td style=text-align:center>0 . . *</td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of secondary Classes (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refEksternId</code></td>
+<td style=text-align:center><code>EksternId</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to one or more Series (<code>Arkivdel</code>), series can be linked or unlinked through this reference</td>
+<td>reference to a list of External ID (<code>EksternId</code>) entities, containing the case file identification in external systems</td>
+</tr>
+<tr>
+<td><code>refNoekkelord</code></td>
+<td style=text-align:center><code>Noekkelord</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Keywords (&lsquo;Noekkelord&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refMerknad</code></td>
+<td style=text-align:center><code>Merknad</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Notes (&lsquo;Merknad&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refNasjonalIdentifikator</code></td>
+<td style=text-align:center><code>NasjonalIdentifikator</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of National Identifiers (&lsquo;NasjonalIdentifikator&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseTilMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current case file has cross-reference</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseFraMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseTilRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current case file has cross-reference</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseFraRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
+</tr>
+<tr>
+<td><code>refPresedens</code></td>
+<td style=text-align:center><code>Presedens</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a Precedent (<code>Presedens</code>) associated to this case file</td>
 </tr>
 </tbody>
 </table>
 <h2 id=case-party>Case Party</h2>
-<p>Fonds Creator (<code>Arkivskaper</code>) is an entity representing the identity of the creator of the fonds.</p>
+<p>Case Party (<code>Sakspart</code>) is an entity representing a person related to the case file.</p>
 <ul>
 <li>Entity name in the API : <strong><code>Sakspart</code></strong>.</li>
-<li>Being a core Noark5 model entity, Fonds Creator (<code>Arkivskaper</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
-<li>Fonds (<code>Arkiv</code>) can have multiple Fonds Creators (<code>Arkivskaper</code>), but they are <em>owned</em> by the Fonds (<code>Arkiv</code>) entity and cannot be linked to other Fonds.</li>
+<li>Being a core Noark5 model entity, Case Party (<code>Sakspart</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+<li>Case File (<code>Saksmappe</code>) can have multiple Case Party (<code>Sakspart</code>), but they are <em>owned</em> by the Case File (<code>Saksmappe</code>) entity and cannot be linked to other Fonds.</li>
 </ul>
 <h3 id=data-fields-1>Data Fields</h3>
 <h4 id=common-data-fields>Common Data Fields</h4>
@@ -793,7 +1033,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
-<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation</td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>version</code></td>
@@ -826,7 +1071,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>globally unique identification of the entity, an UUID value<br><strong>Default :</strong> new value generated on creation</td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>opprettetDato</code></td>
@@ -838,7 +1088,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time</td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>opprettetAv</code></td>
@@ -850,7 +1105,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name</td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
 <td><code>opprettetAvBrukerIdent</code></td>
@@ -862,7 +1122,12 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier</td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 </tbody>
 </table>
@@ -881,40 +1146,242 @@ This allows integrating parties to find case files in Documaster using their own
 </thead>
 <tbody>
 <tr>
-<td><code>arkivskaperIdent</code></td>
+<td><code>sakspartIdent</code></td>
 <td style=text-align:center>string</td>
-<td style=text-align:center>M006</td>
+<td style=text-align:center>M010</td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>unique ID for the fonds creator (fondsCreatorID)</td>
+<td>unique ID for the fonds creator (fondsCreatorID) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td><code>arkivskaperNavn</code></td>
+<td><code>sakspartNavn</code></td>
 <td style=text-align:center>string</td>
-<td style=text-align:center>M023</td>
+<td style=text-align:center>M302</td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>name of the fonds creator (fondsCreatorName)</td>
+<td>name of the fonds creator (fondsCreatorName)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td><code>beskrivelse</code></td>
+<td><code>sakspartRolle</code></td>
 <td style=text-align:center>string</td>
-<td style=text-align:center>M021</td>
+<td style=text-align:center>M303</td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>description of the fonds creator (description)</td>
+<td>description of the fonds creator (description)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>foedselsnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date of birth (dateOfBirth) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>organisasjonsnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>organization number (orgNumber) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>dnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>personal number <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>postadresse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M406</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>mailing address of a sender/receiver or party (mailingAddress) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>postnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M407</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>postal code of a sender/receiver or party (postalCode) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>poststed</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M408</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>city where a sender/receiver or party is located (city) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>land</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M409</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>country if the mailing address is abroad (country) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>epostadresse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M410</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>email address of a sender/receiver or party (emailAddress) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>telefonnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M411</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>phone number of a sender/receiver or party (phone) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>kontaktperson</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M412</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>contact person of a organization who is sender, receiver or part (contactPerson) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>virksomhetsspesifikkeMetadata</code></td>
+<td style=text-align:center>object</td>
+<td style=text-align:center>M711</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>overarching metadata element that can contain custom metadata. When metadata for an entity is updated, the whole of it is ovewritten. Examples for handling business specific metadata can be found in the usage section of the page. (businessSpecificMetadata) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Not Queryable</span>
+</span></td>
 </tr>
 </tbody>
 </table>
@@ -933,8 +1400,8 @@ This allows integrating parties to find case files in Documaster using their own
 </thead>
 <tbody>
 <tr>
-<td><code>refArkiv</code></td>
-<td style=text-align:center><code>Arkiv</code></td>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>Saksmappe</code></td>
 <td style=text-align:center>1</td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
@@ -942,7 +1409,7 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
-<td>reference to Fonds (<code>Arkiv</code>), a Fonds Creator is <em>owned</em> by a single Fonds</td>
+<td>reference to Case File (<code>Saksmappe</code>), a Case Party is <em>owned</em> by a single Case File</td>
 </tr>
 </tbody>
 </table>
@@ -1268,17 +1735,17 @@ X-Documaster-Error-Response-Type: application/json
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1653997854></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1653997854></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1653997854></script>
-<script src=/api-docs/js/jquery.sticky.js?1653997854></script>
-<script src=/api-docs/js/featherlight.min.js?1653997854></script>
-<script src=/api-docs/js/highlight.pack.js?1653997854></script>
+<script src=/api-docs/js/clipboard.min.js?1654172165></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1654172165></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654172165></script>
+<script src=/api-docs/js/jquery.sticky.js?1654172165></script>
+<script src=/api-docs/js/featherlight.min.js?1654172165></script>
+<script src=/api-docs/js/highlight.pack.js?1654172165></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1653997854></script>
-<script src=/api-docs/js/learn.js?1653997854></script>
-<script src=/api-docs/js/hugo-learn.js?1653997854></script>
-<script src=/api-docs/mermaid/mermaid.js?1653997854></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654172165></script>
+<script src=/api-docs/js/learn.js?1654172165></script>
+<script src=/api-docs/js/hugo-learn.js?1654172165></script>
+<script src=/api-docs/mermaid/mermaid.js?1654172165></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
