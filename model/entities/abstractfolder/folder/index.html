@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Basic Folder :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1654500667 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1654500667></script>
+<link href=/api-docs/css/nucleus.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1654505321 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1654505321></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractfolder/folder/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1654500667></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1654500667></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1654505321></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1654505321></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1654500667></script>
+<script type=text/javascript src=/api-docs/js/search.js?1654505321></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -349,7 +349,12 @@ Create Registry Entry and Document
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#mappe>Mappe</a></li>
+<li><a href=#basic-folder>Basic Folder</a>
+<ul>
+<li><a href=#data-fields>Data Fields</a></li>
+<li><a href=#reference-fields>Reference Fields</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -362,7 +367,527 @@ Create Registry Entry and Document
 <h1>
 Basic Folder
 </h1>
-<h2 id=mappe>Mappe</h2>
+<h2 id=basic-folder>Basic Folder</h2>
+<p>Basic Folder (<code>Mappe</code>) is a folder used to keep records in no particular order, mostly used as a storage container for data.</p>
+<ul>
+<li>Entity name in the API : <strong><code>Mappe</code></strong>.</li>
+<li>Being a core Noark5 model entity, Basic Folder (<code>Mappe</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+<li>Basic Folder (<code>Mappe</code>) should be associated to a Series (<code>Arkivdel</code>)</li>
+<li>Only single type of records - Basic Record (<code>Basisregistrering</code>) can be created under a Basic Folder (<code>Mappe</code>)</li>
+</ul>
+<div class="notices note"><p>Very common approach is to add to the Basic Folder (<code>Mappe</code>) an External ID (<code>EksternId</code>) which contains the quality/business system case identifier.
+This allows integrating parties to find folder in Documaster using their own folder IDs.</p>
+</div>
+<p><img src=/api-docs/model/entities/abstractfolder/folder/diagram-basicfolder-model.png alt=entities-fields></p>
+<h3 id=data-fields>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=mappe-specific-data-fields><code>Mappe</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avsluttetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M602</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time when the archive unit was finalized (finalizedDate)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>avsluttetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user who finalized the archive unit (finalizedBy)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>avsluttetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unique identifier of the user who finalized the archive unit (finalizedByIdent)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>prefiks</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>optional identifier of the system from which the basic folder originated, the value cannot be changed once set<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>mappeIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M003</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unambiguous identification of the basic folder within the fonds to which the basic folder belongs (fileId)<br><strong>Default :</strong> <code>year/sequenceNumber</code> in archive, example <code>2022/109</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>mappetype</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td><strong>Code List :</strong> <code>mappetype</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
+</tr>
+<tr>
+<td><code>tittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M020</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>title of the archive (title)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>offentligTittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M025</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>public title of the basic folder, words that should be screened have been removed from the content of the title (replaced with ******) (publicTitle) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M021</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>description of the basic folder (description)</td>
+</tr>
+<tr>
+<td><code>dokumentmedium</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M300</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication of whether the archive unit contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <code>dokumentmedium</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
+</tr>
+<tr>
+<td><code>skjerming</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M500</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication that the documents belonging to the basic folder are not publicly available in accordance with the Public Access to Information Act (offentlighetsloven) or for any other reason (accessRestriction)<br><strong>Code List :</strong> <code>skjerming</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
+</tr>
+<tr>
+<td><code>virksomhetsspesifikkeMetadata</code></td>
+<td style=text-align:center>object</td>
+<td style=text-align:center>M711</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>overarching metadata element that can contain custom metadata. When metadata for an entity is updated, the whole of it is ovewritten. Examples for handling business specific metadata can be found in the usage section of the page. (businessSpecificMetadata) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Not Queryable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields>Reference Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refArkivdel</code></td>
+<td style=text-align:center><code>Arkivdel</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to the Series (<code>Arkivdel</code>) to which the Case File (<code>Saksmappe</code>) belongs<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned (if under Series) </span>
+</span></td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Records (<code>AbstraktRegistrering</code>) which can be either Basic Record (<code>BasisRegistrering</code>) or Registry Entry (<code>Journalpost</code>)</td>
+</tr>
+<tr>
+<td><code>refForelderMappe</code></td>
+<td style=text-align:center><code>Mappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a parent Basic Folder (<code>Mappe</code>), in case the folders are kept in hierarchy.<br> <strong>Note</strong> : only one of the two references - <code>refArkivdel</code> or <code>refForelderMappe</code> should be set during creation, meaning the folder can be under a Serie (<code>Arkivdel</code>) or under another Basic Folder (<code>Mappe</code>), but not both.<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned (if under another folder)</span>
+</span></td>
+</tr>
+<tr>
+<td><code>refBarnMappe</code></td>
+<td style=text-align:center><code>Mappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list Basic Folders (<code>Mappe</code>) for which the current folder is parent, in case folders are kept in hierarchy. <br> <strong>Note</strong> : only one of the two references - <code>refRegistrering</code> or <code>refBarnMappe</code> should be set during creation, meaning the folder have Records (<code>Regisrering</code>) or other Basic Folders (<code>Mappe</code>), but not both.</td>
+</tr>
+<tr>
+<td><code>refPrimaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
+<td style=text-align:center>1 . . *</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to the <strong>primary</strong> Class (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned</span>
+</span></td>
+</tr>
+<tr>
+<td><code>refSekundaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of secondary Classes (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refEksternId</code></td>
+<td style=text-align:center><code>EksternId</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of External ID (<code>EksternId</code>) entities, containing the basic folder identification in external systems</td>
+</tr>
+<tr>
+<td><code>refNoekkelord</code></td>
+<td style=text-align:center><code>Noekkelord</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Keywords (&lsquo;Noekkelord&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refMerknad</code></td>
+<td style=text-align:center><code>Merknad</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Notes (&lsquo;Merknad&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refNasjonalIdentifikator</code></td>
+<td style=text-align:center><code>NasjonalIdentifikator</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of National Identifiers (&lsquo;NasjonalIdentifikator&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseTilMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current basic folder has cross-reference</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseFraMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current basic folder is being cross-referenced</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseTilRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current basic folder has cross-reference</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseFraRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current basic folder is being cross-referenced</td>
+</tr>
+</tbody>
+</table>
 <footer class=footline>
 </footer>
 </div>
@@ -375,17 +900,17 @@ Basic Folder
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1654500667></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1654500667></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654500667></script>
-<script src=/api-docs/js/jquery.sticky.js?1654500667></script>
-<script src=/api-docs/js/featherlight.min.js?1654500667></script>
-<script src=/api-docs/js/highlight.pack.js?1654500667></script>
+<script src=/api-docs/js/clipboard.min.js?1654505321></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1654505321></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654505321></script>
+<script src=/api-docs/js/jquery.sticky.js?1654505321></script>
+<script src=/api-docs/js/featherlight.min.js?1654505321></script>
+<script src=/api-docs/js/highlight.pack.js?1654505321></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654500667></script>
-<script src=/api-docs/js/learn.js?1654500667></script>
-<script src=/api-docs/js/hugo-learn.js?1654500667></script>
-<script src=/api-docs/mermaid/mermaid.js?1654500667></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654505321></script>
+<script src=/api-docs/js/learn.js?1654505321></script>
+<script src=/api-docs/js/hugo-learn.js?1654505321></script>
+<script src=/api-docs/mermaid/mermaid.js?1654505321></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

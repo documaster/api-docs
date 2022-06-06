@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Case File :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1654500667 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1654500667 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1654500667></script>
+<link href=/api-docs/css/nucleus.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1654505321 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1654505321 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1654505321></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractfolder/casefile/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1654500667></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1654500667></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1654505321></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1654505321></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1654500667></script>
+<script type=text/javascript src=/api-docs/js/search.js?1654505321></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -375,13 +375,13 @@ Create Registry Entry and Document
 Case File
 </h1>
 <h2 id=case-file>Case File</h2>
-<p>Fonds (<code>Arkiv</code>) is the root of the archival structure and as such is required to be present for each integration to Documaster to operate.</p>
+<p>Case File (<code>Saksmappe</code>) is folder type, which keeps journaled (ordered) set of records. This is the most commonly used folder type, since it is used to model continuous chronological process.</p>
 <ul>
 <li>Entity name in the API : <strong><code>Saksmappe</code></strong>.</li>
 <li>Being a core Noark5 model entity, Case File (<code>Saksmappe</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
 <li>Case File (<code>Saksmappe</code>) should be associated to a Series (<code>Arkivdel</code>)</li>
 <li>Case File (<code>Saksmappe</code>) can be created without Case Party (<code>Sakspart</code>), multiple Case Party (<code>Sakspart</code>) entities instances can be linked to a case file</li>
-<li>Only two types of records - Registry Entry (<code>Journalpost</code>) and Basic Folder (<code>Mappe</code>) can be created under a Case File (<code>Saksmappe</code>)</li>
+<li>Only two types of records - Registry Entry (<code>Journalpost</code>) and Basic Record (<code>Basisregistrering</code>) can be created under a Case File (<code>Saksmappe</code>)</li>
 </ul>
 <div class="notices note"><p>Very common approach is to add to the Case File (<code>Saksmappe</code>) an External ID (<code>EksternId</code>) which contains the quality/business system case identifier.
 This allows integrating parties to find case files in Documaster using their own case file IDs.</p>
@@ -1015,7 +1015,7 @@ This allows integrating parties to find case files in Documaster using their own
 <ul>
 <li>Entity name in the API : <strong><code>Sakspart</code></strong>.</li>
 <li>Being a core Noark5 model entity, Case Party (<code>Sakspart</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
-<li>Case File (<code>Saksmappe</code>) can have multiple Case Party (<code>Sakspart</code>), but they are <em>owned</em> by the Case File (<code>Saksmappe</code>) entity and cannot be linked to other Fonds.</li>
+<li>Case File (<code>Saksmappe</code>) can have multiple Case Party (<code>Sakspart</code>), but they are <em>owned</em> by the Case File (<code>Saksmappe</code>) entity and cannot be linked to other case files.</li>
 </ul>
 <h3 id=data-fields-1>Data Fields</h3>
 <h4 id=common-data-fields>Common Data Fields</h4>
@@ -1165,7 +1165,7 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>unique ID for the fonds creator (fondsCreatorID) <br>
+<td>unique ID for the case party (casePartyId) <br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -1182,7 +1182,7 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>name of the fonds creator (fondsCreatorName)<br>
+<td>name of the case party (casePartyName)<br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -1199,7 +1199,7 @@ This allows integrating parties to find case files in Documaster using their own
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>description of the fonds creator (description)<br>
+<td>role of the case party in the case file<br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -1779,17 +1779,17 @@ X-Documaster-Error-Response-Type: application/json
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1654500667></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1654500667></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654500667></script>
-<script src=/api-docs/js/jquery.sticky.js?1654500667></script>
-<script src=/api-docs/js/featherlight.min.js?1654500667></script>
-<script src=/api-docs/js/highlight.pack.js?1654500667></script>
+<script src=/api-docs/js/clipboard.min.js?1654505321></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1654505321></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654505321></script>
+<script src=/api-docs/js/jquery.sticky.js?1654505321></script>
+<script src=/api-docs/js/featherlight.min.js?1654505321></script>
+<script src=/api-docs/js/highlight.pack.js?1654505321></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654500667></script>
-<script src=/api-docs/js/learn.js?1654500667></script>
-<script src=/api-docs/js/hugo-learn.js?1654500667></script>
-<script src=/api-docs/mermaid/mermaid.js?1654500667></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654505321></script>
+<script src=/api-docs/js/learn.js?1654505321></script>
+<script src=/api-docs/js/hugo-learn.js?1654505321></script>
+<script src=/api-docs/mermaid/mermaid.js?1654505321></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
