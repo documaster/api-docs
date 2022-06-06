@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Core Entities :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1654316453 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1654316453 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1654316453></script>
+<link href=/api-docs/css/nucleus.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1654500667 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1654500667 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1654500667></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1654316453></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1654316453></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1654500667></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1654500667></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1654316453></script>
+<script type=text/javascript src=/api-docs/js/search.js?1654500667></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -345,7 +345,20 @@ Create Registry Entry and Document
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a>
+<ul>
+<li><a href=#fonds>Fonds</a></li>
+<li><a href=#classification>Classification</a></li>
+<li><a href=#series>Series</a></li>
+<li><a href=#folders-level>Folders Level</a></li>
+<li><a href=#records-level>Records Level</a></li>
+<li><a href=#documents>Documents</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -356,6 +369,54 @@ Create Registry Entry and Document
 <h1>
 Core Entities
 </h1>
+<h2 id=overview>Overview</h2>
+<p>Core Entities in the Documaster API Data Model are all entities which are required to structure an archive based on the Noark5 standard.</p>
+<p>Those entites are the listed below :</p>
+<h3 id=fonds>Fonds</h3>
+<ul>
+<li>Fonds (<code>Arkiv</code>)</li>
+<li>Fonds Creator (<code>Arkivskaper</code>)</li>
+</ul>
+<h3 id=classification>Classification</h3>
+<ul>
+<li>Classification System (<code>Klassifikasjonssystem</code>)</li>
+<li>Class (<code>Klasse</code>)</li>
+</ul>
+<h3 id=series>Series</h3>
+<ul>
+<li>Seies (<code>Arkivdel</code>)</li>
+</ul>
+<h3 id=folders-level>Folders Level</h3>
+<ul>
+<li>Basic Folder (<code>Mappe</code>)</li>
+<li>Meeting Folder (<code>Moetemappe</code>)
+<ul>
+<li>Meeting Participant (<code>Moetedeltaker</code>)</li>
+</ul>
+</li>
+<li>Case File (<code>Saksmappe</code>)
+<ul>
+<li>Case Party (<code>Sakspart</code>)</li>
+</ul>
+</li>
+</ul>
+<h3 id=records-level>Records Level</h3>
+<ul>
+<li>Basic Record (<code>Basisregistrering</code>)</li>
+<li>Registry Entry (<code>Journalpost</code>)
+<ul>
+<li>Correspondence Party (<code>Korrespondansepart</code>)</li>
+<li>Document Flow (<code>Dokumentflyt</code>)</li>
+<li>Sign-Off (<code>Avskrivning</code>)</li>
+</ul>
+</li>
+<li>Meeting Record (<code>Moeteregistrering</code>)</li>
+</ul>
+<h3 id=documents>Documents</h3>
+<ul>
+<li>Document (<code>Dokument</code>)</li>
+<li>Document Version (<code>Dokumentversjon</code>)</li>
+</ul>
 <footer class=footline>
 </footer>
 </div>
@@ -368,17 +429,17 @@ Core Entities
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1654316453></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1654316453></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654316453></script>
-<script src=/api-docs/js/jquery.sticky.js?1654316453></script>
-<script src=/api-docs/js/featherlight.min.js?1654316453></script>
-<script src=/api-docs/js/highlight.pack.js?1654316453></script>
+<script src=/api-docs/js/clipboard.min.js?1654500667></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1654500667></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654500667></script>
+<script src=/api-docs/js/jquery.sticky.js?1654500667></script>
+<script src=/api-docs/js/featherlight.min.js?1654500667></script>
+<script src=/api-docs/js/highlight.pack.js?1654500667></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654316453></script>
-<script src=/api-docs/js/learn.js?1654316453></script>
-<script src=/api-docs/js/hugo-learn.js?1654316453></script>
-<script src=/api-docs/mermaid/mermaid.js?1654316453></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654500667></script>
+<script src=/api-docs/js/learn.js?1654500667></script>
+<script src=/api-docs/js/hugo-learn.js?1654500667></script>
+<script src=/api-docs/mermaid/mermaid.js?1654500667></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
