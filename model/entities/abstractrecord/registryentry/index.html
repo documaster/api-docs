@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Registry Entry :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1654505321 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1654505321 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1654505321></script>
+<link href=/api-docs/css/nucleus.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1654508234 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1654508234 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1654508234></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractrecord/registryentry/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1654505321></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1654505321></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1654508234></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1654508234></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1654505321></script>
+<script type=text/javascript src=/api-docs/js/search.js?1654508234></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -349,11 +349,16 @@ Create Registry Entry and Document
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#fields>Fields</a>
+<li><a href=#overview>Overview</a>
 <ul>
-<li><a href=#entity-fields>Entity Fields</a></li>
+<li><a href=#data-fields>Data Fields</a></li>
 <li><a href=#reference-fields>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#correspondence-party>Correspondence Party</a>
+<ul>
+<li><a href=#data-fields-1>Data Fields</a></li>
+<li><a href=#reference-fields-1>Reference Fields</a></li>
 </ul>
 </li>
 <li><a href=#working-with-registry-entry>Working with Registry Entry</a></li>
@@ -372,11 +377,11 @@ Registry Entry
 <h2 id=overview>Overview</h2>
 <p>Registry Entry is a journaling entry collecting documents part of an interaction with a correspondence party.</p>
 <ul>
-<li>Registry Entry <code>Journalpost</code> is a subtype of <code>AbstraktRegistrering</code> and as such inherits fields part of the parent object.</li>
+<li>Registry Entry (<code>Journalpost</code>) is a subtype of <code>AbstraktRegistrering</code> and as such inherits fields part of the parent object.</li>
 <li>Being a core Noark5 model entity, Registry Entry is managed using the <code>POST /transaction</code> operation.</li>
-<li>Registry Entry can be linked under either a Case File (<code>Saksmappe</code>) or a Folder (<code>Mappe</code>).</li>
+<li>Registry Entry can be linked under a Case File (<code>Saksmappe</code>).</li>
 <li>Registry Entry cannot be created without a <code>transaction::link</code> action to an entity on the folders level through <code>refMappe</code></li>
-<li>Any Registry Entry, should be linked to a Correspondence Party(<code>Korrespondansepart</code>) that needs to be created in the same transaction as the Registry Entry itself.</li>
+<li>Any Registry Entry, should be linked to a Correspondence Party (<code>Korrespondansepart</code>) that needs to be created in the same transaction as the Registry Entry itself.</li>
 <li>Registry entries are referenced by Document(<code>Dokument</code>) entities during Document, DocumentVersion creation
 <ul>
 <li><a href=https://google.com>Document (<code>Dokument</code>) Entity Reference</a></li>
@@ -415,704 +420,461 @@ Registry Entry
 <p>Diagram showing the relation of Registry Entry entity (<code>Journalpsot</code>) to any other entities through its reference fields.
 The diagram depicts the most important set of fields, leaving some of the use cases out of it for simplicity.
 <img src=/api-docs/model/entities/abstractRecord/registryEntry/images/all-references.png alt=child-parent-relation></p>
-<hr>
-<p>Diagram of the relation of Registry Entry and Abstract Record and siblings.
-<img src=/api-docs/model/entities/abstractRecord/registryEntry/images/context-a.png alt=child-parent-relation></p>
-<h2 id=fields>Fields</h2>
-<h3 id=abstraktregistrering--abstract-record-fields>AbstraktRegistrering / Abstract Record Fields</h3>
+<h3 id=data-fields>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
 <table>
 <thead>
 <tr>
-<th style=text-align:left>Field no.</th>
-<th style=text-align:left>Type</th>
-<th style=text-align:left>Field</th>
-<th style=text-align:center>Not null</th>
-<th style=text-align:center>Has default</th>
-<th style=text-align:center>Code list</th>
-<th style=text-align:left></th>
-<th style=text-align:center>Save</th>
-<th style=text-align:center>View</th>
-<th style=text-align:center>Query</th>
-<th style=text-align:center>Sort</th>
-<th style=text-align:left>Comment</th>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>id</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
 <td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>sm</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>version</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>sm</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left></td>
-<td style=text-align:left></td>
-<td style=text-align:left></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M001</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>
-<style>.definition{visibility:hidden;width:220px;background-color:rgba(220,223,254,.9);color:#2b061f;text-align:left;border-radius:6px;padding:5px 0;position:absolute;z-index:1;bottom:125%;left:50%;margin-left:-60px;transition:opacity .3s;padding:5px}.term{position:relative;display:inline-block}.term:hover .definition{visibility:visible;opacity:1}</style>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55> uuid
-<span class=definition> unique identifer of entity in Documaster system </span> </span>
+<span style=color:#941d55>Sortable</span>
 </span></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
 </tr>
 <tr>
-<td style=text-align:left>M600</td>
-<td style=text-align:left>timestamp</td>
-<td style=text-align:left>
-<style>.definition{visibility:hidden;width:220px;background-color:rgba(220,223,254,.9);color:#2b061f;text-align:left;border-radius:6px;padding:5px 0;position:absolute;z-index:1;bottom:125%;left:50%;margin-left:-60px;transition:opacity .3s;padding:5px}.term{position:relative;display:inline-block}.term:hover .definition{visibility:visible;opacity:1}</style>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55> opprettetDato
-<span class=definition> createdDate (en) <br> date at which the entity was created </span> </span>
+<span style=color:#941d55>Indexed, Sortable</span>
 </span></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
 </tr>
 <tr>
-<td style=text-align:left>M601</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>opprettetAv</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M601</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>opprettetAvBrukerIdent</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M602</td>
-<td style=text-align:left>timestamp</td>
-<td style=text-align:left>avsluttetDato</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M603</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>avsluttetAv</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M603</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>avsluttetAvBrukerIdent</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>prefiks</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• optional identifier of the system this <strong>Journalpost</strong> originated from</p><p>• it is strongly advised to populate this field when the target system contains or will contain data from multiple source case management systems</p><p>• once set, this value cannot be modified</p></td>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 </tbody>
 </table>
-<h3 id=entity-fields>Entity Fields</h3>
+<h4 id=journalpost-specific-data-fields><code>Journalpost</code> Specific Data Fields</h4>
 <table>
 <thead>
 <tr>
-<th style=text-align:left>Field no.</th>
-<th style=text-align:left>Type</th>
-<th style=text-align:left>Field</th>
-<th style=text-align:center>Not null</th>
-<th style=text-align:center>Has default</th>
-<th style=text-align:center>Code list</th>
-<th style=text-align:left></th>
-<th style=text-align:center>Save</th>
-<th style=text-align:center>View</th>
-<th style=text-align:center>Query</th>
-<th style=text-align:center>Sort</th>
-<th style=text-align:left>Comment</th>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>id</td>
+<td><code>avsluttetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M602</td>
 <td style=text-align:center>
-<h4><i class="fas fa-check" style=color:green></i></h4></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>sm</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>version</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>sm</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left></td>
-<td style=text-align:left></td>
-<td style=text-align:left></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M001</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>
-<style>.definition{visibility:hidden;width:220px;background-color:rgba(220,223,254,.9);color:#2b061f;text-align:left;border-radius:6px;padding:5px 0;position:absolute;z-index:1;bottom:125%;left:50%;margin-left:-60px;transition:opacity .3s;padding:5px}.term{position:relative;display:inline-block}.term:hover .definition{visibility:visible;opacity:1}</style>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time when the archive unit was finalized (finalizedDate)<br>
+<style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55> uuid
-<span class=definition> unique identifer of entity in Documaster system </span> </span>
+<span style=color:#941d55>Sortable</span>
 </span></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
 </tr>
 <tr>
-<td style=text-align:left>M600</td>
-<td style=text-align:left>timestamp</td>
-<td style=text-align:left>
-<style>.definition{visibility:hidden;width:220px;background-color:rgba(220,223,254,.9);color:#2b061f;text-align:left;border-radius:6px;padding:5px 0;position:absolute;z-index:1;bottom:125%;left:50%;margin-left:-60px;transition:opacity .3s;padding:5px}.term{position:relative;display:inline-block}.term:hover .definition{visibility:visible;opacity:1}</style>
+<td><code>avsluttetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user who finalized the archive unit (finalizedBy)<br>
+<style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55> opprettetDato
-<span class=definition> createdDate (en) <br> date at which the entity was created </span> </span>
+<span style=color:#941d55>Sortable</span>
 </span></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
 </tr>
 <tr>
-<td style=text-align:left>M601</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>opprettetAv</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>avsluttetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unique identifier of the user who finalized the archive unit (finalizedByIdent)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M601</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>opprettetAvBrukerIdent</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
+<td><code>prefiks</code></td>
+<td style=text-align:center>string</td>
 <td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>optional identifier of the system from which the case file originated, the value cannot be changed once set<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M602</td>
-<td style=text-align:left>timestamp</td>
-<td style=text-align:left>avsluttetDato</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>mappeIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M003</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unambiguous identification of the case file within the fonds to which the case file belongs (fileId)<br><strong>Default :</strong> <code>year/sequenceNumber</code> in archive, example <code>2022/109</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M603</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>avsluttetAv</td>
+<td><code>mappetype</code></td>
+<td style=text-align:center>string</td>
 <td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td><strong>Code List :</strong> <code>mappetype</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M603</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>avsluttetAvBrukerIdent</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>tittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M020</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>title of the archive (title)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>prefiks</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• optional identifier of the system this <strong>Journalpost</strong> originated from</p><p>• it is strongly advised to populate this field when the target system contains or will contain data from multiple source case management systems</p><p>• once set, this value cannot be modified</p></td>
+<td><code>offentligTittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M025</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>public title of the case file, words that should be screened have been removed from the content of the title (replaced with ******) (publicTitle) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M004</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>registreringsIdent</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M021</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>description of the case file (description)</td>
 </tr>
 <tr>
-<td style=text-align:left>M020</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>tittel</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>dokumentmedium</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M300</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication of whether the archive unit contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <code>dokumentmedium</code><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M025</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>offentligTittel</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>saksaar</code></td>
+<td style=text-align:center>number</td>
+<td style=text-align:center>M011</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>year the case file was created<br><strong>Default :</strong> <code>current year</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M021</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>beskrivelse</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>sakssekvensnummer</code></td>
+<td style=text-align:center>number</td>
+<td style=text-align:center>M012</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>order in which the case file was created within the year (caseSequenseNumber) <br> <strong>Default :</strong> <code>sequence number</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M024</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>forfatter</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>saksdato</code></td>
+<td style=text-align:center>date</td>
+<td style=text-align:center>M100</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date the case is created (caseDate) <br><strong>Default :</strong> <code>current date</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M300</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>dokumentmedium</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>dokumentmedium</td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>administrativEnhet</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M305</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of department, office or other administrative unit responsible for the case handling. (administrativeUnit) <br><strong>Code List :</strong> <code>administrativEnhet</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M013</td>
-<td style=text-align:left>number</td>
-<td style=text-align:left>journalaar</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>saksansvarlig</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M306</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of the person who responsible for the case.Both this field and <code>saksansvarligBrukerIdent</code> are free text fields, which can be freely modified. (caseResponsible) <br><strong>Default :</strong> <code>currently logged in user</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M014</td>
-<td style=text-align:left>number</td>
-<td style=text-align:left>journalsekvensnummer</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>saksansvarligBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M306</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>identifier of the person who responsible for the case. Both this field and <code>saksansvarlig</code> are free text fields, which can be freely modified. (caseResponsibleId) <br><strong>Default :</strong> <code>currently logged in user ID</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>M015</td>
-<td style=text-align:left>number</td>
-<td style=text-align:left>journalpostnummer</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>cw</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>saksstatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M052</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the case file, ie how far the case handling has come. (caseFileStatus) <br><strong>Code List :</strong> <code>saksstatus</code><br><strong>Default :</strong> <code>B</code> - Under behandling<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>journalansvarlig</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• The name of the person responsible for this Journalpost (similar to M306 Saksmappe#saksansvarlig)</p></td>
+<td><code>skjerming</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M500</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication that the documents belonging to the case file are not publicly available in accordance with the Public Access to Information Act (offentlighetsloven) or for any other reason (accessRestriction)<br><strong>Code List :</strong> <code>skjerming</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left></td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>journalansvarligBrukerIdent</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• The user ID of the person responsible for this Journalpost as stored in journalansvarlig (similar to M306 Saksmappe#saksansvarligBrukerIdent)</p></td>
-</tr>
-<tr>
-<td style=text-align:left>M082</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>journalposttype</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:center>journalposttype</td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M053</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>journalstatus</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>journalstatus</td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M101</td>
-<td style=text-align:left>date</td>
-<td style=text-align:left>registreringsDato</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M103</td>
-<td style=text-align:left>date</td>
-<td style=text-align:left>dokumentetsDato</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M109</td>
-<td style=text-align:left>date</td>
-<td style=text-align:left>forfallsdato</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M104</td>
-<td style=text-align:left>timestamp</td>
-<td style=text-align:left>mottattDato</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M105</td>
-<td style=text-align:left>timestamp</td>
-<td style=text-align:left>sendtDato</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M110</td>
-<td style=text-align:left>date</td>
-<td style=text-align:left>offentlighetsvurdertDato</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left></td>
-<td style=text-align:left>boolean</td>
-<td style=text-align:left>skjermKorrespondanseParterEInnsyn</td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left>When <strong>true</strong>, it indicates that <strong>Korrespondansepart</strong> objects of this <strong>Journalpost</strong> referenced by <strong>refKorrespondansepart</strong> will be screened in eInnsyn, even if the <strong>Journalpost</strong> is not effectively screened. When <strong>false</strong> or <strong>null</strong>, it indicates that <strong>Korrespondansepart</strong> objects will not be screened in eInnsyn, even if the <strong>Journalpost</strong> is effectively screened. Defaults to <strong>false</strong>.</td>
-</tr>
-<tr>
-<td style=text-align:left>M500</td>
-<td style=text-align:left>string</td>
-<td style=text-align:left>skjerming</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>skjerming</td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left></td>
-<td style=text-align:left></td>
-<td style=text-align:left></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-</tr>
-<tr>
-<td style=text-align:left>M711</td>
-<td style=text-align:left>object</td>
-<td style=text-align:left>virksomhetsspesifikkeMetadata</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>virksomhetsspesifikkeMetadata</code></td>
+<td style=text-align:center>object</td>
+<td style=text-align:center>M711</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>overarching metadata element that can contain custom metadata. When metadata for an entity is updated, the whole of it is ovewritten. Examples for handling business specific metadata can be found in the usage section of the page. (businessSpecificMetadata) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Not Queryable</span>
+</span></td>
 </tr>
 </tbody>
 </table>
@@ -1120,168 +882,574 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <table>
 <thead>
 <tr>
-<th style=text-align:left>Field</th>
-<th style=text-align:center>Not null</th>
-<th style=text-align:center>View</th>
-<th style=text-align:center>Query</th>
-<th style=text-align:center>Link</th>
-<th style=text-align:center>Unlink</th>
-<th style=text-align:left>Comment</th>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style=text-align:left>refMappe</td>
-<td style=text-align:center>c</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• references <strong>Saksmappe</strong></p><p>• exactly one of <strong>refMappe</strong> and <strong>refArkivdel</strong> is required</p></td>
+<td><code>refArkivdel</code></td>
+<td style=text-align:center><code>Arkivdel</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to the Series (<code>Arkivdel</code>) to which the Case File (<code>Saksmappe</code>) belongs<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>refArkivdel</td>
-<td style=text-align:center>c</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• references <strong>Arkivdel</strong></p><p>• exactly one of <strong>refMappe</strong> and <strong>refArkivdel</strong> is required</p></td>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Records (<code>AbstraktRegistrering</code>) which can be either Basic Record (<code>BasisRegistrering</code>) or Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
-<td style=text-align:left>refKorrespondansepart</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>refSakspart</code></td>
+<td style=text-align:center><code>Sakspart</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Case Party (<code>Sakspart</code>) entities</td>
 </tr>
 <tr>
-<td style=text-align:left>refDokument</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>refPrimaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
+<td style=text-align:center>1 . . *</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to the <strong>primary</strong> Class (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>refPrimaerKlasse</td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• references a <strong>Klasse</strong> from the primary <strong>Klassifikasjonssystem</strong> of the <strong>Arkivdel</strong></p></td>
+<td><code>refSekundaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of secondary Classes (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>)</td>
 </tr>
 <tr>
-<td style=text-align:left>refSekundaerKlasse</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left><p>• references a <strong>Klasse</strong> from any <strong>Klassifikasjonssystem</strong></p></td>
+<td><code>refEksternId</code></td>
+<td style=text-align:center><code>EksternId</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of External ID (<code>EksternId</code>) entities, containing the case file identification in external systems</td>
 </tr>
 <tr>
-<td style=text-align:left>refEksternId</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>refNoekkelord</code></td>
+<td style=text-align:center><code>Noekkelord</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Keywords (&lsquo;Noekkelord&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
 </tr>
 <tr>
-<td style=text-align:left>refDokumentflyt</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>refMerknad</code></td>
+<td style=text-align:center><code>Merknad</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Notes (&lsquo;Merknad&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
 </tr>
 <tr>
-<td style=text-align:left>refNoekkelord</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>refNasjonalIdentifikator</code></td>
+<td style=text-align:center><code>NasjonalIdentifikator</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of National Identifiers (&lsquo;NasjonalIdentifikator&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
 </tr>
 <tr>
-<td style=text-align:left>refAvskrivning</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>refKryssreferanseTilMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current case file has cross-reference</td>
 </tr>
 <tr>
-<td style=text-align:left>refTilknyttetAvskrivning</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>refKryssreferanseFraMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
 </tr>
 <tr>
-<td style=text-align:left>refMerknad</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left></td>
+<td><code>refKryssreferanseTilRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current case file has cross-reference</td>
 </tr>
 <tr>
-<td style=text-align:left>refNasjonalIdentifikator</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center></td>
-<td style=text-align:left></td>
+<td><code>refKryssreferanseFraRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
 </tr>
 <tr>
-<td style=text-align:left>refKryssreferanseTilMappe</td>
+<td><code>refPresedens</code></td>
+<td style=text-align:center><code>Presedens</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a Precedent (<code>Presedens</code>) associated to this case file</td>
+</tr>
+</tbody>
+</table>
+<h2 id=correspondence-party>Correspondence Party</h2>
+<p>Correspondence Party (<code>Korrespondansepart</code>) is an entity representing a person related to the case file.</p>
+<ul>
+<li>Entity name in the API : <strong><code>Sakspart</code></strong>.</li>
+<li>Being a core Noark5 model entity, Case Party (<code>Sakspart</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+<li>Case File (<code>Saksmappe</code>) can have multiple Case Party (<code>Sakspart</code>), but they are <em>owned</em> by the Case File (<code>Saksmappe</code>) entity and cannot be linked to other case files.</li>
+</ul>
+<h3 id=data-fields-1>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
 <td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left>refers to <strong>AbstraktMappe</strong> that the current <strong>AbstraktRegistrering</strong> cross references</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
 </tr>
 <tr>
-<td style=text-align:left>refKryssreferanseFraMappe</td>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
 <td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left>refers to <strong>AbstraktMappe</strong> that cross reference the current <strong>AbstraktRegistrering</strong></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
 </tr>
 <tr>
-<td style=text-align:left>refKryssreferanseTilRegistrering</td>
-<td style=text-align:center></td>
-<td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left>refers to <strong>AbstraktRegistrering</strong> that the current <strong>AbstraktRegistrering</strong> cross references</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td style=text-align:left>refKryssreferanseFraRegistrering</td>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=korrespondansepart-specific-data-fields><code>Korrespondansepart</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sakspartIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M010</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>unique ID for the case party (casePartyId) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>sakspartNavn</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M302</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of the case party (casePartyName)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>sakspartRolle</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M303</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>role of the case party in the case file<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>foedselsnummer</code></td>
+<td style=text-align:center>string</td>
 <td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date of birth (dateOfBirth) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>organisasjonsnummer</code></td>
+<td style=text-align:center>string</td>
 <td style=text-align:center></td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:center>x</td>
-<td style=text-align:left>refers to <strong>AbstraktRegistrering</strong> that cross reference the current <strong>AbstraktRegistrering</strong></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>organization number (orgNumber) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>dnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>personal number <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>postadresse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M406</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>mailing address of a sender/receiver or party (mailingAddress) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>postnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M407</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>postal code of a sender/receiver or party (postalCode) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>poststed</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M408</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>city where a sender/receiver or party is located (city) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>land</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M409</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>country if the mailing address is abroad (country) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>epostadresse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M410</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>email address of a sender/receiver or party (emailAddress) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>telefonnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M411</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>phone number of a sender/receiver or party (phone) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>kontaktperson</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M412</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>contact person of a organization who is sender, receiver or part (contactPerson) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>virksomhetsspesifikkeMetadata</code></td>
+<td style=text-align:center>object</td>
+<td style=text-align:center>M711</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>overarching metadata element that can contain custom metadata. When metadata for an entity is updated, the whole of it is ovewritten. Examples for handling business specific metadata can be found in the usage section of the page. (businessSpecificMetadata) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Not Queryable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-1>Reference Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>Saksmappe</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to Case File (<code>Saksmappe</code>), a Case Party is <em>owned</em> by a single Case File</td>
 </tr>
 </tbody>
 </table>
@@ -1516,17 +1684,17 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1654505321></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1654505321></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654505321></script>
-<script src=/api-docs/js/jquery.sticky.js?1654505321></script>
-<script src=/api-docs/js/featherlight.min.js?1654505321></script>
-<script src=/api-docs/js/highlight.pack.js?1654505321></script>
+<script src=/api-docs/js/clipboard.min.js?1654508234></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1654508234></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1654508234></script>
+<script src=/api-docs/js/jquery.sticky.js?1654508234></script>
+<script src=/api-docs/js/featherlight.min.js?1654508234></script>
+<script src=/api-docs/js/highlight.pack.js?1654508234></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654505321></script>
-<script src=/api-docs/js/learn.js?1654505321></script>
-<script src=/api-docs/js/hugo-learn.js?1654505321></script>
-<script src=/api-docs/mermaid/mermaid.js?1654505321></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1654508234></script>
+<script src=/api-docs/js/learn.js?1654508234></script>
+<script src=/api-docs/js/hugo-learn.js?1654508234></script>
+<script src=/api-docs/mermaid/mermaid.js?1654508234></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
