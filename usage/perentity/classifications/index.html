@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.89.4">
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
-<title>Meeting Folder :: Documaster Noark5 API</title>
+<title>Classification System and Class :: Documaster Noark5 API</title>
 <link href=/api-docs/css/nucleus.css?1654605249 rel=stylesheet>
 <link href=/api-docs/css/fontawesome-all.min.css?1654605249 rel=stylesheet>
 <link href=/api-docs/css/hybrid.css?1654605249 rel=stylesheet>
@@ -21,7 +21,7 @@
 <script src=/api-docs/js/jquery-3.3.1.min.js?1654605249></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
-<body data-url=/api-docs/model/entities/abstractfolder/meetingfolder/>
+<body data-url=/api-docs/usage/perentity/classifications/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -161,8 +161,7 @@ Usage Guidelines
 </li>
 </ul>
 </li>
-<li data-nav-id=/api-docs/model/ title="Data Model" class="dd-item
-parent">
+<li data-nav-id=/api-docs/model/ title="Data Model" class=dd-item>
 <a href=/api-docs/model/>
 <b>3. </b>Data Model
 </a>
@@ -172,8 +171,7 @@ parent">
 Overview
 </a>
 </li>
-<li data-nav-id=/api-docs/model/entities/ title="Core Entities" class="dd-item
-parent">
+<li data-nav-id=/api-docs/model/entities/ title="Core Entities" class=dd-item>
 <a href=/api-docs/model/entities/>
 Core Entities
 </a>
@@ -193,8 +191,7 @@ Classification System and Class
 Series
 </a>
 </li>
-<li data-nav-id=/api-docs/model/entities/abstractfolder/ title=Folders class="dd-item
-parent">
+<li data-nav-id=/api-docs/model/entities/abstractfolder/ title=Folders class=dd-item>
 <a href=/api-docs/model/entities/abstractfolder/>
 Folders
 </a>
@@ -209,9 +206,7 @@ Case File
 Basic Folder
 </a>
 </li>
-<li data-nav-id=/api-docs/model/entities/abstractfolder/meetingfolder/ title="Meeting Folder" class="dd-item
-parent
-active">
+<li data-nav-id=/api-docs/model/entities/abstractfolder/meetingfolder/ title="Meeting Folder" class=dd-item>
 <a href=/api-docs/model/entities/abstractfolder/meetingfolder/>
 Meeting Folder
 </a>
@@ -271,17 +266,19 @@ Code Lists
 </li>
 </ul>
 </li>
-<li data-nav-id=/api-docs/usage/ title=Examples class=dd-item>
+<li data-nav-id=/api-docs/usage/ title=Examples class="dd-item
+parent">
 <a href=/api-docs/usage/>
 <b>4. </b>Examples
 </a>
 <ul>
-<li data-nav-id=/api-docs/usage/perentity/ title="Per Entity" class=dd-item>
+<li data-nav-id=/api-docs/usage/perentity/ title="Per Entity" class="dd-item
+parent">
 <a href=/api-docs/usage/perentity/>
 Per Entity
 </a>
 <ul>
-<li data-nav-id=/api-docs/usage/perentity/classifications/ title="Classification System and Class" class=dd-item>
+<li data-nav-id=/api-docs/usage/perentity/classifications/ title="Classification System and Class" class="dd-item active">
 <a href=/api-docs/usage/perentity/classifications/>
 Classification System and Class
 </a>
@@ -340,14 +337,18 @@ Create Registry Entry and Document
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/model/>Data Model</a> > <a href=/api-docs/model/entities/>Core Entities</a> > <a href=/api-docs/model/entities/abstractfolder/>Folders</a> > Meeting Folder
+<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/usage/>Examples</a> > <a href=/api-docs/usage/perentity/>Per Entity</a> > Classification System and Class
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#moetemappe-and-moetedeltaker>Moetemappe and Moetedeltaker</a></li>
+<li>
+<ul>
+<li><a href=#creating-class-with-bsm-values>Creating Class with BSM values</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -358,16 +359,105 @@ Create Registry Entry and Document
 </div>
 <div id=body-inner>
 <h1>
-Meeting Folder
+Classification System and Class
 </h1>
-<h2 id=moetemappe-and-moetedeltaker>Moetemappe and Moetedeltaker</h2>
+<h3 id=creating-class-with-bsm-values>Creating Class with BSM values</h3>
+<p>Classes (<code>Klasse</code>) are created with the <code>POST /transaction</code> operation. Important unique data field for the Classes (<code>Klasse</code>) is <code>klasseIdent</code>. The sample below also adds sample BSM (business specific metadata) values to the class.</p>
+<p>The BSM values associated with the Class are visible in the user interface when the class linked to folder (<code>Saksmappe</code>, <code>Mappe</code>, etc.)</p>
+<ul>
+<li><code>transaction::save</code> - new Class (<code>Klasse</code>) with BSM field <code>qsid</code> (Quality System ID) defined in BSM group <code>qs1</code> (<code>Quality System 1</code>)</li>
+<li><code>transaction::link</code> - link the new Class (<code>Klasse</code>) to the existing Classification System (<code>Klassifikasjonssystem</code>).</li>
+</ul>
+<p>As a result of the transaction new Class (<code>Klasse</code>) is created with ID = <strong>3168047</strong></p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=fonds-examples class="tab-nav-button btn active" onclick="switchTab('fonds-examples','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=fonds-examples class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8084/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>... </span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Klasse&#34;,
+            &#34;id&#34;: &#34;klasse-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;klasseIdent&#34;: &#34;TST-IDENT-2106&#34;,
+                &#34;tittel&#34;: &#34;Sample Class with BSM&#34;,
+                &#34;beskrivelse&#34;: &#34;Test Class with BSM - QualitySystem ID&#34;,
+                &#34;virksomhetsspesifikkeMetadata&#34;: {
+                    &#34;qs1&#34;: {
+                        &#34;qsid&#34;: {
+                            &#34;values&#34;: [
+                                &#34;QS1-ID-820621&#34;
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Klasse&#34;,
+            &#34;id&#34;: &#34;klasse-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refKlassifikasjonssystem&#34;,
+            &#34;linkToId&#34;: &#34;1444539&#34;
+        }
+    ]
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+    <span style=color:#f92672>&#34;saved&#34;</span>: {
+        <span style=color:#f92672>&#34;klasse-temp-id-1&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Klasse&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;3168047&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;4&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;ff3a1497-f18f-4111-a05a-a3383c0a1ae8&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2022-06-07T14:08:31.496+0200&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;Integrator&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;d730e776-c10f-4986-99d7-5fab7bf4c3ee&#34;</span>,
+                <span style=color:#f92672>&#34;klasseIdent&#34;</span>: <span style=color:#e6db74>&#34;TST-IDENT-2106&#34;</span>,
+                <span style=color:#f92672>&#34;tittel&#34;</span>: <span style=color:#e6db74>&#34;Sample Class with BSM&#34;</span>,
+                <span style=color:#f92672>&#34;beskrivelse&#34;</span>: <span style=color:#e6db74>&#34;Test Class with BSM - QualitySystem ID&#34;</span>,
+                <span style=color:#f92672>&#34;virksomhetsspesifikkeMetadata&#34;</span>: {
+                    <span style=color:#f92672>&#34;qs1&#34;</span>: {
+                        <span style=color:#f92672>&#34;qsid&#34;</span>: {
+                            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;string&#34;</span>,
+                            <span style=color:#f92672>&#34;values&#34;</span>: [
+                                <span style=color:#e6db74>&#34;SPDADM-ID-820621&#34;</span>
+                            ]
+                        }
+                    }
+                }
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refKlassifikasjonssystem&#34;</span>: <span style=color:#ae81ff>1444539</span>
+            }
+        }
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/api-docs/model/entities/abstractfolder/folder/ title="Basic Folder"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/api-docs/model/entities/abstractrecord/ title=Records style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/api-docs/usage/perentity/ title="Per Entity"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/api-docs/usage/perentity/fonds/ title="Fonds and Fonds Creator" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
