@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Registry Entry :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1658134141 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1658134141 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1658134141></script>
+<link href=/api-docs/css/nucleus.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1658150952 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1658150952 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1658150952></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractrecord/registryentry/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1658134141></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1658134141></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1658150952></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1658150952></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1658134141></script>
+<script type=text/javascript src=/api-docs/js/search.js?1658150952></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -741,6 +741,23 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <tr>
 <td><code>journalsekvensnummer</code></td>
 <td style=text-align:center>number</td>
+<td style=text-align:center>M014</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>order in which the registry entry was created within the year (recordSequenseNumber) <br> <strong>Default :</strong> <code>sequence number in year</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>journalpostnummer</code></td>
+<td style=text-align:center>number</td>
 <td style=text-align:center>M015</td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
@@ -748,7 +765,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill cond" style=width:100px>cond</button></td>
-<td>order in which the registry entry was created within the year (registryEntrySequenseNumber) <br> <strong>Default :</strong> <code>sequence number</code><br>
+<td>order in which the registry entry was created within the case file (recordNumber) <br> <strong>Default :</strong> <code>sequence number in case file</code><br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -811,16 +828,16 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>string</td>
 <td style=text-align:center>M053</td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>name of department, office or other administrative unit responsible for the case handling. (administrativeUnit) <br><strong>Code List :</strong> <code>administrativEnhet</code><br>
+<td>status of the registry entry, whether it is recorded, handled or finilized<br><strong>Code List :</strong> <code>journalstatus</code><br><strong>Default :</strong> <code>J</code> - Journalført<br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55>Sortable</span>
+<span style=color:#941d55>Indexed</span>
 </span></td>
 </tr>
 <tr>
@@ -833,11 +850,11 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>name of the person who responsible for the case.Both this field and <code>saksansvarligBrukerIdent</code> are free text fields, which can be freely modified. (caseResponsible) <br><strong>Default :</strong> <code>currently logged in user</code><br>
+<td>date at which the registry entry was journaled (caseResponsible) <br><strong>Default :</strong> <code>current date</code><br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55>Sortable</span>
+<span style=color:#941d55>Indexed, Sortable</span>
 </span></td>
 </tr>
 <tr>
@@ -847,10 +864,10 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>identifier of the person who responsible for the case. Both this field and <code>saksansvarlig</code> are free text fields, which can be freely modified. (caseResponsibleId) <br><strong>Default :</strong> <code>currently logged in user ID</code><br>
+<td>date attached to the registry entry/document <br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -864,14 +881,14 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>status of the case file, ie how far the case handling has come. (caseFileStatus) <br><strong>Code List :</strong> <code>saksstatus</code><br><strong>Default :</strong> <code>B</code> - Under behandling<br>
+<td>date indicating the deadline for the incoming registry entries to be answered (dueDate) <br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55>Indexed</span>
+<span style=color:#941d55>Sortable</span>
 </span></td>
 </tr>
 <tr>
@@ -881,14 +898,14 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill cond" style=width:100px>cond</button></td>
-<td>year the case file was created<br><strong>Default :</strong> <code>current year</code><br>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date indicating when an incoming document was received (receivedDate) <br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55>Indexed, Sortable</span>
+<span style=color:#941d55>Sortable</span>
 </span></td>
 </tr>
 <tr>
@@ -898,10 +915,10 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill cond" style=width:100px>cond</button></td>
-<td>order in which the case file was created within the year (caseSequenseNumber) <br> <strong>Default :</strong> <code>sequence number</code><br>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date indicating when an internally produced document is sent our (sentDate) <br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -915,10 +932,10 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>date the case is created (caseDate) <br><strong>Default :</strong> <code>current date</code><br>
+<td>date at which the document was reviewed for public access, used in the case the incoming documents are screened by default and need to be reviewed before made public (publicAccessAssessmentDate)<br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -932,15 +949,10 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>date the case is created (caseDate) <br><strong>Default :</strong> <code>current date</code><br>
-<style>.term{position:relative;display:inline-block}</style>
-<span class=term>
-<i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55>Sortable</span>
-</span></td>
+<td>action to be performed at the end of the preservation period (disposalAction) <br><strong>Code List :</strong> <code>kassasjonsvedtak</code></td>
 </tr>
 <tr>
 <td><code>kassasjonshjemmel</code></td>
@@ -949,27 +961,22 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>date the case is created (caseDate) <br><strong>Default :</strong> <code>current date</code><br>
-<style>.term{position:relative;display:inline-block}</style>
-<span class=term>
-<i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55>Sortable</span>
-</span></td>
+<td>authority for disposal (disposalAuthority) <br><strong>Code List :</strong> <code>kassasjonshjemmel</code></td>
 </tr>
 <tr>
 <td><code>bevaringstid</code></td>
 <td style=text-align:center>number</td>
 <td style=text-align:center>M451</td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>name of department, office or other administrative unit responsible for the case handling. (administrativeUnit) <br><strong>Code List :</strong> <code>administrativEnhet</code><br>
+<td>number of year the document should be kept before being scheduled for disposal (retentionPeriod) <br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -981,12 +988,12 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center>boolean</td>
 <td style=text-align:center></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>name of department, office or other administrative unit responsible for the case handling. (administrativeUnit) <br><strong>Code List :</strong> <code>administrativEnhet</code><br>
+<td>indicates whether the Correspondence Party (<code>Korrespondencepart</code>) attached to the Registry Entry (<code>Journalpost</code>) should be sent to eInnsyn or not. The setting applies screening on the correspondence parties independently of the screening defined (<code>skjerming</code>) <br><strong>Default :</strong> <code>false</code><br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -1003,7 +1010,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>indication that the documents belonging to the case file are not publicly available in accordance with the Public Access to Information Act (offentlighetsloven) or for any other reason (accessRestriction)<br><strong>Code List :</strong> <code>skjerming</code><br>
+<td>indication that the documents belonging to the registry entry are not publicly available in accordance with the Public Access to Information Act (offentlighetsloven) or for any other reason (accessRestriction)<br><strong>Code List :</strong> <code>skjerming</code><br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -1050,7 +1057,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill yes" style=width:100px>yes</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to the Series (<code>Arkivdel</code>) to which the Case File (<code>Saksmappe</code>) belongs<br>
+<td>reference to the Case File (<code>Saksmappe</code>) to which the Registry Entry (<code>Journalpost</code>) belongs<br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -1062,10 +1069,10 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <td style=text-align:center><code>Arkivdel</code></td>
 <td style=text-align:center>0 . . 1</td>
 <td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
+<button class="pill cond" style=width:100px>cond</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Records (<code>AbstraktRegistrering</code>) which can be either Basic Record (<code>BasisRegistrering</code>) or Registry Entry (<code>Journalpost</code>)</td>
+<td>reference to the Series (<code>Arkivdel</code>) to which the Registry Enty (<code>Journalpost</code>) belongs. Either this reference or the <code>refMappe</code> reference can be set, but not both.</td>
 </tr>
 <tr>
 <td><code>refKorrespondansepart</code></td>
@@ -1075,22 +1082,17 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Case Party (<code>Sakspart</code>) entities</td>
+<td>reference to a list of Correspondence Party (<code>Korrespondansepart</code>) entities. Each Registry Entry (<code>Journalpost</code>) must have at least one Correspondence Party (<code>Korrespondansepart</code>).</td>
 </tr>
 <tr>
 <td><code>refDokument</code></td>
 <td style=text-align:center><code>Dokument</code></td>
 <td style=text-align:center>0 . . *</td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to the <strong>primary</strong> Class (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>) <br>
-<style>.term{position:relative;display:inline-block}</style>
-<span class=term>
-<i class="fas fa-asterisk" style=color:#941d55></i>
-<span style=color:#941d55>Returned</span>
-</span></td>
+<td>reference to a list of Documents (<code>Dokument</code>) associated with the Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
 <td><code>refPrimaerKlasse</code></td>
@@ -1100,7 +1102,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of secondary Classes (<code>Klasse</code>) associated with the Case File (<code>Saksmappe</code>)</td>
+<td>reference to a list of primary Classes (<code>Klasse</code>) associated with the Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
 <td><code>refSekundaerKlasse</code></td>
@@ -1110,7 +1112,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of External ID (<code>EksternId</code>) entities, containing the case file identification in external systems</td>
+<td>reference to a list of secondary Classes (<code>Klasse</code>) associated with the Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
 <td><code>refEksternId</code></td>
@@ -1120,7 +1122,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Keywords (&lsquo;Noekkelord&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+<td>reference to a list of External ID (<code>EksternId</code>) entities, containing the case file identification in external systems</td>
 </tr>
 <tr>
 <td><code>refDokumentflyt</code></td>
@@ -1130,7 +1132,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Notes (&lsquo;Merknad&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+<td>reference to a list of Document Flows (&lsquo;Dokumentflyt&rsquo;) entities associated with the Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
 <td><code>refNoekkelord</code></td>
@@ -1140,7 +1142,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of National Identifiers (&lsquo;NasjonalIdentifikator&rsquo;) entities associated with the Case File (<code>Saksmappe</code>)</td>
+<td>reference to a list of Keywords (&lsquo;Noekkelord&rsquo;) entities associated with the Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
 <td><code>refAvskrivning</code></td>
@@ -1150,7 +1152,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current case file has cross-reference</td>
+<td>reference to a Sign-Off (<code>Avskrivning</code>) entity</td>
 </tr>
 <tr>
 <td><code>refTilknyttetAvskrivning</code></td>
@@ -1160,7 +1162,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
+<td>reference to an associated Sign-Off (<code>Avskrivning</code>) entity</td>
 </tr>
 <tr>
 <td><code>refMerknad</code></td>
@@ -1170,7 +1172,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current case file has cross-reference</td>
+<td>reference to a list of Notes (&lsquo;Merknad&rsquo;) entities associated with the Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
 <td><code>refNasjonalIdentifikator</code></td>
@@ -1180,7 +1182,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
+<td>reference to a list of National Identifiers (&lsquo;NasjonalIdentifikator&rsquo;) entities associated with the Registry Entry (<code>Journalpost</code>)</td>
 </tr>
 <tr>
 <td><code>refKryssreferanseTilMappe</code></td>
@@ -1190,7 +1192,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a Precedent (<code>Presedens</code>) associated to this case file</td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current registry entry has cross-reference</td>
 </tr>
 <tr>
 <td><code>refKryssreferanseFraMappe</code></td>
@@ -1200,7 +1202,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current registry entry is being cross-referenced</td>
 </tr>
 <tr>
 <td><code>refKryssreferanseTilRegistrering</code></td>
@@ -1210,7 +1212,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current case file has cross-reference</td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current registry entry has cross-reference</td>
 </tr>
 <tr>
 <td><code>refKryssreferanseFraRegistrering</code></td>
@@ -1220,7 +1222,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current case file is being cross-referenced</td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current registry entry is being cross-referenced</td>
 </tr>
 <tr>
 <td><code>refPresedens</code></td>
@@ -1230,7 +1232,7 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a Precedent (<code>Presedens</code>) associated to this case file</td>
+<td>reference to a Precedent (<code>Presedens</code>) associated to this registry entry</td>
 </tr>
 </tbody>
 </table>
@@ -1909,17 +1911,17 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1658134141></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1658134141></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1658134141></script>
-<script src=/api-docs/js/jquery.sticky.js?1658134141></script>
-<script src=/api-docs/js/featherlight.min.js?1658134141></script>
-<script src=/api-docs/js/highlight.pack.js?1658134141></script>
+<script src=/api-docs/js/clipboard.min.js?1658150952></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1658150952></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1658150952></script>
+<script src=/api-docs/js/jquery.sticky.js?1658150952></script>
+<script src=/api-docs/js/featherlight.min.js?1658150952></script>
+<script src=/api-docs/js/highlight.pack.js?1658150952></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1658134141></script>
-<script src=/api-docs/js/learn.js?1658134141></script>
-<script src=/api-docs/js/hugo-learn.js?1658134141></script>
-<script src=/api-docs/mermaid/mermaid.js?1658134141></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1658150952></script>
+<script src=/api-docs/js/learn.js?1658150952></script>
+<script src=/api-docs/js/hugo-learn.js?1658150952></script>
+<script src=/api-docs/mermaid/mermaid.js?1658150952></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
