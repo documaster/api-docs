@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Registry Entry :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1658233127 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1658233127></script>
+<link href=/api-docs/css/nucleus.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1658313799 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1658313799></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/usage/perentity/registryentry/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1658233127></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1658233127></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1658313799></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1658313799></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1658233127></script>
+<script type=text/javascript src=/api-docs/js/search.js?1658313799></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -348,6 +348,7 @@ Create Registry Entry and Document
 <ul>
 <li><a href=#creating-registry-entry>Creating Registry Entry</a></li>
 <li><a href=#update-registry-entry>Update Registry Entry</a></li>
+<li><a href=#sign-off-registry-entry>Sign-Off Registry Entry</a></li>
 </ul>
 </li>
 </ul>
@@ -580,6 +581,67 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 </div>
 </div>
 </div>
+<h3 id=sign-off-registry-entry>Sign-Off Registry Entry</h3>
+<p>Signing off a registry entry is done by creating an instance of the Sign-Off (<code>Avskrivning</code>) entity and associate it with the registry entry.</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=registryEntry class="tab-nav-button btn active" onclick="switchTab('registryEntry','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=registryEntry class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Avskrivning&#34;,
+            &#34;id&#34;: &#34;new-sign-off&#34;,
+            &#34;fields&#34;: {
+                &#34;avskrivningsmaate&#34;:  &#34;BU&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Avskrivning&#34;,
+            &#34;id&#34;: &#34;new-sign-off&#34;,
+            &#34;ref&#34;: &#34;refJournalpost&#34;,
+            &#34;linkToId&#34;: &#34;10124&#34;
+        }
+    ]
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+    <span style=color:#f92672>&#34;saved&#34;</span>: {
+        <span style=color:#f92672>&#34;new-sign-off&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Avskrivning&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;12655&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;3&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;ba82150c-3241-4999-a5d9-a8b56edcc26d&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2022-07-20T11:12:18.826+0200&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;avskrivningsmaate&#34;</span>: <span style=color:#e6db74>&#34;BU&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refJournalpost&#34;</span>: <span style=color:#ae81ff>10124</span>
+            }
+        }
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
 <footer class=footline>
 </footer>
 </div>
@@ -592,17 +654,17 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1658233127></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1658233127></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1658233127></script>
-<script src=/api-docs/js/jquery.sticky.js?1658233127></script>
-<script src=/api-docs/js/featherlight.min.js?1658233127></script>
-<script src=/api-docs/js/highlight.pack.js?1658233127></script>
+<script src=/api-docs/js/clipboard.min.js?1658313799></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1658313799></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1658313799></script>
+<script src=/api-docs/js/jquery.sticky.js?1658313799></script>
+<script src=/api-docs/js/featherlight.min.js?1658313799></script>
+<script src=/api-docs/js/highlight.pack.js?1658313799></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1658233127></script>
-<script src=/api-docs/js/learn.js?1658233127></script>
-<script src=/api-docs/js/hugo-learn.js?1658233127></script>
-<script src=/api-docs/mermaid/mermaid.js?1658233127></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1658313799></script>
+<script src=/api-docs/js/learn.js?1658313799></script>
+<script src=/api-docs/js/hugo-learn.js?1658313799></script>
+<script src=/api-docs/mermaid/mermaid.js?1658313799></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

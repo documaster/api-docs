@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Registry Entry :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1658233127 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1658233127 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1658233127></script>
+<link href=/api-docs/css/nucleus.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1658313799 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1658313799 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1658313799></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractrecord/registryentry/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1658233127></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1658233127></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1658313799></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1658313799></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1658233127></script>
+<script type=text/javascript src=/api-docs/js/search.js?1658313799></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -357,6 +357,18 @@ Create Registry Entry and Document
 <ul>
 <li><a href=#data-fields-1>Data Fields</a></li>
 <li><a href=#reference-fields-1>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#document-flow>Document Flow</a>
+<ul>
+<li><a href=#data-fields-2>Data Fields</a></li>
+<li><a href=#reference-fields-2>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#sign-off>Sign-Off</a>
+<ul>
+<li><a href=#data-fields-3>Data Fields</a></li>
+<li><a href=#reference-fields-3>Reference Fields</a></li>
 </ul>
 </li>
 <li><a href=#working-with-registry-entry>Working with Registry Entry</a></li>
@@ -1665,6 +1677,501 @@ The diagram depicts the most important set of fields, leaving some of the use ca
 </tr>
 </tbody>
 </table>
+<h2 id=document-flow>Document Flow</h2>
+<p>Document Flow (<code>Dokumentflyt</code>) is an entity representing the internal steps part of the process of working on a production document.</p>
+<ul>
+<li>Entity name in the API : <strong><code>Dokumentflyt</code></strong>.</li>
+<li>Being a core Noark5 model entity, Document Flow (<code>Dokumentflyt</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+</ul>
+<h3 id=data-fields-2>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=dokumentflyt-specific-data-fields><code>Dokumentflyt</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flytFra</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M665</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of the person who sent the document on the flow for approval/review <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>flytFraBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M665</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>identifier of the person who sent the document on the flow for approval/review <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>flytTil</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M660</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of the person who received the document on the flow for approval/review <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>flytTilBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M660</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>identifier of the person who received the document on the flow for approval/review <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>flytMottattDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M661</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date and time the document was received on the flow (flowReceivedDate) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>flytSendtDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M662</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date and time the document was sent to the flow (flowSentDate) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>flytMerknad</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M664</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>note or comment to a document sent on flow (flowNote) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>flytStatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M663</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>representation of the approval/non-approval of the document in the document flow (flowStatus) <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#flytstatus-m663><code>flytStatus</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-2>Reference Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refJournalpost</code></td>
+<td style=text-align:center><code>Journalpost</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to Registry Entry (<code>Journalpost</code>), a Document Flow (<code>Dokumentflyt</code>) is <em>owned</em> by a single Registry Entry and cannot be attached to any other</td>
+</tr>
+</tbody>
+</table>
+<h2 id=sign-off>Sign-Off</h2>
+<p>Sign-Off (<code>Avskrivning</code>) is an entity representing the closure/finalization of an incoming Registry Entry (<code>Journalpost</code>). It can be associated with additional outgoing registry entries as part of the sign-off.</p>
+<ul>
+<li>Entity name in the API : <strong><code>Avskrivning</code></strong>.</li>
+<li>Being a core Noark5 model entity, Sign-Off (<code>Avskrivning</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
+</ul>
+<h3 id=data-fields-3>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=avskrivning-specific-data-fields><code>Avskrivning</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avskrivningsmaate</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M619</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>method used to sign-off the document (signOffMethod) <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#avskrivningsmaate-m619><code>avskrivningsmaate</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-3>Reference Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refJournalpost</code></td>
+<td style=text-align:center><code>Journalpost</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to Registry Entry (<code>Journalpost</code>), a Sign-Off (<code>Avskrivning</code>) is <em>owned</em> by a single Registry Entry and cannot be attached to any other</td>
+</tr>
+<tr>
+<td><code>refTilknyttetJournalpost</code></td>
+<td style=text-align:center><code>Journalpost</code></td>
+<td style=text-align:center>0 .. *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of associated wit the Sign-Off (<code>Avskrivning</code>) outgoing Registry Entry (<code>Journalpost</code>) entities</td>
+</tr>
+</tbody>
+</table>
 <h2 id=working-with-registry-entry>Working with Registry Entry</h2>
 <h3 id=creating-registry-entry>Creating Registry Entry</h3>
 <p>Registry entries are created using <code>transaction</code> API, where in a single transaction the newly created registry entry should be linked to a case file (<code>Saksmappe</code>) <strong>or</strong> a basic folder (<code>Mappe</code>). Bear in mind that the registry entry can be under only one folder. Newly created registry entry requires at least one correspondence party (<code>Korrespondansepart</code>) to be created and associated with the registry entry. The link is done using <code>transaction::link</code> action following the guidelines to use newly created entry reference field to parent entry (<code>Korrespondansepart::refRegistrering</code>), rather than parent entry reference field (<code>Journalpost::refKorrespondansepart</code>). Take a look at the <a href=#fields><strong>Fields</strong></a> section of this document for details about the mandatory/optional fields for registry entries.</p>
@@ -1884,6 +2391,67 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 </div>
 </div>
 </div>
+<h3 id=sign-off-registry-entry>Sign-Off Registry Entry</h3>
+<p>Signing off a registry entry is done by creating an instance of the Sign-Off (<code>Avskrivning</code>) entity and associate it with the registry entry.</p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=registryEntry class="tab-nav-button btn active" onclick="switchTab('registryEntry','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=registryEntry class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;Avskrivning&#34;,
+            &#34;id&#34;: &#34;new-sign-off&#34;,
+            &#34;fields&#34;: {
+                &#34;avskrivningsmaate&#34;:  &#34;BU&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;Avskrivning&#34;,
+            &#34;id&#34;: &#34;new-sign-off&#34;,
+            &#34;ref&#34;: &#34;refJournalpost&#34;,
+            &#34;linkToId&#34;: &#34;10124&#34;
+        }
+    ]
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+    <span style=color:#f92672>&#34;saved&#34;</span>: {
+        <span style=color:#f92672>&#34;new-sign-off&#34;</span>: {
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Avskrivning&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;12655&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;3&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;ba82150c-3241-4999-a5d9-a8b56edcc26d&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2022-07-20T11:12:18.826+0200&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;External Integrator ACME&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;e6e6318e-fdcb-41cb-ae3a-1940f98ea153&#34;</span>,
+                <span style=color:#f92672>&#34;avskrivningsmaate&#34;</span>: <span style=color:#e6db74>&#34;BU&#34;</span>
+            },
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refJournalpost&#34;</span>: <span style=color:#ae81ff>10124</span>
+            }
+        }
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
 <footer class=footline>
 </footer>
 </div>
@@ -1896,17 +2464,17 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1658233127></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1658233127></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1658233127></script>
-<script src=/api-docs/js/jquery.sticky.js?1658233127></script>
-<script src=/api-docs/js/featherlight.min.js?1658233127></script>
-<script src=/api-docs/js/highlight.pack.js?1658233127></script>
+<script src=/api-docs/js/clipboard.min.js?1658313799></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1658313799></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1658313799></script>
+<script src=/api-docs/js/jquery.sticky.js?1658313799></script>
+<script src=/api-docs/js/featherlight.min.js?1658313799></script>
+<script src=/api-docs/js/highlight.pack.js?1658313799></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1658233127></script>
-<script src=/api-docs/js/learn.js?1658233127></script>
-<script src=/api-docs/js/hugo-learn.js?1658233127></script>
-<script src=/api-docs/mermaid/mermaid.js?1658233127></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1658313799></script>
+<script src=/api-docs/js/learn.js?1658313799></script>
+<script src=/api-docs/js/hugo-learn.js?1658313799></script>
+<script src=/api-docs/mermaid/mermaid.js?1658313799></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
