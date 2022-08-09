@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Full-Text Search Utilization :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1659522843 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1659522843 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1659522843></script>
+<link href=/api-docs/css/nucleus.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1660029863 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1660029863 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1660029863></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/usage/perusecase/full-text-search/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1659522843></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1659522843></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1660029863></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1660029863></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1659522843></script>
+<script type=text/javascript src=/api-docs/js/search.js?1660029863></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -519,38 +519,37 @@ X-Documaster-Error-Response-Type: application/json
     &#34;@id3&#34; : &#34;11722&#34;
   }
 }
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;**Response**
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
 
 {
-    &#34;hasMore&#34;: false,
-    &#34;results&#34;: [
+    <span style=color:#f92672>&#34;hasMore&#34;</span>: <span style=color:#66d9ef>false</span>,
+    <span style=color:#f92672>&#34;results&#34;</span>: [
         {
-            &#34;type&#34;: &#34;Saksmappe&#34;,
-            &#34;id&#34;: &#34;11919&#34;,
-            &#34;version&#34;: &#34;7&#34;,
-            &#34;fields&#34;: {
-                &#34;uuid&#34;: &#34;bd53bcc6-752b-4b73-b14f-cc82e435c6dc&#34;,
-                &#34;opprettetDato&#34;: &#34;2022-06-04T04:44:26.462+0200&#34;,
-                &#34;opprettetAv&#34;: &#34;IDP Admin&#34;,
-                &#34;opprettetAvBrukerIdent&#34;: &#34;f22f849b-8046-5190-b547-2da0cc103696&#34;,
-                &#34;mappeIdent&#34;: &#34;2022/110&#34;,
-                &#34;tittel&#34;: &#34;[Customer Complain] - John Doe&#34;,
-                &#34;offentligTittel&#34;: &#34;[Customer Complain] - John Doe&#34;,
-                &#34;dokumentmedium&#34;: &#34;E&#34;,
-                &#34;saksaar&#34;: 2022,
-                &#34;sakssekvensnummer&#34;: 110,
-                &#34;saksdato&#34;: &#34;2022-06-04&#34;,
-                &#34;administrativEnhet&#34;: &#34;AD1&#34;,
-                &#34;saksansvarlig&#34;: &#34;IDP Admin&#34;,
-                &#34;saksansvarligBrukerIdent&#34;: &#34;f22f849b-8046-5190-b547-2da0cc103696&#34;,
-                &#34;saksstatus&#34;: &#34;B&#34;
+            <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;Saksmappe&#34;</span>,
+            <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;11919&#34;</span>,
+            <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;7&#34;</span>,
+            <span style=color:#f92672>&#34;fields&#34;</span>: {
+                <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;bd53bcc6-752b-4b73-b14f-cc82e435c6dc&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2022-06-04T04:44:26.462+0200&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;IDP Admin&#34;</span>,
+                <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;f22f849b-8046-5190-b547-2da0cc103696&#34;</span>,
+                <span style=color:#f92672>&#34;mappeIdent&#34;</span>: <span style=color:#e6db74>&#34;2022/110&#34;</span>,
+                <span style=color:#f92672>&#34;tittel&#34;</span>: <span style=color:#e6db74>&#34;[Customer Complain] - John Doe&#34;</span>,
+                <span style=color:#f92672>&#34;offentligTittel&#34;</span>: <span style=color:#e6db74>&#34;[Customer Complain] - John Doe&#34;</span>,
+                <span style=color:#f92672>&#34;dokumentmedium&#34;</span>: <span style=color:#e6db74>&#34;E&#34;</span>,
+                <span style=color:#f92672>&#34;saksaar&#34;</span>: <span style=color:#ae81ff>2022</span>,
+                <span style=color:#f92672>&#34;sakssekvensnummer&#34;</span>: <span style=color:#ae81ff>110</span>,
+                <span style=color:#f92672>&#34;saksdato&#34;</span>: <span style=color:#e6db74>&#34;2022-06-04&#34;</span>,
+                <span style=color:#f92672>&#34;administrativEnhet&#34;</span>: <span style=color:#e6db74>&#34;AD1&#34;</span>,
+                <span style=color:#f92672>&#34;saksansvarlig&#34;</span>: <span style=color:#e6db74>&#34;IDP Admin&#34;</span>,
+                <span style=color:#f92672>&#34;saksansvarligBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;f22f849b-8046-5190-b547-2da0cc103696&#34;</span>,
+                <span style=color:#f92672>&#34;saksstatus&#34;</span>: <span style=color:#e6db74>&#34;B&#34;</span>
             },
-            &#34;links&#34;: {
-                &#34;refPrimaerKlasse&#34;: 11861,
-                &#34;refArkivdel&#34;: 11857
+            <span style=color:#f92672>&#34;links&#34;</span>: {
+                <span style=color:#f92672>&#34;refPrimaerKlasse&#34;</span>: <span style=color:#ae81ff>11861</span>,
+                <span style=color:#f92672>&#34;refArkivdel&#34;</span>: <span style=color:#ae81ff>11857</span>
             }
         }
     ]
@@ -649,17 +648,17 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1659522844></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1659522844></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1659522844></script>
-<script src=/api-docs/js/jquery.sticky.js?1659522844></script>
-<script src=/api-docs/js/featherlight.min.js?1659522844></script>
-<script src=/api-docs/js/highlight.pack.js?1659522844></script>
+<script src=/api-docs/js/clipboard.min.js?1660029863></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1660029863></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1660029863></script>
+<script src=/api-docs/js/jquery.sticky.js?1660029863></script>
+<script src=/api-docs/js/featherlight.min.js?1660029863></script>
+<script src=/api-docs/js/highlight.pack.js?1660029863></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1659522844></script>
-<script src=/api-docs/js/learn.js?1659522844></script>
-<script src=/api-docs/js/hugo-learn.js?1659522844></script>
-<script src=/api-docs/mermaid/mermaid.js?1659522844></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1660029863></script>
+<script src=/api-docs/js/learn.js?1660029863></script>
+<script src=/api-docs/js/hugo-learn.js?1660029863></script>
+<script src=/api-docs/mermaid/mermaid.js?1660029863></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
