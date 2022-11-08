@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Common Entities :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1667828689 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1667828689 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1667828689></script>
+<link href=/api-docs/css/nucleus.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1667891885 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1667891885 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1667891885></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/secondary-entities/common-entities/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1667828689></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1667828689></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1667891885></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1667891885></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1667828689></script>
+<script type=text/javascript src=/api-docs/js/search.js?1667891885></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -278,14 +278,14 @@ Code Lists
 Per Entity
 </a>
 <ul>
-<li data-nav-id=/api-docs/usage/perentity/classifications/ title="Classification System and Class" class=dd-item>
-<a href=/api-docs/usage/perentity/classifications/>
-Classification System and Class
-</a>
-</li>
 <li data-nav-id=/api-docs/usage/perentity/fonds/ title="Fonds and Fonds Creator" class=dd-item>
 <a href=/api-docs/usage/perentity/fonds/>
 Fonds and Fonds Creator
+</a>
+</li>
+<li data-nav-id=/api-docs/usage/perentity/classifications/ title="Classification System and Class" class=dd-item>
+<a href=/api-docs/usage/perentity/classifications/>
+Classification System and Class
 </a>
 </li>
 <li data-nav-id=/api-docs/usage/perentity/casefile/ title="Case File and Case Party" class=dd-item>
@@ -296,6 +296,11 @@ Case File and Case Party
 <li data-nav-id=/api-docs/usage/perentity/registryentry/ title="Registry Entry" class=dd-item>
 <a href=/api-docs/usage/perentity/registryentry/>
 Registry Entry
+</a>
+</li>
+<li data-nav-id=/api-docs/usage/perentity/common-entities/ title="Common Entities" class=dd-item>
+<a href=/api-docs/usage/perentity/common-entities/>
+Common Entities
 </a>
 </li>
 </ul>
@@ -342,7 +347,29 @@ Create Registry Entry and Document
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#external-id>External ID</a>
+<ul>
+<li><a href=#data-fields>Data Fields</a></li>
+<li><a href=#reference-fields>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#keywords>Keywords</a>
+<ul>
+<li><a href=#data-fields-1>Data Fields</a></li>
+<li><a href=#reference-fields-1>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#notes>Notes</a>
+<ul>
+<li><a href=#data-fields-2>Data Fields</a></li>
+<li><a href=#reference-fields-2>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#working-with-common-entities>Working with Common Entities</a></li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -353,6 +380,747 @@ Create Registry Entry and Document
 <h1>
 Common Entities
 </h1>
+<p>Common entities are shared entities which provide additional context to the core entities. The set of entities detailed here are :</p>
+<ul>
+<li>External ID (<code>EksternId</code>)</li>
+<li>Keywords (<code>Noekkelord</code>)</li>
+<li>Notes (<code>Merknad</code>)</li>
+</ul>
+<h2 id=external-id>External ID</h2>
+<p>ExternalID (<code>EksternId</code>) is a common entity which allows associating business system specific identifiers to Documaster archived entities. This way the business systems can retrieve different entities from the archive using their own identifiers, rather than keeping Documaster archive specific IDs. Multiple ExternalIDs (<code>EksternId</code>) can be associated to a single archive entitity if needed.</p>
+<p>Using ExternalID (<code>EksternId</code>) is considered good practice when integrating with the archvie.</p>
+<ul>
+<li>ExternalID (<code>EksternId</code>) are managed using the <code>POST /transaction</code> operation and are owned by the entity to which they are linked.</li>
+<li>ExternalID (<code>EksternId</code>) can be associated to all types of folders, records and documents and document versions. It is done through the entity object <code>refEksternId</code> reference field.</li>
+</ul>
+<div class="notices note"><p>During queries, both the external system name and the external system entity unique identifiers should be used to retrieve the entities.</p>
+</div>
+<hr>
+<p>Diagram showing the relation of ExternalID entity (<code>EksternId</code>) to any other entities through its reference fields.
+The diagram depicts the most important set of fields, leaving some of the use cases out of it for simplicity.
+<img src=/api-docs/model/secondary-entities/diagrams-external-id-relations.png alt=child-parent-relation></p>
+<h3 id=data-fields>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=eksternid-specific-data-fields><code>EksternId</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eksterntSystem</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>external system name<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>eksternID</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>unique identifier of the entity in the external system<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields>Reference Fields</h3>
+<div class="notices warning"><p>Only one of the reference fields below can be set for a single ExternalID (<code>EksternId</code>).</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a folder (any type of folder) for which the ExternalID (<code>EksternId</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a record (any type of record) for which the ExternalID (<code>EksternId</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refDokument</code></td>
+<td style=text-align:center><code>Dokument</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a Document (<code>Dokument</code>) for which the ExternalID (<code>EksternId</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refDokumentversjon</code></td>
+<td style=text-align:center><code>Dokumentversjon</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a DocumentVersion (<code>Dokumentversjon</code>) for which the ExternalID (<code>EksternId</code>) is attached</td>
+</tr>
+</tbody>
+</table>
+<h2 id=keywords>Keywords</h2>
+<p>Keywords (<code>Noekkelord</code>) is a common entity which allows associating keywords to different entities in the archive.</p>
+<ul>
+<li>Keywords (<code>Noekkelord</code>) are managed using the <code>POST /transaction</code> operation and are owned by the entity to which they are linked.</li>
+<li>Keywords (<code>Noekkelord</code>) can be associated to all types of folders and records. It is done through the entity object <code>refNoekkelord</code> reference field.</li>
+</ul>
+<h3 id=data-fields-1>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=noekkelord-specific-data-fields><code>Noekkelord</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>verdi</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M022</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>keyword to be associated with the entity<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-1>Reference Fields</h3>
+<div class="notices warning"><p>Only one of the reference fields below can be set for a single Keywords (<code>Noekkelord</code>).</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a folder (any type of folder) for which the Keywords (<code>Noekkelord</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a record (any type of record) for which the Keywords (<code>Noekkelord</code>) is attached</td>
+</tr>
+</tbody>
+</table>
+<h2 id=notes>Notes</h2>
+<p>Notes (<code>Merknad</code>) is a common entity which allows associating free text notes to different archive entities.</p>
+<ul>
+<li>Notes (<code>Merknad</code>) are managed using the <code>POST /transaction</code> operation and are owned by the entity to which they are linked.</li>
+<li>Notes (<code>Merknad</code>) can be associated to all types of folders, records and Document (<code>Dokument</code>) entities. It is done through the entity object <code>refMerknad</code> reference field.</li>
+</ul>
+<h3 id=data-fields-2>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=merknad-specific-data-fields><code>Merknad</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tekst</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M310</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>note text (noteText) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>merknadstype</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M084</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>note type (noteType) <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#merknadstype-m084><code>merknadstype</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-2>Reference Fields</h3>
+<div class="notices warning"><p>Only one of the reference fields below can be set for a single Notes (<code>Merknad</code>).</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a folder (any type of folder) for which the Notes (<code>Merknad</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a record (any type of record) for which the Notes (<code>Merknad</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refDokument</code></td>
+<td style=text-align:center><code>Dokument</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a Document (<code>Dokument</code>) for which the Notes (<code>Merknad</code>) is attached</td>
+</tr>
+</tbody>
+</table>
+<h2 id=working-with-common-entities>Working with Common Entities</h2>
+<h3 id=creating-an-externalid-eksternid-linked-to-a-casefile-saksmappe>Creating an ExternalID (<code>EksternId</code>) linked to a CaseFile (<code>Saksmappe</code>)</h3>
+<p>ExternalID (<code>EksterId</code>) are created with the <code>POST /transaction</code> operation. They have two important fields which should be set - <code>eksterntSystem</code> and <code>eksternID</code>. In the same transaction creating the ExternalID (<code>EksternId</code>) it should be associated to another entitity in the archive structure.</p>
+<ul>
+<li><code>transaction::save</code> - new ExternalID (<code>EksterId</code>) for <em>Integrating System</em> and integrating system ID = ISID:0000004573</li>
+<li><code>transaction::link</code> - link the new ExternalID (<code>EksterId</code>) to the existing CaseFile (<code>Saksmappe</code>).</li>
+</ul>
+<p>As a result of the transaction new ExternalID (<code>EksternId</code>) is created with ID = <strong>3827083</strong></p>
+<div class=tab-panel>
+<div class=tab-nav>
+<button data-tab-item=HTTP data-tab-group=fonds-examples class="tab-nav-button btn active" onclick="switchTab('fonds-examples','HTTP')">HTTP</button>
+</div>
+<div class=tab-content>
+<div data-tab-item=HTTP data-tab-group=fonds-examples class="tab-item active">
+<p>      <strong>Request</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/transaction <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<span style=color:#960050;background-color:#1e0010>... </span>
+Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
+
+{
+    &#34;actions&#34;: [
+        {
+            &#34;action&#34;: &#34;save&#34;,
+            &#34;type&#34;: &#34;EksternId&#34;,
+            &#34;id&#34;: &#34;eksternId-temp-id-1&#34;,
+            &#34;fields&#34;: {
+                &#34;eksterntSystem&#34;: &#34;Integrating System&#34;,
+                &#34;eksternID&#34;: &#34;ISID:0000004573&#34;
+            }
+        },
+        {
+            &#34;action&#34;: &#34;link&#34;,
+            &#34;type&#34;: &#34;EksternId&#34;,
+            &#34;id&#34;: &#34;eksternId-temp-id-1&#34;,
+            &#34;ref&#34;: &#34;refMappe&#34;,
+            &#34;linkToId&#34;: &#34;633&#34;
+        }
+    ]
+}
+</code></pre></div><p>      <strong>Response</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>application/json</span>
+
+{
+  <span style=color:#f92672>&#34;saved&#34;</span>: {
+    <span style=color:#f92672>&#34;eksternId-temp-id-1&#34;</span>: {
+      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;EksternId&#34;</span>,
+      <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;3827083&#34;</span>,
+      <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;2&#34;</span>,
+      <span style=color:#f92672>&#34;fields&#34;</span>: {
+        <span style=color:#f92672>&#34;uuid&#34;</span>: <span style=color:#e6db74>&#34;8a8810a8-4b56-475e-877b-259f53d06768&#34;</span>,
+        <span style=color:#f92672>&#34;opprettetDato&#34;</span>: <span style=color:#e6db74>&#34;2022-11-08T08:12:13.785+0100&#34;</span>,
+        <span style=color:#f92672>&#34;opprettetAv&#34;</span>: <span style=color:#e6db74>&#34;Integrator&#34;</span>,
+        <span style=color:#f92672>&#34;opprettetAvBrukerIdent&#34;</span>: <span style=color:#e6db74>&#34;d730e776-c10f-4986-99d7-5fab7bf4c3ee&#34;</span>,
+        <span style=color:#f92672>&#34;eksterntSystem&#34;</span>: <span style=color:#e6db74>&#34;Integrating System&#34;</span>,
+        <span style=color:#f92672>&#34;eksternID&#34;</span>: <span style=color:#e6db74>&#34;ISID:0000004573&#34;</span>
+      },
+      <span style=color:#f92672>&#34;links&#34;</span>: {
+        <span style=color:#f92672>&#34;refMappe&#34;</span>: <span style=color:#ae81ff>633</span>
+      }
+    }
+  }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
 <footer class=footline>
 </footer>
 </div>
@@ -365,17 +1133,17 @@ Common Entities
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1667828689></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1667828689></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1667828689></script>
-<script src=/api-docs/js/jquery.sticky.js?1667828689></script>
-<script src=/api-docs/js/featherlight.min.js?1667828689></script>
-<script src=/api-docs/js/highlight.pack.js?1667828689></script>
+<script src=/api-docs/js/clipboard.min.js?1667891885></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1667891885></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1667891885></script>
+<script src=/api-docs/js/jquery.sticky.js?1667891885></script>
+<script src=/api-docs/js/featherlight.min.js?1667891885></script>
+<script src=/api-docs/js/highlight.pack.js?1667891885></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1667828689></script>
-<script src=/api-docs/js/learn.js?1667828689></script>
-<script src=/api-docs/js/hugo-learn.js?1667828689></script>
-<script src=/api-docs/mermaid/mermaid.js?1667828689></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1667891885></script>
+<script src=/api-docs/js/learn.js?1667891885></script>
+<script src=/api-docs/js/hugo-learn.js?1667891885></script>
+<script src=/api-docs/mermaid/mermaid.js?1667891885></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
