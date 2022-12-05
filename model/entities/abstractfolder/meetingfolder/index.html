@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Meeting Folder :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1670231722 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1670231722 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1670231722></script>
+<link href=/api-docs/css/nucleus.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1670231856 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1670231856 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1670231856></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractfolder/meetingfolder/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1670231722></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1670231722></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1670231856></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1670231856></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1670231722></script>
+<script type=text/javascript src=/api-docs/js/search.js?1670231856></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -379,9 +379,9 @@ Meeting Folder
 <h2 id=meeting-folder>Meeting Folder</h2>
 <p>Meeting Folder (<code>Moetemappe</code>) is a folder used to keep details of meetings together with the participants - Meeting Participant (<code>Moetedeltaker</code>).</p>
 <ul>
-<li>Entity name in the API : <moetemappe><code>Mappe</code></strong>.</li>
+<li>Entity name in the API : <moetemappe><code>Moetemappe</code></strong>.</li>
 <li>Being a core Noark5 model entity, Meeting Folder (<code>Moetemappe</code>) is created/modified using the <code>Transaction :: POST /transaction</code> operation.</li>
-<li>Meeting Folder (<code>Mappe</code>) should be associated to a Series (<code>Arkivdel</code>)</li>
+<li>Meeting Folder (<code>Moetemappe</code>) should be associated to a Series (<code>Arkivdel</code>)</li>
 <li>Meeting Folder (<code>Moetemappe</code>) can contain Meeting Records (<code>Moeteregistrering</code>) and Basic Records (<code>Basisregistrering</code>) as type of records.</li>
 </ul>
 <div class="notices note"><p>Very common approach is to add to the Meeting Folder (<code>Moetemappe</code>) an External ID (<code>EksternId</code>) which contains the quality/business system meeting identifier.
@@ -882,7 +882,7 @@ This allows integrating parties to find folder in Documaster using their own fol
 <button class="pill cond" style=width:100px>cond</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a parent Meeting Folder (<code>Mappe</code>), in case the folders are kept in hierarchy.<br> <strong>Note</strong> : only one of the two references - <code>refArkivdel</code> or <code>refForelderMappe</code> should be set during creation, meaning the folder can be under a Serie (<code>Arkivdel</code>) or under another Meeting Folder (<code>Mappe</code>), but not both.<br>
+<td>reference to a parent Meeting Folder (<code>Moetemappe</code>), in case the folders are kept in hierarchy.<br> <strong>Note</strong> : only one of the two references - <code>refArkivdel</code> or <code>refForelderMappe</code> should be set during creation, meaning the folder can be under a Serie (<code>Arkivdel</code>) or under another Meeting Folder (<code>Moetemappe</code>), but not both.<br>
 <style>.term{position:relative;display:inline-block}</style>
 <span class=term>
 <i class="fas fa-asterisk" style=color:#941d55></i>
@@ -897,7 +897,7 @@ This allows integrating parties to find folder in Documaster using their own fol
 <button class="pill no" style=width:100px>no</button></td>
 <td style=text-align:center>
 <button class="pill yes" style=width:100px>yes</button></td>
-<td>reference to a list Meeting Folders (<code>Mappe</code>) for which the current folder is parent, in case folders are kept in hierarchy. <br> <strong>Note</strong> : only one of the two references - <code>refRegistrering</code> or <code>refBarnMappe</code> should be set during creation, meaning the folder have Records (<code>Regisrering</code>) or other Meeting Folders (<code>Mappe</code>), but not both.</td>
+<td>reference to a list Meeting Folders (<code>Moetemappe</code>) for which the current folder is parent, in case folders are kept in hierarchy. <br> <strong>Note</strong> : only one of the two references - <code>refRegistrering</code> or <code>refBarnMappe</code> should be set during creation, meaning the folder have Records (<code>Regisrering</code>) or other Meeting Folders (<code>Moetemappe</code>), but not both.</td>
 </tr>
 <tr>
 <td><code>refPrimaerKlasse</code></td>
@@ -1224,17 +1224,17 @@ This allows integrating parties to find folder in Documaster using their own fol
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1670231722></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1670231722></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1670231722></script>
-<script src=/api-docs/js/jquery.sticky.js?1670231722></script>
-<script src=/api-docs/js/featherlight.min.js?1670231722></script>
-<script src=/api-docs/js/highlight.pack.js?1670231722></script>
+<script src=/api-docs/js/clipboard.min.js?1670231856></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1670231856></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1670231856></script>
+<script src=/api-docs/js/jquery.sticky.js?1670231856></script>
+<script src=/api-docs/js/featherlight.min.js?1670231856></script>
+<script src=/api-docs/js/highlight.pack.js?1670231856></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1670231722></script>
-<script src=/api-docs/js/learn.js?1670231722></script>
-<script src=/api-docs/js/hugo-learn.js?1670231722></script>
-<script src=/api-docs/mermaid/mermaid.js?1670231722></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1670231856></script>
+<script src=/api-docs/js/learn.js?1670231856></script>
+<script src=/api-docs/js/hugo-learn.js?1670231856></script>
+<script src=/api-docs/mermaid/mermaid.js?1670231856></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
