@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>National Identifiers :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1677492754 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1677492754 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1677492754></script>
+<link href=/api-docs/css/nucleus.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1677504161 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1677504161 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1677504161></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/secondary-entities/national-identifiers/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1677492754></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1677492754></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1677504161></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1677504161></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1677492754></script>
+<script type=text/javascript src=/api-docs/js/search.js?1677504161></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -145,11 +145,6 @@ Bulk Operations
 <li data-nav-id=/api-docs/operations/other/full-text-search/ title="Full-Text Search" class=dd-item>
 <a href=/api-docs/operations/other/full-text-search/>
 Full-Text Search
-</a>
-</li>
-<li data-nav-id=/api-docs/operations/other/access-control/ title="Access Control Management Operations" class=dd-item>
-<a href=/api-docs/operations/other/access-control/>
-Access Control Management Operations
 </a>
 </li>
 </ul>
@@ -347,7 +342,34 @@ Create Registry Entry and Document
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#address>Address</a>
+<ul>
+<li><a href=#data-fields>Data Fields</a></li>
+<li><a href=#reference-fields>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#building>Building</a>
+<ul>
+<li><a href=#data-fields-1>Data Fields</a></li>
+<li><a href=#reference-fields-1>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#property>Property</a>
+<ul>
+<li><a href=#data-fields-2>Data Fields</a></li>
+<li><a href=#reference-fields-2>Reference Fields</a></li>
+</ul>
+</li>
+<li><a href=#plan>Plan</a>
+<ul>
+<li><a href=#data-fields-3>Data Fields</a></li>
+<li><a href=#reference-fields-3>Reference Fields</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -358,6 +380,1379 @@ Create Registry Entry and Document
 <h1>
 National Identifiers
 </h1>
+<p>National identifiers enttities allow associating different Norway specific identifiers to both folders and records.</p>
+<ul>
+<li>Address (<code>Adresse</code>)</li>
+<li>Building (<code>Bygning</code>)</li>
+<li>Property (<code>Eiendom</code>)</li>
+<li>Plan (<code>Plan</code>)</li>
+</ul>
+<hr>
+<p>Diagram showing the relation of the national identifiers entities to any other entities through its reference fields.
+The diagram depicts the most important set of fields, leaving some of the use cases out of it for simplicity.
+<img src=/api-docs/model/secondary-entities/diagrams-national-identifiers.png alt=child-parent-relation></p>
+<h2 id=address>Address</h2>
+<p>Address (<code>Adresse</code>) is an entity representing an address.</p>
+<h3 id=data-fields>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=adresse-specific-data-fields><code>Adresse</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M201</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>adresseKnr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>postnr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>poststed </code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>adressenavn</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>address name<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>nummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>adressekode</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>alternativAdresse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields>Reference Fields</h3>
+<div class="notices warning"><p>Only one of the reference fields below can be set for a single Address (<code>Adress</code>).</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a folder (any type of folder) for which the Address (<code>Adresse</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a record (any type of record) for which the Address (<code>Adresse</code>) is attached</td>
+</tr>
+</tbody>
+</table>
+<h2 id=building>Building</h2>
+<p>Building (<code>Bygning</code>) is an entity representing a building.</p>
+<h3 id=data-fields-1>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=bygning-specific-data-fields><code>Bygning</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M201</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bygningsnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>endringsloepenummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bygningsStatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bygningsType</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bygningsendringsType</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>koordinatsystem</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>koordX</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>koordY</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>koordZ</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>etasjeNummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>etasjeplan</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bygningsnavn</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bruksenhetLoepenr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-1>Reference Fields</h3>
+<div class="notices warning"><p>Only one of the reference fields below can be set for a single Building (<code>Bygning</code>).</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a folder (any type of folder) for which the Building (<code>Bygning</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a record (any type of record) for which the Building (<code>Bygning</code>) is attached</td>
+</tr>
+</tbody>
+</table>
+<h2 id=property>Property</h2>
+<p>Property (<code>Eiendom</code>) is an entity representing a property.</p>
+<h3 id=data-fields-2>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=eiendom-specific-data-fields><code>Eiendom</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M201</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>knr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>gnr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bnr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>fnr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>snr</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>bruksnavn</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-2>Reference Fields</h3>
+<div class="notices warning"><p>Only one of the reference fields below can be set for a single Property (<code>Eiendom</code>).</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a folder (any type of folder) for which the Property (<code>Eiendom</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a record (any type of record) for which the Property (<code>Eiendom</code>) is attached</td>
+</tr>
+</tbody>
+</table>
+<h2 id=plan>Plan</h2>
+<p>Plan (<code>Plan</code>) is an entity representing a plan.</p>
+<h3 id=data-fields-3>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=plan-specific-data-fields><code>Plan</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M201</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>planident</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>planKommunenummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>only one of <code>planKommunenummer</code>, <code>planLandskode</code>, or <code>planFylkesnummer</code> is required on create </br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>planLandskode</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>only one of <code>planKommunenummer</code>, <code>planLandskode</code>, or <code>planFylkesnummer</code> is required on create </br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>planFylkesnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>only one of <code>planKommunenummer</code>, <code>planLandskode</code>, or <code>planFylkesnummer</code> is required on create </br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>plannavn</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>plantype</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>planstatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>lovreferanse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields-3>Reference Fields</h3>
+<div class="notices warning"><p>Only one of the reference fields below can be set for a single Plan (<code>Plan</code>).</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a folder (any type of folder) for which the Plan (<code>Plan</code>) is attached</td>
+</tr>
+<tr>
+<td><code>refRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>reference to a record (any type of record) for which the Plan (<code>Plan</code>) is attached</td>
+</tr>
+</tbody>
+</table>
 <footer class=footline>
 </footer>
 </div>
@@ -370,17 +1765,17 @@ National Identifiers
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1677492754></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1677492754></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1677492754></script>
-<script src=/api-docs/js/jquery.sticky.js?1677492754></script>
-<script src=/api-docs/js/featherlight.min.js?1677492754></script>
-<script src=/api-docs/js/highlight.pack.js?1677492754></script>
+<script src=/api-docs/js/clipboard.min.js?1677504161></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1677504161></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1677504161></script>
+<script src=/api-docs/js/jquery.sticky.js?1677504161></script>
+<script src=/api-docs/js/featherlight.min.js?1677504161></script>
+<script src=/api-docs/js/highlight.pack.js?1677504161></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1677492754></script>
-<script src=/api-docs/js/learn.js?1677492754></script>
-<script src=/api-docs/js/hugo-learn.js?1677492754></script>
-<script src=/api-docs/mermaid/mermaid.js?1677492754></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1677504161></script>
+<script src=/api-docs/js/learn.js?1677504161></script>
+<script src=/api-docs/js/hugo-learn.js?1677504161></script>
+<script src=/api-docs/mermaid/mermaid.js?1677504161></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
