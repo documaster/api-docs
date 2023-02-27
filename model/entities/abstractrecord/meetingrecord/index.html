@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Meeting Record :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1670231856 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1670231856 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1670231856></script>
+<link href=/api-docs/css/nucleus.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1677492754 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1677492754 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1677492754></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/model/entities/abstractrecord/meetingrecord/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1670231856></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1670231856></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1677492754></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1677492754></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1670231856></script>
+<script type=text/javascript src=/api-docs/js/search.js?1677492754></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -352,7 +352,12 @@ Create Registry Entry and Document
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#wip>WIP</a></li>
+<li><a href=#meeting-record>Meeting Record</a>
+<ul>
+<li><a href=#data-fields>Data Fields</a></li>
+<li><a href=#reference-fields>Reference Fields</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -365,7 +370,737 @@ Create Registry Entry and Document
 <h1>
 Meeting Record
 </h1>
-<h2 id=wip>WIP</h2>
+<h2 id=meeting-record>Meeting Record</h2>
+<p>Meeting Record is an entry collecting documents part of meetings.</p>
+<ul>
+<li>Meeting Record (<code>Moeteregistrering</code>) is a subtype of <code>AbstraktRegistrering</code> and as such inherits fields part of the parent object.</li>
+<li>Being a core Noark5 model entity, Meeting Record is managed using the <code>POST /transaction</code> operation.</li>
+<li>Meeting Record can be linked under a Meeting Folder (<code>Moetemappe</code>).</li>
+<li>Meeting Record cannot be created without a <code>transaction::link</code> action to an entity on the folders level through <code>refMappe</code></li>
+<li>Meeting Records are referenced by Document(<code>Dokument</code>) entities during Document, DocumentVersion creation</li>
+</ul>
+<hr>
+<p>Table below contains the names with which the entity can be used in <code>transaction</code> and <code>query</code> operations.</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Context</th>
+<th style=text-align:left>Entity Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>referred to in <code>transaction::save</code> action as</td>
+<td style=text-align:left><code>Moeteregistrering</code></td>
+</tr>
+<tr>
+<td style=text-align:left>referred to in <code>transaction::link</code> action</td>
+<td style=text-align:left><code>Moeteregistrering</code></td>
+</tr>
+<tr>
+<td style=text-align:left>referred to in <code>transaction::unlink</code> action</td>
+<td style=text-align:left><code>Moeteregistrering</code></td>
+</tr>
+<tr>
+<td style=text-align:left>referred to in <code>query</code> operation</td>
+<td style=text-align:left><code>Moeteregistrering</code> or <code>AbstraktRegistrering</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Diagram showing the relation of Meeting Record entity (<code>Moeteregistrering</code>) to any other entities through its reference fields.
+The diagram depicts the most important set of fields, leaving some of the use cases out of it for simplicity.
+<img src=/api-docs/model/entities/abstractRecord/meetingRecord/images/diagrams-model-meeting-record.png alt=child-parent-relation></p>
+<h3 id=data-fields>Data Fields</h3>
+<h4 id=common-data-fields>Common Data Fields</h4>
+<p>Following the Noark5 specification requirements and the internal implementation details the following set of <strong>data fields</strong> are present for all entities :</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>unique entity identifier in the specific Documaster installation, used for referencing the entity in the API. The <code>id</code> for created entities is a numeric value.<br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>contains the verions of the entity, used for optimistic locking<br><strong>Default :</strong> sequence version number of the entity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M001</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>globally unique identification of the entity, an UUID value (sysemId) <br><strong>Default :</strong> new value generated on creation<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M600</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time at which the entity was created (createdDate)<br><strong>Default :</strong> current date time <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user that created the entity (createdBy)<br><strong>Default :</strong> logged in user name <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>opprettetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M601</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>identifier of the user that created the entity (createdByIdent)<br><strong>Default :</strong> logged in user identifier <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id=moeteregistrering-specific-data-fields><code>Moeteregistrering</code> Specific Data Fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Type</th>
+<th style=text-align:center>Noark Metadata No.</th>
+<th style=text-align:center>Required on Create</th>
+<th style=text-align:center>Value Always Available</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avsluttetDato</code></td>
+<td style=text-align:center>timestamp</td>
+<td style=text-align:center>M602</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>date and time when the archive unit was finalized (finalizedDate)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>avsluttetAv</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>name of the user who finalized the archive unit (finalizedBy)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>avsluttetAvBrukerIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M603</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unique identifier of the user who finalized the archive unit (finalizedByIdent)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>registreringsIdent</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M004</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>unambiguous identification of the meeting record within the fonds to which the meeting folder belongs (fileId)<br><strong>Default :</strong> <code>current year/registreringsekvensnummer</code> in archive, example <code>2022/109</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>tittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M020</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>title of the meeting record (title)<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>offentligTittel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M025</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>public title of the meeting record, words that should be screened have been removed from the content of the title (replaced with ******) (publicTitle) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>beskrivelse</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M021</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>description of the meeting record (description)</td>
+</tr>
+<tr>
+<td><code>forfatter</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M024</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>author of the meeting record <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>publiseringsstatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>publishing status of the meeting record <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>dokumentmedium</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M300</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication of whether the archive unit contains physical documents, electronic documents or a mixture of physical and electronic documents<br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#dokumentmedium-m300><code>dokumentmedium</code></a><br><strong>Default :</strong> <code>E</code> - Elektronisk arkiv<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
+</tr>
+<tr>
+<td><code>registreringsDato</code></td>
+<td style=text-align:center>date</td>
+<td style=text-align:center>M101</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date at which the meeting record was journaled (recordDate) <br><strong>Default :</strong> <code>current date</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>dokumentetsDato</code></td>
+<td style=text-align:center>date</td>
+<td style=text-align:center>M103</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date of the journaled document (documentDate) <br><strong>Default :</strong> <code>current date</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>forfallsdato</code></td>
+<td style=text-align:center>date</td>
+<td style=text-align:center>M109</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>date indicating the deadline for the incoming meeting records to be answered (dueDate) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>saksbehandler</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M307</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of the person who is case responsible<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>saksnummer</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td>order in which the meeting record was created within the year (recordSequenseNumber) <br> <strong>Default :</strong> <code>sequence number in year</code><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>administrativEnhet</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M305</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>name of the organization or administrative unit part of the organization responsible (administrativeUnit) <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#administrativenhet-m583><code>administrativEnhet</code></a></td>
+</tr>
+<tr>
+<td><code>moeteregistreringstype</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M085</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>type of the meeting record <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#moeteregistreringstype-m085><code>moeteregistreringstype</code></a><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>moetesakstype</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M088</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>meeting case type <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#moetesakstype-m088><code>moetesakstype</code></a><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed, Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>moeteregistreringsstatus</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M055</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>status of the meeting record, whether it is recorded, handled or finilized<br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#moeteregistreringsstatus-m055><code>moeteregistreringsstatus</code></a><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
+</tr>
+<tr>
+<td><code>kassasjonsvedtak</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M450</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>action to be performed at the end of the preservation period (disposalAction) <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#kassasjonsvedtak-m450><code>kassasjonsvedtak</code></a></td>
+</tr>
+<tr>
+<td><code>kassasjonshjemmel</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M453</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>authority for disposal (disposalAuthority) <br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#kassasjonshjemmel-m453><code>kassasjonshjemmel</code></a></td>
+</tr>
+<tr>
+<td><code>bevaringstid</code></td>
+<td style=text-align:center>number</td>
+<td style=text-align:center>M451</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>number of year the document should be kept before being scheduled for disposal (retentionPeriod) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Sortable</span>
+</span></td>
+</tr>
+<tr>
+<td><code>skjerming</code></td>
+<td style=text-align:center>string</td>
+<td style=text-align:center>M500</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>indication that the documents belonging to the meeting record are not publicly available in accordance with the Public Access to Information Act (offentlighetsloven) or for any other reason (accessRestriction)<br><strong>Code List :</strong> <a href=/api-docs/model/code-lists/#skjerming-m500><code>skjerming</code></a><br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Indexed</span>
+</span></td>
+</tr>
+<tr>
+<td><code>virksomhetsspesifikkeMetadata</code></td>
+<td style=text-align:center>object</td>
+<td style=text-align:center>M711</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>overarching metadata element that can contain custom metadata. When metadata for an entity is updated, the whole of it is ovewritten. Examples for handling business specific metadata can be found in the usage section of the page. (businessSpecificMetadata) <br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Not Queryable</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id=reference-fields>Reference Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th style=text-align:center>Referenced Entity Type</th>
+<th style=text-align:center>Cardinality</th>
+<th style=text-align:center>Link Required on Create</th>
+<th style=text-align:center>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to the Meeting Folder (<code>Moetemappe</code>) to which the Meeting Record (<code>Moeteregistrering</code>) belongs<br>
+<style>.term{position:relative;display:inline-block}</style>
+<span class=term>
+<i class="fas fa-asterisk" style=color:#941d55></i>
+<span style=color:#941d55>Returned</span>
+</span></td>
+</tr>
+<tr>
+<td><code>refArkivdel</code></td>
+<td style=text-align:center><code>Arkivdel</code></td>
+<td style=text-align:center>0 . . 1</td>
+<td style=text-align:center>
+<button class="pill cond" style=width:100px>cond</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to the Series (<code>Arkivdel</code>) to which the Meeting Record (<code>Moeteregistrering</code>) belongs. Either this reference or the <code>refMappe</code> reference can be set, but not both.</td>
+</tr>
+<tr>
+<td><code>refKorrespondansepart</code></td>
+<td style=text-align:center><code>Korrespondansepart</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Correspondence Party (<code>Korrespondansepart</code>) entities.</td>
+</tr>
+<tr>
+<td><code>refDokument</code></td>
+<td style=text-align:center><code>Dokument</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Documents (<code>Dokument</code>) associated with the Meeting Record (<code>Moeteregistrering</code>)</td>
+</tr>
+<tr>
+<td><code>refPrimaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of primary Classes (<code>Klasse</code>) associated with the Meeting Record (<code>Moeteregistrering</code>)</td>
+</tr>
+<tr>
+<td><code>refSekundaerKlasse</code></td>
+<td style=text-align:center><code>Klasse</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of secondary Classes (<code>Klasse</code>) associated with the Meeting Record (<code>Moeteregistrering</code>)</td>
+</tr>
+<tr>
+<td><code>refEksternId</code></td>
+<td style=text-align:center><code>EksternId</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of External ID (<code>EksternId</code>) entities, containing the meeting record identification in external systems</td>
+</tr>
+<tr>
+<td><code>refNoekkelord</code></td>
+<td style=text-align:center><code>Noekkelord</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Keywords (&lsquo;Noekkelord&rsquo;) entities associated with the Meeting Record (<code>Moeteregistrering</code>)</td>
+</tr>
+<tr>
+<td><code>refMerknad</code></td>
+<td style=text-align:center><code>Merknad</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Notes (&lsquo;Merknad&rsquo;) entities associated with the Meeting Record (<code>Moeteregistrering</code>)</td>
+</tr>
+<tr>
+<td><code>refNasjonalIdentifikator</code></td>
+<td style=text-align:center><code>NasjonalIdentifikator</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of National Identifiers (&lsquo;NasjonalIdentifikator&rsquo;) entities associated with the Meeting Record (<code>Moeteregistrering</code>)</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseTilMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current Meeting Record has cross-reference</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseFraMappe</code></td>
+<td style=text-align:center><code>AbstraktMappe</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current Meeting Record is being cross-referenced</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseTilRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>to</strong> which the current Meeting Record has cross-reference</td>
+</tr>
+<tr>
+<td><code>refKryssreferanseFraRegistrering</code></td>
+<td style=text-align:center><code>AbstraktRegistrering</code></td>
+<td style=text-align:center>0 . . *</td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>reference to a list of Folders (<code>AbstraktMappe</code>) <strong>from</strong> which the current Meeting Record is being cross-referenced</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+</blockquote>
 <footer class=footline>
 </footer>
 </div>
@@ -378,17 +1113,17 @@ Meeting Record
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1670231856></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1670231856></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1670231856></script>
-<script src=/api-docs/js/jquery.sticky.js?1670231856></script>
-<script src=/api-docs/js/featherlight.min.js?1670231856></script>
-<script src=/api-docs/js/highlight.pack.js?1670231856></script>
+<script src=/api-docs/js/clipboard.min.js?1677492754></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1677492754></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1677492754></script>
+<script src=/api-docs/js/jquery.sticky.js?1677492754></script>
+<script src=/api-docs/js/featherlight.min.js?1677492754></script>
+<script src=/api-docs/js/highlight.pack.js?1677492754></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1670231856></script>
-<script src=/api-docs/js/learn.js?1670231856></script>
-<script src=/api-docs/js/hugo-learn.js?1670231856></script>
-<script src=/api-docs/mermaid/mermaid.js?1670231856></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1677492754></script>
+<script src=/api-docs/js/learn.js?1677492754></script>
+<script src=/api-docs/js/hugo-learn.js?1677492754></script>
+<script src=/api-docs/mermaid/mermaid.js?1677492754></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
