@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.89.4">
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
-<title>Code Lists Operations :: Documaster Noark5 API</title>
+<title>Logs Operations :: Documaster Noark5 API</title>
 <link href=/api-docs/css/nucleus.css?1682326974 rel=stylesheet>
 <link href=/api-docs/css/fontawesome-all.min.css?1682326974 rel=stylesheet>
 <link href=/api-docs/css/hybrid.css?1682326974 rel=stylesheet>
@@ -21,7 +21,7 @@
 <script src=/api-docs/js/jquery-3.3.1.min.js?1682326974></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
-<body data-url=/api-docs/operations/other/codelists/>
+<body data-url=/api-docs/operations/other/logs/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -129,7 +129,7 @@ parent">
 Other Operations
 </a>
 <ul>
-<li data-nav-id=/api-docs/operations/other/codelists/ title="Code Lists Operations" class="dd-item active">
+<li data-nav-id=/api-docs/operations/other/codelists/ title="Code Lists Operations" class=dd-item>
 <a href=/api-docs/operations/other/codelists/>
 Code Lists Operations
 </a>
@@ -149,7 +149,7 @@ Bulk Operations
 Full-Text Search
 </a>
 </li>
-<li data-nav-id=/api-docs/operations/other/logs/ title="Logs Operations" class=dd-item>
+<li data-nav-id=/api-docs/operations/other/logs/ title="Logs Operations" class="dd-item active">
 <a href=/api-docs/operations/other/logs/>
 Logs Operations
 </a>
@@ -347,7 +347,7 @@ Create Registry Entry and Document
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/operations/>Operations</a> > <a href=/api-docs/operations/other/>Other Operations</a> > Code Lists Operations
+<a href=/api-docs/>Documaster Noark5 API</a> > <a href=/api-docs/operations/>Operations</a> > <a href=/api-docs/operations/other/>Other Operations</a> > Logs Operations
 </span>
 </div>
 <div class=progress>
@@ -356,9 +356,9 @@ Create Registry Entry and Document
 <ul>
 <li><a href=#overview>Overview</a>
 <ul>
-<li><a href=#get-noark5v1code-liststypefield>GET /noark5/v1/code-lists?{type,field}</a></li>
-<li><a href=#put-noark5v1code-listsfieldcode>PUT /noark5/v1/code-lists/{field}/{code}</a></li>
-<li><a href=#delete-noark5v1code-listsfieldcode>DELETE /noark5/v1/code-lists/{field}/{code}</a></li>
+<li><a href=#post-noark5v1logschange-log>POST /noark5/v1/logs/change-log</a></li>
+<li><a href=#post-noark5v1logsaccess-log>POST /noark5/v1/logs/access-log</a></li>
+<li><a href=#post-noark5v1logsdownload-log>POST /noark5/v1/logs/download-log</a></li>
 </ul>
 </li>
 </ul>
@@ -371,14 +371,12 @@ Create Registry Entry and Document
 </div>
 <div id=body-inner>
 <h1>
-Code Lists Operations
+Logs Operations
 </h1>
 <h2 id=overview>Overview</h2>
-<p>Code List operations are used to manage the different lists of values used for fields of the core entities. Definition of the code lists can be found in the <a href=/api-docs/model>Data Model</a> section of the documentation.</p>
-<div class="notices note"><p>Important to notice is that the API works with code lists associated to core entity types and specific fields.Entities fields names are unique in Documaster Archive and are the unique identifiers of the code lists.</p>
-</div>
-<h3 id=get-noark5v1code-liststypefield>GET /noark5/v1/code-lists?{type,field}</h3>
-<p>The operation is used to retreive code lists values. The returned data can be filtered based on the query parameters available, by the type of the core entity and the field of the core entity for which the lists is used.</p>
+<p>Logs operations are used to query the different logs available on the archive side - change log, access log, download log.</p>
+<h3 id=post-noark5v1logschange-log>POST /noark5/v1/logs/change-log</h3>
+<p>The operation is used to retreive the change log entries for a specific archive entity instance.</p>
 <h5 id=http-request>HTTP Request</h5>
 <table>
 <thead>
@@ -410,27 +408,43 @@ Code Lists Operations
 <td>custom header indicating that any error should be reported in JSON format, rather than the standard text format, should always be provided as <strong>application/json</strong></td>
 </tr>
 <tr>
-<td><code>type</code></td>
+<td><code>$.type</code></td>
 <td>
-<button class="pill query" style=width:100px>Query</button></td>
+<button class="pill body" style=width:100px>Body</button></td>
 <td style=text-align:center>
-<button class="pill no" style=width:100px>no</button></td>
+<button class="pill yes" style=width:100px>yes</button></td>
 <td>string</td>
-<td>type of the core entity for which the code lists shoudl be returned</td>
+<td>type of the core entity for which the change log entries should be returned. <br> <strong>Supported types</strong> : <code>AbstraktMappe</code>, <code>Mappe</code>, <code>Saksmappe</code>, <code>Moetemappe</code>, <code>AbstraktRegistrering</code>, <code>Arkivnotat</code>, <code>Basisregistrering</code>, <code>Journalpost</code>, <code>Moeteregistrering</code>, or <code>Dokument</code></td>
 </tr>
 <tr>
-<td><code>field</code></td>
+<td><code>$.id</code></td>
 <td>
-<button class="pill query" style=width:100px>Query</button></td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill yes" style=width:100px>yes</button></td>
+<td>string</td>
+<td>unique identifier of the entity</td>
+</tr>
+<tr>
+<td><code>$.offset</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
-<td>string</td>
-<td>field name of the entity type for which the query is made</td>
+<td>number</td>
+<td>offset of the first result of the query</td>
+</tr>
+<tr>
+<td><code>$.limit</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>number</td>
+<td>maximum number of change log entries to be returned</td>
 </tr>
 </tbody>
 </table>
-<div class="notices note"><p><code>type</code> and <code>field</code> query parameters can be used together or separately.</p>
-</div>
 <h5 id=http-response>HTTP Response</h5>
 <p>The operation returns HTTP <code>200 OK</code> in case of success or any of the standard error codes defined.</p>
 <table>
@@ -455,7 +469,14 @@ Code Lists Operations
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
 <td>array</td>
-<td>list of code list values grouped by entity type</td>
+<td>list of change log entries</td>
+</tr>
+<tr>
+<td><code>$.results[].id</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td>core entity type for which the list is defined</td>
 </tr>
 <tr>
 <td><code>$.results[].type</code></td>
@@ -465,92 +486,103 @@ Code Lists Operations
 <td>core entity type for which the list is defined</td>
 </tr>
 <tr>
-<td><code>$.results[].field</code></td>
+<td><code>$.results[].revisionId</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td>identitifier of the revision</td>
+</tr>
+<tr>
+<td><code>$.results[].revisionType</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td>the type of the revision</td>
+</tr>
+<tr>
+<td><code>$.results[].modifiedDate</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>timestamp</td>
+<td>the date at which the modification was done</td>
+</tr>
+<tr>
+<td><code>$.results[].modifiedBy</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td>the user who modified the entity</td>
+</tr>
+<tr>
+<td><code>$.results[].modifiedField</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td>the field which was modified<br>Returned only for <code>UPDATE</code>, <code>LINK</code>, <code>UNLINK</code> revision types.</td>
+</tr>
+<tr>
+<td><code>$.results[].modifiedFieldType</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td>type of the field which was modified<br>Returned only for <code>UPDATE</code> revision type.</td>
+</tr>
+<tr>
+<td><code>$.results[].newValue</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
 <td>object</td>
-<td>core entity field for which the code list is defined. NOTE : this is the element which is the unique identifier of the code list used in update/delete operations.</td>
+<td><br>Returned only for <code>CREARE</code>, <code>UPDATE</code>, <code>LINK</code> revision types.</td>
 </tr>
 <tr>
-<td><code>$.results[].defaultValue</code></td>
+<td><code>$.results[].oldValue</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>default value object for the code list</td>
+<td>object</td>
+<td><br>Returned only for <code>UPDATE</code>, <code>DELETE</code> revision types.</td>
 </tr>
 <tr>
-<td><code>$.results[].defaultValue.code</code></td>
+<td><code>$.results[].removedValue</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>code of the default code list value</td>
+<td>object</td>
+<td><br>Returned only for <code>LINK</code>, <code>UNLINK</code> revision types.</td>
 </tr>
 <tr>
-<td><code>$.results[].defaultValue.name</code></td>
+<td><code>$.results[].previousParent</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>name of the default code list value</td>
+<td>object</td>
+<td><br>Returned only for <code>MOVE</code> revision type.</td>
 </tr>
 <tr>
-<td><code>$.results[].defaultValue.description</code></td>
+<td><code>$.results[].currentParent</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>description of the default code list value</td>
-</tr>
-<tr>
-<td><code>$.results[].values[]</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td>array</td>
-<td>list of values available in the code list</td>
-</tr>
-<tr>
-<td><code>$.results[].values[].code</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>code of the default code value</td>
-</tr>
-<tr>
-<td><code>$.results[].values[].name</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>name of the default code list value</td>
-</tr>
-<tr>
-<td><code>$.results[].values[].description</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>description of the code list value</td>
-</tr>
-<tr>
-<td><code>$.results[].values[].authority</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td>string</td>
-<td>authority for the code list value</td>
+<td>object</td>
+<td><br>Returned only for <code>MOVE</code> revision type.</td>
 </tr>
 </tbody>
 </table>
-<div class="notices warning"><p>This operation does not support pagination and limit of the number of values returned, so use it carefully, especially when the code lists contain many possible values.</p>
-</div>
 <div class=tab-panel>
 <div class=tab-nav>
-<button data-tab-item=HTTP data-tab-group=code-lists class="tab-nav-button btn active" onclick="switchTab('code-lists','HTTP')">HTTP</button>
-<button data-tab-item=Java data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','Java')">Java</button>
-<button data-tab-item=C# data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','C#')">C#</button>
+<button data-tab-item=HTTP data-tab-group=logs-operations class="tab-nav-button btn active" onclick="switchTab('logs-operations','HTTP')">HTTP</button>
+<button data-tab-item=Java data-tab-group=logs-operations class="tab-nav-button btn" onclick="switchTab('logs-operations','Java')">Java</button>
+<button data-tab-item=C# data-tab-group=logs-operations class="tab-nav-button btn" onclick="switchTab('logs-operations','C#')">C#</button>
 </div>
 <div class=tab-content>
-<div data-tab-item=HTTP data-tab-group=code-lists class="tab-item active">
+<div data-tab-item=HTTP data-tab-group=logs-operations class="tab-item active">
 <p>      <strong>Request</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>GET</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/code-lists?type=Arkiv&amp;field=dokumentmedium <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/logs/change-log <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
 <span style=color:#960050;background-color:#1e0010>...</span>
 Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
 X-Documaster-Error-Response-Type: application/json
+
+{
+  &#34;type&#34;: &#34;Journalpost&#34;,
+  &#34;id&#34;: &#34;27112&#34;
+}
 </code></pre></div><p>      <strong>Response</strong></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
 <span style=color:#960050;background-color:#1e0010>...</span>
@@ -559,63 +591,51 @@ Content-Type: application/json
 {
   &#34;results&#34;: [
     {
-      &#34;type&#34;: &#34;Arkiv&#34;,
-      &#34;field&#34;: &#34;dokumentmedium&#34;,
-      &#34;defaultValue&#34;: {
-        &#34;code&#34;: &#34;E&#34;,
-        &#34;name&#34;: &#34;Elektronisk arkiv&#34;
+      &#34;id&#34;: string,
+      &#34;type&#34;: string,
+      &#34;revisionId&#34;: string,
+      &#34;revisionType&#34;: string,
+      &#34;modifiedDate&#34;: timestamp,
+      &#34;modifiedBy&#34;: string,
+      &#34;modifiedField&#34;: string,
+      &#34;modifiedFieldType&#34;: string,
+      &#34;newValue&#34;: {
+        string: string|number|date|boolean|null,
+        ...
       },
-      &#34;values&#34;: [
-        {
-          &#34;code&#34;: &#34;E&#34;,
-          &#34;name&#34;: &#34;Elektronisk arkiv&#34;
-        }
-      ]
-    }
-  ]
+      &#34;oldValue&#34;: {
+        string: string|number|date|boolean|null,
+        ...
+      },
+      &#34;removedValue&#34;: {
+        string: string|number|date|boolean|null,
+        ...
+      },
+      &#34;previousParent&#34;: {
+        string: string|number|date|boolean|null,
+        ...
+      },
+      &#34;currentParent&#34;: {
+        string: string|number|date|boolean|null,
+        ...
+      },
+    },
+    ...
+  ],
+  &#34;total&#34;: number 
 }
 </code></pre></div>
 </div>
-<div data-tab-item=Java data-tab-group=code-lists class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// Noark5Client is created and access token is provided
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>// Requesting single code list to be returned
-</span><span style=color:#75715e></span>CodeList documentMediumCodeList <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>codeLists</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Arkiv&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;dokumentmedium&#34;</span><span style=color:#f92672>).</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>0<span style=color:#f92672>);</span>
-
-<span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>CodeValue cv <span style=color:#f92672>:</span> documentMediumCodeList<span style=color:#f92672>.</span><span style=color:#a6e22e>getValues</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
-    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Code : &#34;</span> <span style=color:#f92672>+</span> cv<span style=color:#f92672>.</span><span style=color:#a6e22e>getCode</span><span style=color:#f92672>()</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;; Name : &#34;</span> <span style=color:#f92672>+</span> cv<span style=color:#f92672>.</span><span style=color:#a6e22e>getName</span><span style=color:#f92672>());</span>
-<span style=color:#f92672>}</span>
-
-<span style=color:#75715e>// Requesting all code lists for Journalpost
-</span><span style=color:#75715e></span>List<span style=color:#f92672>&lt;</span>CodeList<span style=color:#f92672>&gt;</span> registryEntryCodeLists <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>codeLists</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Journalpost&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>);</span>
-
-<span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>CodeList cl <span style=color:#f92672>:</span> registryEntryCodeLists<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Code List : &#34;</span> <span style=color:#f92672>+</span> cl<span style=color:#f92672>.</span><span style=color:#a6e22e>getField</span><span style=color:#f92672>()</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;;&#34;</span><span style=color:#f92672>);</span>
-<span style=color:#f92672>}</span>
-</code></pre></div>
+<div data-tab-item=Java data-tab-group=logs-operations class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java></code></pre></div>
 </div>
-<div data-tab-item=C# data-tab-group=code-lists class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#75715e>// NoarkClient is created and access token is provided
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>// Requesting single code list to be returned
-</span><span style=color:#75715e></span>CodeList documentMediumCodeList = client.CodeLists(<span style=color:#e6db74>&#34;Arkiv&#34;</span>, <span style=color:#e6db74>&#34;dokumentmedium&#34;</span>)[<span style=color:#ae81ff>0</span>];
-
-<span style=color:#66d9ef>foreach</span> (CodeValue cv <span style=color:#66d9ef>in</span> documentMediumCodeList.Values) {
-    Console.WriteLine(<span style=color:#e6db74>&#34;Code : &#34;</span> + cv.Code + <span style=color:#e6db74>&#34;; Name : &#34;</span> + cv.Name);
-}
-
-<span style=color:#75715e>// Requesting all code lists for Journalpost
-</span><span style=color:#75715e></span>List&lt;CodeList&gt; registryEntryCodeLists = client.CodeLists(<span style=color:#e6db74>&#34;Journalpost&#34;</span>, <span style=color:#66d9ef>null</span>);
-
-<span style=color:#66d9ef>foreach</span> (CodeList cl <span style=color:#66d9ef>in</span> registryEntryCodeLists) {
-    Console.WriteLine(<span style=color:#e6db74>&#34;Code List : &#34;</span> + cl.Field + <span style=color:#e6db74>&#34;;&#34;</span>);
-}
-</code></pre></div>
+<div data-tab-item=C# data-tab-group=logs-operations class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp></code></pre></div>
 </div>
 </div>
 </div>
-<h3 id=put-noark5v1code-listsfieldcode>PUT /noark5/v1/code-lists/{field}/{code}</h3>
-<p>The operation is used to add or update code list values. Single code list value can be updated in a call.</p>
+<h3 id=post-noark5v1logsaccess-log>POST /noark5/v1/logs/access-log</h3>
+<p>The operation is used to retreive the access log entries for specific set of archive entity instances.</p>
 <h5 id=http-request-1>HTTP Request</h5>
 <table>
 <thead>
@@ -638,15 +658,6 @@ Content-Type: application/json
 <td>access token aquired as part of the authentication call, prefixed with <code>Bearer</code></td>
 </tr>
 <tr>
-<td><code>Content-Type</code></td>
-<td>
-<button class="pill others" style=width:100px>Header</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>string</td>
-<td>content type header, should always be provided as <strong>application/json</strong></td>
-</tr>
-<tr>
 <td><code>X-Documaster-Error-Response-Type</code></td>
 <td>
 <button class="pill others" style=width:100px>Header</button></td>
@@ -656,40 +667,67 @@ Content-Type: application/json
 <td>custom header indicating that any error should be reported in JSON format, rather than the standard text format, should always be provided as <strong>application/json</strong></td>
 </tr>
 <tr>
-<td><code>field</code></td>
-<td>
-<button class="pill path" style=width:100px>Path</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>string</td>
-<td>core entity field for which the code list is being updated</td>
-</tr>
-<tr>
-<td><code>code</code></td>
-<td>
-<button class="pill path" style=width:100px>Path</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>string</td>
-<td>code of the newly created/update code list value. Note that code should be unique throughout the code list.</td>
-</tr>
-<tr>
-<td><code>$.name</code></td>
-<td>
-<button class="pill body" style=width:100px>Body</button></td>
-<td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
-<td>string</td>
-<td>name of the newly created/update code list value. Note that name should be unique throughout the code list.</td>
-</tr>
-<tr>
-<td><code>$.description</code></td>
+<td><code>$.createdDateFrom</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
 <td style=text-align:center>
 <button class="pill no" style=width:100px>no</button></td>
 <td>string</td>
-<td>description of the newly created/update code list value</td>
+<td>start date for the period for which the access log entries are retrieved</td>
+</tr>
+<tr>
+<td><code>$.createdDateTo</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>string</td>
+<td>end date for the period for which access log entries are retrieved</td>
+</tr>
+<tr>
+<td><code>$.userName</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>string</td>
+<td>username for which the access log entries to be filtered</td>
+</tr>
+<tr>
+<td><code>$.objectType</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>string</td>
+<td>type of the core entities for which access log entries would be returned</td>
+</tr>
+<tr>
+<td><code>$.objectUUIDs</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>array</td>
+<td>set of core entities <strong>system IDs</strong> for which access log entries to be returned</td>
+</tr>
+<tr>
+<td><code>$.offset</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>number</td>
+<td>offset of the first result of the query</td>
+</tr>
+<tr>
+<td><code>$.limit</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>number</td>
+<td>maximum number of access log entries to be returned</td>
 </tr>
 </tbody>
 </table>
@@ -713,46 +751,74 @@ Content-Type: application/json
 <td>content type header, always is <strong>application/json</strong></td>
 </tr>
 <tr>
-<td><code>$.code</code></td>
+<td><code>$.results[]</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
 <td>array</td>
-<td>code of the newly created/update code list value</td>
+<td>list of access log entries</td>
 </tr>
 <tr>
-<td><code>$.name</code></td>
+<td><code>$.results[].createdDate</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>timestamp</td>
+<td>date at which the access to the entry happened</td>
+</tr>
+<tr>
+<td><code>$.results[].username</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
 <td>string</td>
-<td>name of the newly created/update code list value</td>
+<td>username of the user that accessed the entity</td>
 </tr>
 <tr>
-<td><code>$.description</code></td>
+<td><code>$.results[].objectType</code></td>
 <td>
 <button class="pill body" style=width:100px>Body</button></td>
-<td>object</td>
-<td>description of the newly created/update code list value</td>
+<td>string</td>
+<td>type of the entity being accessed</td>
+</tr>
+<tr>
+<td><code>$.results[].objectUUID</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td><strong>system ID</strong> of the accessed entity</td>
+</tr>
+<tr>
+<td><code>$.results[].version</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>timestamp</td>
+<td>version of the entity accessed</td>
+</tr>
+<tr>
+<td><code>$.hasMore</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>boolean</td>
+<td>indicator if the list of access log entries has more elements to be retrieved</td>
 </tr>
 </tbody>
 </table>
 <div class=tab-panel>
 <div class=tab-nav>
-<button data-tab-item=HTTP data-tab-group=code-lists class="tab-nav-button btn active" onclick="switchTab('code-lists','HTTP')">HTTP</button>
-<button data-tab-item=Java data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','Java')">Java</button>
-<button data-tab-item=C# data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','C#')">C#</button>
+<button data-tab-item=HTTP data-tab-group=logs-operations class="tab-nav-button btn active" onclick="switchTab('logs-operations','HTTP')">HTTP</button>
+<button data-tab-item=Java data-tab-group=logs-operations class="tab-nav-button btn" onclick="switchTab('logs-operations','Java')">Java</button>
+<button data-tab-item=C# data-tab-group=logs-operations class="tab-nav-button btn" onclick="switchTab('logs-operations','C#')">C#</button>
 </div>
 <div class=tab-content>
-<div data-tab-item=HTTP data-tab-group=code-lists class="tab-item active">
+<div data-tab-item=HTTP data-tab-group=logs-operations class="tab-item active">
 <p>      <strong>Request</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>PUT</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/code-lists/dokumentmedium/PA <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/logs/access-log <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
 <span style=color:#960050;background-color:#1e0010>...</span>
 Authorization: Bearer {{accessTokenIntegrator}}
-X-Documaster-Error-Response-Type: application/json
 Content-Type: application/json
+X-Documaster-Error-Response-Type: application/json
 
 {
-  &#34;name&#34; : &#34;Paper Archive&#34;,
-  &#34;description&#34; : &#34;Document medium type code list value to be used for paper archives&#34;
+  &#34;objectType&#34;: &#34;Journalpost&#34;,
+  &#34;objectUUIDs&#34;: [&#34;55e4ac03-7438-4799-8fe1-802d01ed75b2&#34;]
 }
 </code></pre></div><p>      <strong>Response</strong></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
@@ -760,52 +826,30 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
-  &#34;code&#34;: &#34;PA&#34;,
-  &#34;name&#34;: &#34;Paper Archive&#34;,
-  &#34;description&#34;: &#34;Document medium type code list value to be used for paper archives&#34;
+  &#34;results&#34;: [
+    {
+      &#34;createdDate&#34;: timestamp,
+      &#34;userName&#34;: string,
+      &#34;objectType&#34;: string,
+      &#34;objectUUID&#34;: string,
+      &#34;version&#34;: number
+    },
+    ...
+  ],
+  &#34;hasMore&#34;: boolean
 }
 </code></pre></div>
 </div>
-<div data-tab-item=Java data-tab-group=code-lists class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// Noark5Client is created and access token is provided
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>// Requesting single code list to be returned
-</span><span style=color:#75715e></span>CodeList documentMediumCodeList <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>codeLists</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Arkiv&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;dokumentmedium&#34;</span><span style=color:#f92672>).</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>0<span style=color:#f92672>);</span>
-
-<span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>CodeValue cv <span style=color:#f92672>:</span> documentMediumCodeList<span style=color:#f92672>.</span><span style=color:#a6e22e>getValues</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
-    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Code : &#34;</span> <span style=color:#f92672>+</span> cv<span style=color:#f92672>.</span><span style=color:#a6e22e>getCode</span><span style=color:#f92672>()</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;; Name : &#34;</span> <span style=color:#f92672>+</span> cv<span style=color:#f92672>.</span><span style=color:#a6e22e>getName</span><span style=color:#f92672>());</span>
-<span style=color:#f92672>}</span>
-
-<span style=color:#75715e>// Requesting all code lists for Journalpost
-</span><span style=color:#75715e></span>List<span style=color:#f92672>&lt;</span>CodeList<span style=color:#f92672>&gt;</span> registryEntryCodeLists <span style=color:#f92672>=</span> client<span style=color:#f92672>.</span><span style=color:#a6e22e>codeLists</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Journalpost&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>);</span>
-
-<span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>CodeList cl <span style=color:#f92672>:</span> registryEntryCodeLists<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Code List : &#34;</span> <span style=color:#f92672>+</span> cl<span style=color:#f92672>.</span><span style=color:#a6e22e>getField</span><span style=color:#f92672>()</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;;&#34;</span><span style=color:#f92672>);</span>
-<span style=color:#f92672>}</span>
-</code></pre></div>
+<div data-tab-item=Java data-tab-group=logs-operations class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java></code></pre></div>
 </div>
-<div data-tab-item=C# data-tab-group=code-lists class=tab-item>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#75715e>// NoarkClient is created and access token is provided
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>// Requesting single code list to be returned
-</span><span style=color:#75715e></span>CodeList documentMediumCodeList = client.CodeLists(<span style=color:#e6db74>&#34;Arkiv&#34;</span>, <span style=color:#e6db74>&#34;dokumentmedium&#34;</span>)[<span style=color:#ae81ff>0</span>];
-
-<span style=color:#66d9ef>foreach</span> (CodeValue cv <span style=color:#66d9ef>in</span> documentMediumCodeList.Values) {
-    Console.WriteLine(<span style=color:#e6db74>&#34;Code : &#34;</span> + cv.Code + <span style=color:#e6db74>&#34;; Name : &#34;</span> + cv.Name);
-}
-
-<span style=color:#75715e>// Requesting all code lists for Journalpost
-</span><span style=color:#75715e></span>List&lt;CodeList&gt; registryEntryCodeLists = client.CodeLists(<span style=color:#e6db74>&#34;Journalpost&#34;</span>, <span style=color:#66d9ef>null</span>);
-
-<span style=color:#66d9ef>foreach</span> (CodeList cl <span style=color:#66d9ef>in</span> registryEntryCodeLists) {
-    Console.WriteLine(<span style=color:#e6db74>&#34;Code List : &#34;</span> + cl.Field + <span style=color:#e6db74>&#34;;&#34;</span>);
-}
-</code></pre></div>
+<div data-tab-item=C# data-tab-group=logs-operations class=tab-item>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp></code></pre></div>
 </div>
 </div>
 </div>
-<h3 id=delete-noark5v1code-listsfieldcode>DELETE /noark5/v1/code-lists/{field}/{code}</h3>
-<p>The operation is used to add or update code list values. Single code list value can be updated in a call.</p>
+<h3 id=post-noark5v1logsdownload-log>POST /noark5/v1/logs/download-log</h3>
+<p>The operation is used to retreive the download log entries for specific set of Document Version (<code>Dokumentversjon</code>) entities.</p>
 <h5 id=http-request-2>HTTP Request</h5>
 <table>
 <thead>
@@ -837,48 +881,157 @@ Content-Type: application/json
 <td>custom header indicating that any error should be reported in JSON format, rather than the standard text format, should always be provided as <strong>application/json</strong></td>
 </tr>
 <tr>
-<td><code>field</code></td>
+<td><code>$.createdDateFrom</code></td>
 <td>
-<button class="pill path" style=width:100px>Path</button></td>
+<button class="pill body" style=width:100px>Body</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td>string</td>
-<td>core entity field for which the code list is being deleted</td>
+<td>start date for the period for which the download log entries are retrieved</td>
 </tr>
 <tr>
-<td><code>code</code></td>
+<td><code>$.createdDateTo</code></td>
 <td>
-<button class="pill path" style=width:100px>Path</button></td>
+<button class="pill body" style=width:100px>Body</button></td>
 <td style=text-align:center>
-<button class="pill yes" style=width:100px>yes</button></td>
+<button class="pill no" style=width:100px>no</button></td>
 <td>string</td>
-<td>code of deleted code list value</td>
+<td>end date for the period for which download log entries are retrieved</td>
+</tr>
+<tr>
+<td><code>$.userName</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>string</td>
+<td>username for which the download log entries to be filtered</td>
+</tr>
+<tr>
+<td><code>$.dokumentversjonUUIDs</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>array</td>
+<td>set of Document Version (<code>Dokumentversjon</code>) entities <strong>system IDs</strong> for which download log entries to be returned</td>
+</tr>
+<tr>
+<td><code>$.offset</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>number</td>
+<td>offset of the first result of the query</td>
+</tr>
+<tr>
+<td><code>$.limit</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td style=text-align:center>
+<button class="pill no" style=width:100px>no</button></td>
+<td>number</td>
+<td>maximum number of download log entries to be returned</td>
 </tr>
 </tbody>
 </table>
 <h5 id=http-response-2>HTTP Response</h5>
-<p>The operation returns HTTP <code>204 No Content</code> in case of success or any of the standard error codes defined.</p>
+<p>The operation returns HTTP <code>200 OK</code> in case of success or any of the standard error codes defined.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Content-Type</code></td>
+<td>
+<button class="pill others" style=width:100px>Header</button></td>
+<td>string</td>
+<td>content type header, always is <strong>application/json</strong></td>
+</tr>
+<tr>
+<td><code>$.results[]</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>array</td>
+<td>list of download log entries</td>
+</tr>
+<tr>
+<td><code>$.results[].createdDate</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>timestamp</td>
+<td>date at which the download of the document happened</td>
+</tr>
+<tr>
+<td><code>$.results[].username</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td>username of the user that downloaded the document</td>
+</tr>
+<tr>
+<td><code>$.results[].dokumentversjonUUID</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>string</td>
+<td><strong>system ID</strong> of the downloaded Document Version (<code>Dokumentversjon</code>)</td>
+</tr>
+<tr>
+<td><code>$.hasMore</code></td>
+<td>
+<button class="pill body" style=width:100px>Body</button></td>
+<td>boolean</td>
+<td>indicator if the list of download log entries has more elements to be retrieved</td>
+</tr>
+</tbody>
+</table>
 <div class=tab-panel>
 <div class=tab-nav>
-<button data-tab-item=HTTP data-tab-group=code-lists class="tab-nav-button btn active" onclick="switchTab('code-lists','HTTP')">HTTP</button>
-<button data-tab-item=Java data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','Java')">Java</button>
-<button data-tab-item=C# data-tab-group=code-lists class="tab-nav-button btn" onclick="switchTab('code-lists','C#')">C#</button>
+<button data-tab-item=HTTP data-tab-group=logs-operations class="tab-nav-button btn active" onclick="switchTab('logs-operations','HTTP')">HTTP</button>
+<button data-tab-item=Java data-tab-group=logs-operations class="tab-nav-button btn" onclick="switchTab('logs-operations','Java')">Java</button>
+<button data-tab-item=C# data-tab-group=logs-operations class="tab-nav-button btn" onclick="switchTab('logs-operations','C#')">C#</button>
 </div>
 <div class=tab-content>
-<div data-tab-item=HTTP data-tab-group=code-lists class="tab-item active">
+<div data-tab-item=HTTP data-tab-group=logs-operations class="tab-item active">
 <p>      <strong>Request</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>DELETE</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/code-lists/dokumentmedium/PA <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#a6e22e>POST</span> https://v2-34-0.local.documaster.tech:8083/rms/api/public/noark5/v1/logs/access-log <span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span>
 <span style=color:#960050;background-color:#1e0010>...</span>
 Authorization: Bearer {{accessTokenIntegrator}}
+Content-Type: application/json
 X-Documaster-Error-Response-Type: application/json
+
+{
+  &#34;dokumentversjonUUID&#34;: [&#34;55e4ac03-7438-4799-8fe1-802d01ed75b3&#34;]
+}
 </code></pre></div><p>      <strong>Response</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>204</span> <span style=color:#a6e22e>No Content</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-http data-lang=http><span style=color:#66d9ef>HTTP</span><span style=color:#f92672>/</span><span style=color:#ae81ff>1.1</span> <span style=color:#ae81ff>200</span> <span style=color:#a6e22e>OK</span>
+<span style=color:#960050;background-color:#1e0010>...</span>
+Content-Type: application/json
+
+{
+  &#34;results&#34;: [
+    {
+      &#34;createdDate&#34;: timestamp,
+      &#34;userName&#34;: string,
+      &#34;dokumentversjonUUID&#34;: string
+    },
+    ...
+  ],
+  &#34;hasMore&#34;: boolean
+}
 </code></pre></div>
 </div>
-<div data-tab-item=Java data-tab-group=code-lists class=tab-item>
+<div data-tab-item=Java data-tab-group=logs-operations class=tab-item>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java></code></pre></div>
 </div>
-<div data-tab-item=C# data-tab-group=code-lists class=tab-item>
+<div data-tab-item=C# data-tab-group=logs-operations class=tab-item>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp></code></pre></div>
 </div>
 </div>
@@ -888,8 +1041,8 @@ X-Documaster-Error-Response-Type: application/json
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/api-docs/operations/other/ title="Other Operations"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/api-docs/operations/other/bsm/ title="Business Specific Metadata Operations" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/api-docs/operations/other/full-text-search/ title="Full-Text Search"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/api-docs/operations/usage-guidelines/ title="Usage Guidelines" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
