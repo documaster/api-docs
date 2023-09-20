@@ -6,19 +6,19 @@
 <meta name=description content>
 <link rel=icon href=/api-docs/images/favicon.png type=image/png>
 <title>Upload :: Documaster Noark5 API</title>
-<link href=/api-docs/css/nucleus.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/fontawesome-all.min.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/hybrid.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/featherlight.min.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/perfect-scrollbar.min.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/auto-complete.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/atom-one-dark-reasonable.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/theme.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/tabs.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/hugo-theme.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/theme-mine.css?1682326974 rel=stylesheet>
-<link href=/api-docs/css/syntax.css?1682326974 rel=stylesheet>
-<script src=/api-docs/js/jquery-3.3.1.min.js?1682326974></script>
+<link href=/api-docs/css/nucleus.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/fontawesome-all.min.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/hybrid.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/featherlight.min.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/perfect-scrollbar.min.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/auto-complete.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/atom-one-dark-reasonable.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/theme.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/tabs.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/hugo-theme.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/theme-mine.css?1695212238 rel=stylesheet>
+<link href=/api-docs/css/syntax.css?1695212238 rel=stylesheet>
+<script src=/api-docs/js/jquery-3.3.1.min.js?1695212238></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 </head>
 <body data-url=/api-docs/operations/core/upload/>
@@ -34,10 +34,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/api-docs/js/lunr.min.js?1682326974></script>
-<script type=text/javascript src=/api-docs/js/auto-complete.js?1682326974></script>
+<script type=text/javascript src=/api-docs/js/lunr.min.js?1695212238></script>
+<script type=text/javascript src=/api-docs/js/auto-complete.js?1695212238></script>
 <script type=text/javascript>var baseurl="https://documaster.github.io/api-docs/"</script>
-<script type=text/javascript src=/api-docs/js/search.js?1682326974></script>
+<script type=text/javascript src=/api-docs/js/search.js?1695212238></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -384,10 +384,12 @@ Upload
 <h2 id=description>Description</h2>
 <h4 id=post-noark5v1upload>POST /noark5/v1/upload</h4>
 <p>The <code>POST /noark5/v1/upload</code> or as referred to in the documentation <code>upload</code> operation is the way to upload electronic documents to Documaster Archive. The operation returns an identifier of the uploaded file, which can be used at a later stage to be linked to the Document Version(<code>Dokumentversjon</code>) core object.</p>
-<div class="notices note"><p>In case the uploaded electronic documents are not linked to any Document Version (<code>Dokumentversjon</code>) object for more than <strong>3600 seconds/1 hour</strong>, the documents are deleted and cannot be referenced.</p>
+<div class="notices note"><p>In case the uploaded electronic documents are not linked to any Document Version (<code>Dokumentversjon</code>) object for more than <strong>3600 seconds/1 hour</strong>, the documents are deleted and cannot be referenced.
+Uploaded documents are not associated (or available) with the archive structure in any way until a <code>transaction</code> operation is executed associating the electronic document with a <code>Dokumentversjon</code> and associating this new version to a <code>Dokument</code> object.</p>
 </div>
 <div class="notices warning"><p>Uploading files with one account, but linking them to Document Version (<code>Dokumentversjon</code>) using another account will result in an HTTP 500 Server Error returned back from the API.</p>
 </div>
+<div class="notices warning"></div>
 <h2 id=request>Request</h2>
 <p>The request for the operation is the electronic document payload. Uploading the document requires it&rsquo;s name to be provided in the <code>Content-Disposition</code> header as shown below.</p>
 <h5 id=http-request>HTTP Request</h5>
@@ -542,17 +544,17 @@ Content-Type<span style=color:#f92672>:</span> <span style=color:#ae81ff>applica
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/api-docs/js/clipboard.min.js?1682326974></script>
-<script src=/api-docs/js/perfect-scrollbar.min.js?1682326974></script>
-<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1682326974></script>
-<script src=/api-docs/js/jquery.sticky.js?1682326974></script>
-<script src=/api-docs/js/featherlight.min.js?1682326974></script>
-<script src=/api-docs/js/highlight.pack.js?1682326974></script>
+<script src=/api-docs/js/clipboard.min.js?1695212238></script>
+<script src=/api-docs/js/perfect-scrollbar.min.js?1695212238></script>
+<script src=/api-docs/js/perfect-scrollbar.jquery.min.js?1695212238></script>
+<script src=/api-docs/js/jquery.sticky.js?1695212238></script>
+<script src=/api-docs/js/featherlight.min.js?1695212238></script>
+<script src=/api-docs/js/highlight.pack.js?1695212238></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/api-docs/js/modernizr.custom-3.6.0.js?1682326974></script>
-<script src=/api-docs/js/learn.js?1682326974></script>
-<script src=/api-docs/js/hugo-learn.js?1682326974></script>
-<script src=/api-docs/mermaid/mermaid.js?1682326974></script>
+<script src=/api-docs/js/modernizr.custom-3.6.0.js?1695212238></script>
+<script src=/api-docs/js/learn.js?1695212238></script>
+<script src=/api-docs/js/hugo-learn.js?1695212238></script>
+<script src=/api-docs/mermaid/mermaid.js?1695212238></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
